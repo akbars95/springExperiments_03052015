@@ -70,7 +70,7 @@ public class SampleService {
 
     @GET
     @Path("json/employees/{employeeId}")
-    @Produces("application/xml")
+    @Produces("application/json")
     public Employee getEmployeeJSON(@PathParam("employeeId") String employeeId){
         return employeeMap.get(employeeId);
     }
