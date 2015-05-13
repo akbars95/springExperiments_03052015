@@ -1,0 +1,38 @@
+-category
+-    category_id
+-    category_name
+-    category_description
+-
+-subcategory
+-    subcategory_id
+-    category_id
+-    subcategory_name
+-    subcategory_description
+-
+-article
+-    article_id
+-    subcategory_id
+-    article_name
+-    article_description
+-    article_author_id
+-    article_created_date
+-    article_last_updated_date
+-    tag_id
+-
+-author
+-    author_id
+-    author_lastname
+-    author_firstname
+-    author_middlename
+-    author_email
+-    author_sex
+-
+-tag
+-    tag_id
+-    tag_name
+-
+-comment
+-    comment_id
+-    comment_author_id
+-    comment_created_date
+-    comment_text
