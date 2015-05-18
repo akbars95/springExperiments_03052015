@@ -4,9 +4,10 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
     <definition name="defaultTemplate" template="/WEB-INF/jsp/template/template.jsp">
-        <put-attribute name="jsCss" value="/WEB-INF/jsp/template/jsCss.jsp" />
+        <!--<put-attribute name="titlePage" value="" />-->
         <put-attribute name="header" value="/WEB-INF/jsp/template/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/jsp/template/menu_main.jsp" />
+        <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/jsp/template/footer.jsp" />
     </definition>
 
