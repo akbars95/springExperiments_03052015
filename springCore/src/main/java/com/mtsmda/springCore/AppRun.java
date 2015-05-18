@@ -1,5 +1,6 @@
 package com.mtsmda.springCore;
 
+import com.mtsmda.springCore.java.Person;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,6 +14,13 @@ public class AppRun {
 
         HelloWorldService helloWorldService = (HelloWorldService) applicationContext.getBean("helloWorldService");
         System.out.println(helloWorldService.sayHello());
+
+        Person person = (Person) applicationContext.getBean("personIvanov");
+        System.out.println(person);
+
+        System.out.println(person.getPersonAddress().toString());
+
+
     }
 
 }

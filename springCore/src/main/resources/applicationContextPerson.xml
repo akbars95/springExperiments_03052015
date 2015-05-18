@@ -6,9 +6,31 @@
        xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 
-    <!--<context:component-scan base-package="com.mtsmda.springCore" />-->
-    <import resource="applicationContextPerson.xml"/>
-    <import resource="applicationContextOther.xml"/>
+       <!--<context:component-scan base-package="com.mtsmda.springCore" />-->
+
+       <bean id="personIvanov" class="com.mtsmda.springCore.java.Person">
+              <property name="firstName" value="Ivan"/>
+              <property name="lastName" value="Ivanov"/>
+              <property name="personAddress" ref="personAddress"/>
+       </bean>
+
+       <bean id="personAddress" class="com.mtsmda.springCore.PersonAddress">
+              <constructor-arg index="0">
+                     <value>Moldova</value>
+              </constructor-arg>
+              <constructor-arg index="1">
+                     <value>Kishinev</value>
+              </constructor-arg>
+              <constructor-arg index="2">
+                     <value>Puskin</value>
+              </constructor-arg>
+              <constructor-arg index="3">
+                     <value>22/3</value>
+              </constructor-arg>
+              <constructor-arg index="4">
+                     <value>159</value>
+              </constructor-arg>
+       </bean>
 
 
 </beans>
