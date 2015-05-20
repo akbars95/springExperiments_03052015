@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<country xmlns:ns2="com.mtsmda.xml.java2blog">
+    <countryName>USA</countryName>
+    <countryPopulation>3.0E8</countryPopulation>
+    <states>
+        <state>
+            <state_name>Washington</state_name>
+            <state_population>500000</state_population>
+        </state>
+    </states>
+</country>

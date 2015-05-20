@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<employee>
+    <departament DEPARTAMENT_ID="1">
+        <departament_name>JAVA</departament_name>
+    </departament>
+    <id>1</id>
+    <name>Ivan</name>
+</employee>
