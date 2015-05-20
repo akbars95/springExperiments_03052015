@@ -20,6 +20,8 @@ public class AppRun {
 
         System.out.println(person.getPersonAddress().toString());
 
+        System.out.println(applicationContext.getBean("PersonAddressP").toString());
+
 
     }
 

@@ -11,4 +11,16 @@
     <import resource="applicationContextOther.xml"/>
 
 
+    <bean id="cityKishinev" class="java.lang.String">
+        <constructor-arg type="java.lang.String" value="Kishinev"/>
+    </bean>
+
+    <bean id="PersonAddressP" class="com.mtsmda.springCore.PersonAddress" p:country="Moldova" p:city-ref="cityKishinev">
+        <property name="houseNumber">
+            <bean class="java.lang.String">
+                <constructor-arg index="0" value="15/9"/>
+            </bean>
+        </property>
+            </bean>
+
 </beans>
