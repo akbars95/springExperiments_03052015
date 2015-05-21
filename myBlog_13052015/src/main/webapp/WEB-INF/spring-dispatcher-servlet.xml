@@ -15,8 +15,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     <!--spring mvc main settings-->
     <mvc:annotation-driven/>
     <context:component-scan base-package="com.mtsmda.myBlog.controller"/>
-    <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
@@ -27,7 +26,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     <!--i18n-->
     <bean id="localeResolver"
           class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-        <property name="defaultLocale" value="de"/>
+        <property name="defaultLocale" value="ru"/>
     </bean>
 
     <mvc:interceptors>
@@ -58,17 +57,39 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <beans:property name="definitions">
             <beans:list>
-               <!-- <beans:value>/WEB-INF/tiles-definitions.xml</beans:value>-->
-               <!-- <value>/WEB-INF/jsp/layout/layout.xml</value>
-                <value>/WEB-INF/jsp/layout/layout.xml</value>-->
+                <!-- <beans:value>/WEB-INF/tiles-definitions.xml</beans:value>-->
+                <!-- <value>/WEB-INF/jsp/layout/layout.xml</value>
+                 <value>/WEB-INF/jsp/layout/layout.xml</value>-->
                 <value>/WEB-INF/tiles/tiles-definitions.xml</value>
             </beans:list>
         </beans:property>
     </beans:bean>
 
-   <!-- <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
-    </beans:bean>-->
+    <!-- <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+         <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+     </beans:bean>-->
 
+
+    <!--mail-->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <!--<property name="port" value="25"/>-->
+        <property name="port" value="587"/>
+        <property name="username" value="web.artem.artemov@gmail.com"/>
+        <property name="password" value="vometra25.metra42.bew95"/>
+        <property name="javaMailProperties">
+            <props>
+                <!-- Use SMTP transport protocol -->
+                <!--                            <prop key="mail.transport.protocol">smtp</prop>-->
+                <!-- Use SMTP-AUTH to authenticate to SMTP server -->
+                <prop key="mail.smtp.auth">true</prop>
+                <!-- Use TLS to encrypt communication with SMTP server -->
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <!--<prop key="mail.debug">true</prop>-->
+                <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+
+            </props>
+        </property>
+    </bean>
 
 </beans>

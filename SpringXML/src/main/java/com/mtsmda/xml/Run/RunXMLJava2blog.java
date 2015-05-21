@@ -40,6 +40,7 @@ public class RunXMLJava2blog {
         List<State> states = new ArrayList<State>();
         country.setStates(states);
         states.add(new State("Washington", 500000));
+        states.add(new State("Misissipi", 250000));
 
         try {
             Converter.convertFromObjectToXML(jaxb2Marshaller, country, FILE_NAME_XML);

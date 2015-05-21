@@ -7,5 +7,9 @@
             <state_name>Washington</state_name>
             <state_population>500000</state_population>
         </state>
+        <state>
+            <state_name>Misissipi</state_name>
+            <state_population>250000</state_population>
+        </state>
     </states>
 </country>

@@ -2,3 +2,10 @@
     margin: 0;
     padding: 0;
 }
+
+textarea { resize: none; }
+
+.required_field:before {
+    content:"*";
+    color:red;
+}

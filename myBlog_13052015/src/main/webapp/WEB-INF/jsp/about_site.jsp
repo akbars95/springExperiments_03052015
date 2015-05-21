@@ -11,7 +11,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title><spring:message code="page.title.index"/></title>
+    <title><spring:message code="page.title.about_site"/></title>
     <link href="<c:url value="/resources/style/style.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/style/bootstrap.min.css" />" rel="stylesheet">
     <script src="<c:url value="/resources/js/jquery-1.11.3.min.js" />"></script>
