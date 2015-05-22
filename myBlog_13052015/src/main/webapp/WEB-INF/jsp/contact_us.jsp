@@ -21,6 +21,8 @@
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
 
+
+        ${sendMessage}
         <form method="post" action="/myBlog/sendEmail">
             <table>
                 <tr>

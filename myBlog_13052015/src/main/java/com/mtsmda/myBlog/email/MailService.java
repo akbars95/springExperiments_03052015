@@ -1,5 +1,6 @@
 package com.mtsmda.myBlog.email;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -10,11 +11,23 @@ import javax.mail.internet.MimeMessage;
 /**
  * Created by c-DMITMINZ on 5/21/2015.
  */
-@Service(value = "mailService")
 public class MailService {
 
-    @Autowired
+    private static final Logger logger = Logger.getLogger(MailService.class);
+
     private MailSender mailSender;
+
+
+    public MailService() {
+    }
+
+    public MailService(MailSender mailSender) {
+        this.mailSender = mailSender;
+    }
+
+    public void setMailSender(MailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
     private SimpleMailMessage getSimpleMailMessage(String from, String to, String subject, String text) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
@@ -22,36 +35,24 @@ public class MailService {
         simpleMailMessage.setTo(to);
         simpleMailMessage.setSubject(subject);
         simpleMailMessage.setText(text);
-
+        logger.info(this.getClass().getCanonicalName() + ".getSimpleMailMessage(String from, String to, String subject, String text) - create success SimpleMailMessage object");
         return simpleMailMessage;
     }
 
-    public boolean sendMail(String from, String to, String subject, String text) {
-        try {
-            SimpleMailMessage simpleMailMessage = this.getSimpleMailMessage(from, to, subject, text);
-            mailSender.send(simpleMailMessage);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public void sendMail(String from, String to, String subject, String text) {
+        logger.info(this.getClass().getCanonicalName() + ".sendMail(String from, String to, String subject, String text)");
+        SimpleMailMessage simpleMailMessage = this.getSimpleMailMessage(from, to, subject, text);
+        mailSender.send(simpleMailMessage);
     }
 
-    public boolean sendMail(SimpleMailMessage simpleMailMessage) {
-        try {
-            mailSender.send(simpleMailMessage);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public void sendMail(SimpleMailMessage simpleMailMessage) {
+        logger.info(this.getClass().getCanonicalName() + ".sendMail(SimpleMailMessage simpleMailMessage)");
+        mailSender.send(simpleMailMessage);
     }
 
-    public boolean sendMail(SimpleMailMessage simpleMailMessage[]) {
-        try {
-            mailSender.send(simpleMailMessage);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public void sendMail(SimpleMailMessage simpleMailMessage[]) {
+        logger.info(this.getClass().getCanonicalName() + ".sendMail(SimpleMailMessage simpleMailMessage[])");
+        mailSender.send(simpleMailMessage);
     }
 
     /*public void sendMailWithAttachment(String from, String to, String subject, String text, String filePath) throws Exception{
