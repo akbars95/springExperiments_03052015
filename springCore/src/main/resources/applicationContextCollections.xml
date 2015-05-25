@@ -6,24 +6,40 @@
        xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 
-    <!--<context:component-scan base-package="com.mtsmda.springCore" />-->
-    <import resource="applicationContextPerson.xml"/>
-    <import resource="applicationContextOther.xml"/>
-    <import resource="applicationContextScope.xml"/>
-    <import resource="applicationContextCollections.xml"/>
-    <import resource="applicationContextSpringClassesForCreateCollections.xml"/>
+    <bean id="springCollections" class="com.mtsmda.springCore.SpringCollections" scope="singleton">
+        <property name="listCountries">
+            <list>
+                <value>Moldova</value>
+                <value>Russia</value>
+                <value>France</value>
+            </list>
+        </property>
 
+        <property name="footbalClubNames">
+            <set>
+                <ref bean="string1"/>
+                <value>Real Madrid</value>
+            </set>
+        </property>
 
-    <bean id="cityKishinev" class="java.lang.String">
-        <constructor-arg type="java.lang.String" value="Kishinev"/>
+        <property name="abbreviationAndFullName">
+            <map>
+                <entry key="III" value="Ivanov Ivan Ivanovici"/>
+                <entry key="SSS" value="Sergeev Serghei Sergheevici"/>
+            </map>
+        </property>
+
+        <property name="dbProperties">
+            <props>
+                <prop key="dbName">mk</prop>
+                <prop key="dbLogin">mk02593</prop>
+                <prop key="dbPassword">mk051f2593</prop>
+            </props>
+        </property>
     </bean>
 
-    <bean id="PersonAddressP" class="com.mtsmda.springCore.PersonAddress" p:country="Moldova" p:city-ref="cityKishinev">
-        <property name="houseNumber">
-            <bean class="java.lang.String">
-                <constructor-arg index="0" value="15/9"/>
-            </bean>
-        </property>
-            </bean>
+    <bean id="string1" class="java.lang.String">
+        <constructor-arg value="Barcelona"/>
+    </bean>
 
 </beans>

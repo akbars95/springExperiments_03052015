@@ -22,6 +22,37 @@ public class AppRun {
 
         System.out.println(applicationContext.getBean("PersonAddressP").toString());
 
+        scopeSpringRun(applicationContext);
+        collectionSpringRun(applicationContext);
+        springCollectionsCreaterRun(applicationContext);
+    }
+
+    private static void scopeSpringRun(ApplicationContext applicationContext) {
+        SpringSingleton springSingleton = (SpringSingleton) applicationContext.getBean("springSingleton");
+        System.out.println(springSingleton.getCarModel());
+
+        SpringPrototype springPrototype = (SpringPrototype) applicationContext.getBean("springPrototype");
+        System.out.println(springPrototype.getCarMarka());
+    }
+
+    private static void collectionSpringRun(ApplicationContext applicationContext) {
+        SpringCollections springCollections = (SpringCollections) applicationContext.getBean("springCollections");
+        System.out.println(springCollections.getAbbreviationAndFullName().getClass().getCanonicalName() + " - " + springCollections.getAbbreviationAndFullName());
+        System.out.println(springCollections.getDbProperties().getClass().getCanonicalName() + " - " + springCollections.getDbProperties());
+        System.out.println(springCollections.getFootbalClubNames().getClass().getCanonicalName() + " - " + springCollections.getFootbalClubNames());
+        System.out.println(springCollections.getListCountries().getClass().getCanonicalName() + " - " + springCollections.getListCountries());
+    }
+
+    private static void springCollectionsCreaterRun(ApplicationContext applicationContext) {
+        SpringCollectionsCreater springCollectionsCreater = (SpringCollectionsCreater) applicationContext.getBean("springCollectionsCreater");
+        System.out.println(springCollectionsCreater.getList());
+        System.out.println(springCollectionsCreater.getSet());
+        System.out.println(springCollectionsCreater.getMap());
+        System.out.println("_____");
+        SpringCollectionsCreater springCollectionsCreaterAlter = (SpringCollectionsCreater) applicationContext.getBean("springCollectionsCreaterAlter");
+        System.out.println(springCollectionsCreaterAlter.getList());
+        System.out.println(springCollectionsCreaterAlter.getSet());
+        System.out.println(springCollectionsCreaterAlter.getMap());
 
     }
 
