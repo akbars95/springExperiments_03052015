@@ -21,8 +21,6 @@
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
 
-
-        ${sendMessage}
         <form method="post" action="/myBlog/sendEmail">
             <table>
                 <tr>
@@ -52,6 +50,13 @@
                                maxlength="50"><span class="required_field hide"></span>
                     </td>
                 </tr>
+                <%--<tr>
+                    <td><label for="attachFileInMessagePerson"><spring:message
+                            code="contact_us.form.attachFileInMessagePerson"/></label>
+                    </td>
+                    <td><input type="file" id="attachFileInMessagePerson" multiple="multiple" name="attachFileInMessagePerson" size="20"></span>
+                    </td>
+                </tr>--%>
                 <tr>
                     <td><label for="textMessagePerson"><spring:message
                             code="contact_us.form.textMessagePerson"/></label><span class="required_field"></span>

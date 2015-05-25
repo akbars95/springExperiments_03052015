@@ -66,10 +66,7 @@ public class EmailSendController {
             logger.error("error sending mail");
         }
 
-        modelMap.addAttribute("sendMessage", result);
-        modelMap.addAttribute("sendMessage2", "Hello");
-
-        return "redirect:/contact_us";
+       return "redirect:/contact_us";
     }
 
 }
