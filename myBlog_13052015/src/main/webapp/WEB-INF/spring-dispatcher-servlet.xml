@@ -80,7 +80,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="javaMailProperties">
             <props>
                 <!-- Use SMTP transport protocol -->
-                                            <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.transport.protocol">smtp</prop>
                 <!-- Use SMTP-AUTH to authenticate to SMTP server -->
                 <prop key="mail.smtp.auth">true</prop>
                 <!-- Use TLS to encrypt communication with SMTP server -->
@@ -89,6 +89,20 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
                 <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
 
             </props>
+        </property>
+    </bean>
+
+    <bean id="registrationService" class="com.mtsmda.myBlog.email.MailService">
+        <property name="mailSender" ref="mailSender"/>
+        <property name="velocityEngine" ref="velocityEngine"/>
+    </bean>
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <value>
+                resource.loader=class
+                class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </value>
         </property>
     </bean>
 
