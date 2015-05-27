@@ -24,8 +24,6 @@ public class MailService {
 
     private static final Logger logger = Logger.getLogger(MailService.class);
 
-    private MailSender mailSender;
-
     private JavaMailSender javaMailSender;
 
     private VelocityEngine velocityEngine;
@@ -34,18 +32,13 @@ public class MailService {
 
     }
 
-    public MailService(MailSender mailSender) {
-        this.mailSender = mailSender;
+    public MailService(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
     }
 
-    public MailService(MailSender mailSender, VelocityEngine velocityEngine) {
-        this.mailSender = mailSender;
+    public MailService(JavaMailSender javaMailSender, VelocityEngine velocityEngine) {
+        this.javaMailSender = javaMailSender;
         this.velocityEngine = velocityEngine;
-        this.javaMailSender = mailSender;
-    }
-
-    public void setMailSender(MailSender mailSender) {
-        this.mailSender = mailSender;
     }
 
     public void setJavaMailSender(JavaMailSender javaMailSender) {
@@ -69,17 +62,17 @@ public class MailService {
     public void sendMail(String from, String to, String subject, String text) {
         logger.info(this.getClass().getCanonicalName() + ".sendMail(String from, String to, String subject, String text)");
         SimpleMailMessage simpleMailMessage = this.getSimpleMailMessage(from, to, subject, text);
-        mailSender.send(simpleMailMessage);
+        javaMailSender.send(simpleMailMessage);
     }
 
     public void sendMail(SimpleMailMessage simpleMailMessage) {
         logger.info(this.getClass().getCanonicalName() + ".sendMail(SimpleMailMessage simpleMailMessage)");
-        mailSender.send(simpleMailMessage);
+        javaMailSender.send(simpleMailMessage);
     }
 
     public void sendMail(SimpleMailMessage simpleMailMessage[]) {
         logger.info(this.getClass().getCanonicalName() + ".sendMail(SimpleMailMessage simpleMailMessage[])");
-        mailSender.send(simpleMailMessage);
+        javaMailSender.send(simpleMailMessage);
     }
 
     public boolean sendConfirmationEmail(final MessageMail messageMail){
@@ -87,9 +80,11 @@ public class MailService {
         MimeMessagePreparator mimeMessagePreparator = new MimeMessagePreparator() {
             @Override
             public void prepare(MimeMessage mimeMessage) throws Exception {
-                MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+                MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, BlogConstants.ENCODING_UTF8);
                 mimeMessageHelper.setTo(messageMail.getMailTo());
                 mimeMessageHelper.setFrom(messageMail.getMailFrom());
+                mimeMessageHelper.setSubject(messageMail.getMailSubject());
+                mimeMessage.setHeader("Content-Type", "text/html; charset=UTF-8");
                 Map<String, Object> stringObjectMap = new HashMap<>();
                 stringObjectMap.put("messageMail", messageMail);
                 String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, BlogConstants.VELOCITY_MAIL_TEMPLATE_FILE_PATH, BlogConstants.ENCODING_UTF8, stringObjectMap);

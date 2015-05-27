@@ -6,7 +6,7 @@ package com.mtsmda.myBlog.model;
 public class MessageMail {
     private String mailTo;
     private String mailFrom;
-    /*private String mailTo*/
+    /*private String[] mailTo*/
     private String mailText;
     private String mailSubject;
     private String personName;

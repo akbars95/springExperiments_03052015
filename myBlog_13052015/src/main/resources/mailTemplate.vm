@@ -1,11 +1,33 @@
+<!DOCTYPE html>
 <html>
-<body>
-#*<h3>Hi ${user.userName}, welcome to the Chipping Sodbury On-the-Hill message boards!</h3>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Message</title>
+    <style type="text/css">
 
-<div>
-    Your email address is <a href="mailto:${user.emailAddress}">${user.emailAddress}</a>.
-</div*#>
+        .message_personInfo{
+            font-size: 17px;
+            color: tomato;
+        }
 
-<h1>Hello person!</h1>
+        .message_text{
+            font-size: 14px;
+            font-family: "Times New Roman";
+        }
+
+    </style>
+</head>
+<body style=" width: 100%; background-color: #eea236; color: white;">
+
+<div style="width: 90%; margin: 0 auto;">
+    <h1 style="text-align: center; font-size: 29px; color: green; font-weight: bold;">Subject this message - ${messageMail.mailSubject}</h1>
+
+    <p style=" font-size: 19px; color: #5cb85c;">Message was send from ${messageMail.mailFrom} to ${messageMail.mailTo}</p>
+
+    <p class="message_personInfo">This is message send ${messageMail.personName} with number phone - ${messageMail.phoneNumber}</p>
+
+    <p class="message_text"><span>Message - </span>${messageMail.mailText}</p>
+
+</div>
 </body>
 </html>

@@ -26,27 +26,27 @@
                 <tr>
                     <td><label for="namePerson"><spring:message code="contact_us.form.namePerson"/></label><span
                             class="required_field"></span></td>
-                    <td><input type="text" id="namePerson" name="namePerson" size="20" maxlength="50"><span
+                    <td><input type="text" id="namePerson" name="namePerson" placeholder="<spring:message code="contact_us.form.namePerson"/>" size="20" maxlength="50"><span
                             class="required_field hide"></span></td>
                 </tr>
                 <tr>
                     <td><label for="emailPerson"><spring:message code="contact_us.form.emailPerson"/></label><span
                             class="required_field"></span></td>
-                    <td><input type="email" id="emailPerson" name="emailPerson" size="20" maxlength="50"><span
+                    <td><input type="email" id="emailPerson" name="emailPerson" placeholder="<spring:message code="contact_us.form.emailPerson"/>" size="20" maxlength="50"><span
                             class="required_field hide"></span></td>
                 </tr>
                 <tr>
                     <td><label for="phoneNumberPerson"><spring:message
                             code="contact_us.form.phoneNumberPerson"/></label>
                     </td>
-                    <td><input type="text" id="phoneNumberPerson" name="phoneNumberPerson" size="20" maxlength="50">
+                    <td><input type="text" id="phoneNumberPerson" name="phoneNumberPerson" placeholder="<spring:message code="contact_us.form.phoneNumberPerson"/>" size="20" maxlength="50">
                     </td>
                 </tr>
                 <tr>
                     <td><label for="subjectMessagePerson"><spring:message
                             code="contact_us.form.subjectMessagePerson"/></label><span class="required_field"></span>
                     </td>
-                    <td><input type="text" id="subjectMessagePerson" name="subjectMessagePerson" size="20"
+                    <td><input type="text" id="subjectMessagePerson" name="subjectMessagePerson" placeholder="<spring:message code="contact_us.form.subjectMessagePerson"/>" size="20"
                                maxlength="50"><span class="required_field hide"></span>
                     </td>
                 </tr>
@@ -54,7 +54,7 @@
                     <td><label for="attachFileInMessagePerson"><spring:message
                             code="contact_us.form.attachFileInMessagePerson"/></label>
                     </td>
-                    <td><input type="file" id="attachFileInMessagePerson" multiple="multiple" name="attachFileInMessagePerson" size="20"></span>
+                    <td><input type="file" id="attachFileInMessagePerson" multiple="multiple" name="attachFileInMessagePerson" placeholder="<spring:message code="contact_us.form.attachFileInMessagePerson"/>" size="20"></span>
                     </td>
                 </tr>--%>
                 <tr>
@@ -63,7 +63,7 @@
                     </td>
                     <td>
                     <textarea id="textMessagePerson" name="textMessagePerson" maxlength="1000" cols="100" rows="15"
-                              placeholder=""></textarea><span class="required_field hide"></span>
+                              placeholder="<spring:message code="contact_us.form.textMessagePerson"/>"></textarea><span class="required_field hide"></span>
                     </td>
                 </tr>
                 <tr>
