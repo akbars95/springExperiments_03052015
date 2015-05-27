@@ -25,6 +25,9 @@ public class AppRun {
         scopeSpringRun(applicationContext);
         collectionSpringRun(applicationContext);
         springCollectionsCreaterRun(applicationContext);
+        /*springDateInject(applicationContext);*/
+        springProperties(applicationContext);
+        springInheritance(applicationContext);
     }
 
     private static void scopeSpringRun(ApplicationContext applicationContext) {
@@ -53,7 +56,27 @@ public class AppRun {
         System.out.println(springCollectionsCreaterAlter.getList());
         System.out.println(springCollectionsCreaterAlter.getSet());
         System.out.println(springCollectionsCreaterAlter.getMap());
+    }
 
+    private static void springDateInject(ApplicationContext applicationContext) {
+        SpringDateInject springDateInject = (SpringDateInject) applicationContext.getBean("springDateInject");
+        System.out.println(springDateInject.getDate());
+    }
+
+    private static void springProperties(ApplicationContext applicationContext) {
+        SpringProperties springProperties = (SpringProperties) applicationContext.getBean("springProperties");
+        System.out.println(springProperties.getCountry() + " - " + springProperties.getCity());
+    }
+
+    private static void springInheritance(ApplicationContext applicationContext) {
+        SpringInheritanceAnimal springInheritanceAnimal = (SpringInheritanceAnimal) applicationContext.getBean("animal");
+        System.out.println(springInheritanceAnimal.getAnimalColor() + " - " + springInheritanceAnimal.getAnimalName() + " - " + springInheritanceAnimal.getAnimalType());
+
+        SpringInheritanceAnimal springInheritanceAnimalCat = (SpringInheritanceAnimal) applicationContext.getBean("catAnimal");
+        System.out.println(springInheritanceAnimalCat.getAnimalColor() + " - " + springInheritanceAnimalCat.getAnimalName() + " - " + springInheritanceAnimalCat.getAnimalColor());
+
+        SpringInheritanceAnimalAbstract springInheritanceAnimalCatAbstract = (SpringInheritanceAnimalAbstract) applicationContext.getBean("catAnimalAbstract");
+        System.out.println(springInheritanceAnimalCatAbstract.getAnimalColor() + " - " + springInheritanceAnimalCatAbstract.getAnimalName() + " - " + springInheritanceAnimalCatAbstract.getAnimalColor());
     }
 
 }

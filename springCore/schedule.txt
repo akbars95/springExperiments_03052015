@@ -1,7 +1,7 @@
 13.05.2015 - http://www.javacodegeeks.com/tutorials/java-tutorials/enterprise-java-tutorials/spring-tutorials/
 16.05.2015 - http://examples.javacodegeeks.com/enterprise-java/spring/beans-spring/spring-3-dependency-injection-via-constructor-and-setter/
-25.05.2015 - http://examples.javacodegeeks.com/enterprise-java/spring/beans-spring/spring-listfactorybean-setfactorybean-and-mapfactorybean-example/
-
+25.05.2015 - http://examples.javacodegeeks.com/enterprise-java/spring/beans-spring/spring-propertyplaceholderconfigurer-example/
+26.05.2015 - http://examples.javacodegeeks.com/enterprise-java/spring/beans-spring/spring-dependency-checking-example/
 
 
 http://www.javacodegeeks.com/tutorials/java-tutorials/enterprise-java-tutorials/spring-tutorials/

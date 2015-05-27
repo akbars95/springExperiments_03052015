@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+
+    <bean id="animal" class="com.mtsmda.springCore.SpringInheritanceAnimal">
+        <property name="animalColor">
+            <value>green</value>
+        </property>
+        <property name="animalName">
+            <value>Petuh</value>
+        </property>
+        <property name="animalType">
+            <value>Ptica</value>
+        </property>
+    </bean>
+
+    <bean id="catAnimal" parent="animal">
+        <property name="animalType" value="cat"/>
+        <property name="animalName" value="murzik"/>
+        <property name="animalColor" value="gray"/>
+    </bean>
+
+
+    <bean id="animalAbstract" abstract="true" class="com.mtsmda.springCore.SpringInheritanceAnimalAbstract">
+        <property name="animalColor">
+            <value>green</value>
+        </property>
+        <property name="animalName">
+            <value>Petuh</value>
+        </property>
+        <property name="animalType">
+            <value>Ptica</value>
+        </property>
+    </bean>
+
+    <bean id="catAnimalAbstract" parent="animalAbstract">
+        <property name="animalType" value="cat2"/>
+        <property name="animalName" value="murzik2"/>
+        <property name="animalColor" value="gray2"/>
+    </bean>
+
+</beans>

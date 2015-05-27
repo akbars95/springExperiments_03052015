@@ -6,27 +6,15 @@
        xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 
-    <!--<context:component-scan base-package="com.mtsmda.springCore" />-->
-    <import resource="applicationContextPerson.xml"/>
-    <import resource="applicationContextOther.xml"/>
-    <import resource="applicationContextScope.xml"/>
-    <import resource="applicationContextCollections.xml"/>
-    <import resource="applicationContextSpringClassesForCreateCollections.xml"/>
-    <import resource="applicationContextDateInject.xml"/>
-    <import resource="applicationContextProperties.xml"/>
-    <import resource="applicationContextInheritance.xml"/>
-
-
-    <bean id="cityKishinev" class="java.lang.String">
-        <constructor-arg type="java.lang.String" value="Kishinev"/>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>example.properties</value>
+        </property>
     </bean>
 
-    <bean id="PersonAddressP" class="com.mtsmda.springCore.PersonAddress" p:country="Moldova" p:city-ref="cityKishinev">
-        <property name="houseNumber">
-            <bean class="java.lang.String">
-                <constructor-arg index="0" value="15/9"/>
-            </bean>
-        </property>
-            </bean>
+    <bean id="springProperties" class="com.mtsmda.springCore.SpringProperties">
+        <property name="country" value="${country}"/>
+        <property name="city" value="${city}"/>
+    </bean>
 
 </beans>
