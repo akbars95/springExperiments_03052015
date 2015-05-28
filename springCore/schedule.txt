@@ -2,6 +2,7 @@
 16.05.2015 - http://examples.javacodegeeks.com/enterprise-java/spring/beans-spring/spring-3-dependency-injection-via-constructor-and-setter/
 25.05.2015 - http://examples.javacodegeeks.com/enterprise-java/spring/beans-spring/spring-propertyplaceholderconfigurer-example/
 26.05.2015 - http://examples.javacodegeeks.com/enterprise-java/spring/beans-spring/spring-dependency-checking-example/
-
+27.05.2015 - http://www.javacodegeeks.com/2013/01/spring-property-placeholder-configurer-a-few-not-so-obvious-options.html
+28.05.2015 - http://examples.javacodegeeks.com/enterprise-java/spring/beans-spring/spring-bean-lifecycle-example/
 
 http://www.javacodegeeks.com/tutorials/java-tutorials/enterprise-java-tutorials/spring-tutorials/

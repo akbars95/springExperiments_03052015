@@ -6,28 +6,16 @@
        xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 
-    <!--<context:component-scan base-package="com.mtsmda.springCore" />-->
-    <import resource="applicationContextPerson.xml"/>
-    <import resource="applicationContextOther.xml"/>
-    <import resource="applicationContextScope.xml"/>
-    <import resource="applicationContextCollections.xml"/>
-    <import resource="applicationContextSpringClassesForCreateCollections.xml"/>
-    <import resource="applicationContextDateInject.xml"/>
-    <import resource="applicationContextProperties.xml"/>
-    <import resource="applicationContextInheritance.xml"/>
-    <import resource="applicationContextSpringRequired.xml"/>
+    <context:annotation-config/>
 
-
-    <bean id="cityKishinev" class="java.lang.String">
-        <constructor-arg type="java.lang.String" value="Kishinev"/>
+    <bean id="employee" class="com.mtsmda.springCore.required.Employee">
+        <property name="id" value="19"/>
+        <property name="name" value="Volodya"/>
     </bean>
 
-    <bean id="PersonAddressP" class="com.mtsmda.springCore.PersonAddress" p:country="Moldova" p:city-ref="cityKishinev">
-        <property name="houseNumber">
-            <bean class="java.lang.String">
-                <constructor-arg index="0" value="15/9"/>
-            </bean>
-        </property>
-            </bean>
+    <bean id="person" class="com.mtsmda.springCore.required.Person">
+        <property name="id" value="29"/>
+        <property name="employee" ref="employee"/>
+    </bean>
 
 </beans>

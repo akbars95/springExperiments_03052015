@@ -1,6 +1,7 @@
 package com.mtsmda.springCore;
 
 import com.mtsmda.springCore.java.Person;
+import com.mtsmda.springCore.properties.DBConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -28,6 +29,11 @@ public class AppRun {
         /*springDateInject(applicationContext);*/
         springProperties(applicationContext);
         springInheritance(applicationContext);
+      /*  double c = 7;
+        Object ob = c;
+        System.out.println(ob.getClass().getCanonicalName());*/
+        springRequired(applicationContext);
+        springProperties2(applicationContext);
     }
 
     private static void scopeSpringRun(ApplicationContext applicationContext) {
@@ -77,6 +83,16 @@ public class AppRun {
 
         SpringInheritanceAnimalAbstract springInheritanceAnimalCatAbstract = (SpringInheritanceAnimalAbstract) applicationContext.getBean("catAnimalAbstract");
         System.out.println(springInheritanceAnimalCatAbstract.getAnimalColor() + " - " + springInheritanceAnimalCatAbstract.getAnimalName() + " - " + springInheritanceAnimalCatAbstract.getAnimalColor());
+    }
+
+    private static void springRequired(ApplicationContext applicationContext) {
+        Person person = (Person) applicationContext.getBean("person");
+        System.out.println(person);
+    }
+
+    private static void springProperties2(ApplicationContext applicationContext) {
+        DBConfig dbConfig = (DBConfig) applicationContext.getBean("dbConfig");
+        System.out.println(dbConfig);
     }
 
 }
