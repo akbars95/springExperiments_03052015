@@ -16,6 +16,10 @@
     <link href="<c:url value="/resources/style/bootstrap.min.css" />" rel="stylesheet">
     <script src="<c:url value="/resources/js/jquery-1.11.3.min.js" />"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+    <%--angular--%>
+    <script src="<c:url value="/resources/js/angular.min.js" />"></script>
+    <script src="<c:url value="/resources/js/application/contactUsApp.js" />"></script>
+    <script src="<c:url value="/resources/js/controller/" />"></script>
 </head>
 <body>
 <tiles:insertDefinition name="defaultTemplate">
@@ -26,44 +30,52 @@
                 <tr>
                     <td><label for="namePerson"><spring:message code="contact_us.form.namePerson"/></label><span
                             class="required_field"></span></td>
-                    <td><input type="text" id="namePerson" name="namePerson" placeholder="<spring:message code="contact_us.form.namePerson"/>" size="20" maxlength="50"><span
+                    <td><input type="text" id="namePerson" name="namePerson"
+                               placeholder="<spring:message code="contact_us.form.namePerson"/>" size="20"
+                               maxlength="50"><span
                             class="required_field hide"></span></td>
                 </tr>
                 <tr>
                     <td><label for="emailPerson"><spring:message code="contact_us.form.emailPerson"/></label><span
                             class="required_field"></span></td>
-                    <td><input type="email" id="emailPerson" name="emailPerson" placeholder="<spring:message code="contact_us.form.emailPerson"/>" size="20" maxlength="50"><span
+                    <td><input type="email" id="emailPerson" name="emailPerson"
+                               placeholder="<spring:message code="contact_us.form.emailPerson"/>" size="20"
+                               maxlength="50"><span
                             class="required_field hide"></span></td>
                 </tr>
                 <tr>
                     <td><label for="phoneNumberPerson"><spring:message
                             code="contact_us.form.phoneNumberPerson"/></label>
                     </td>
-                    <td><input type="text" id="phoneNumberPerson" name="phoneNumberPerson" placeholder="<spring:message code="contact_us.form.phoneNumberPerson"/>" size="20" maxlength="50">
+                    <td><input type="text" id="phoneNumberPerson" name="phoneNumberPerson"
+                               placeholder="<spring:message code="contact_us.form.phoneNumberPerson"/>" size="20"
+                               maxlength="50">
                     </td>
                 </tr>
                 <tr>
                     <td><label for="subjectMessagePerson"><spring:message
                             code="contact_us.form.subjectMessagePerson"/></label><span class="required_field"></span>
                     </td>
-                    <td><input type="text" id="subjectMessagePerson" name="subjectMessagePerson" placeholder="<spring:message code="contact_us.form.subjectMessagePerson"/>" size="20"
+                    <td><input type="text" id="subjectMessagePerson" name="subjectMessagePerson"
+                               placeholder="<spring:message code="contact_us.form.subjectMessagePerson"/>" size="20"
                                maxlength="50"><span class="required_field hide"></span>
                     </td>
                 </tr>
-                <%--<tr>
-                    <td><label for="attachFileInMessagePerson"><spring:message
-                            code="contact_us.form.attachFileInMessagePerson"/></label>
-                    </td>
-                    <td><input type="file" id="attachFileInMessagePerson" multiple="multiple" name="attachFileInMessagePerson" placeholder="<spring:message code="contact_us.form.attachFileInMessagePerson"/>" size="20"></span>
-                    </td>
-                </tr>--%>
+                    <%--<tr>
+                        <td><label for="attachFileInMessagePerson"><spring:message
+                                code="contact_us.form.attachFileInMessagePerson"/></label>
+                        </td>
+                        <td><input type="file" id="attachFileInMessagePerson" multiple="multiple" name="attachFileInMessagePerson" placeholder="<spring:message code="contact_us.form.attachFileInMessagePerson"/>" size="20"></span>
+                        </td>
+                    </tr>--%>
                 <tr>
                     <td><label for="textMessagePerson"><spring:message
                             code="contact_us.form.textMessagePerson"/></label><span class="required_field"></span>
                     </td>
                     <td>
                     <textarea id="textMessagePerson" name="textMessagePerson" maxlength="1000" cols="100" rows="15"
-                              placeholder="<spring:message code="contact_us.form.textMessagePerson"/>"></textarea><span class="required_field hide"></span>
+                              placeholder="<spring:message code="contact_us.form.textMessagePerson"/>"></textarea><span
+                            class="required_field hide"></span>
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +84,8 @@
                                 code="contact_us.form.reset.btn"/></button>
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-default" id="sendBtn" name="sendBtn"><spring:message code="contact_us.form.send.btn"/></button>
+                        <button type="submit" class="btn btn-default" id="sendBtn" name="sendBtn"><spring:message
+                                code="contact_us.form.send.btn"/></button>
                     </td>
                 </tr>
             </table>

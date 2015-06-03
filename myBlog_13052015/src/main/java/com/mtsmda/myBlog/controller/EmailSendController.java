@@ -85,7 +85,7 @@ public class EmailSendController {
         catch (Exception e){
             logger.error("error sending mail");
         }*/
-
+        logger.info(result ? "Message successfully send" : "Message error!");
        return "redirect:/contact_us";
     }
 
