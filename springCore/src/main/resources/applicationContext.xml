@@ -16,6 +16,13 @@
     <import resource="applicationContextProperties.xml"/>
     <import resource="applicationContextInheritance.xml"/>
     <import resource="applicationContextSpringRequired.xml"/>
+    <import resource="applicationContextSpringLivecycle.xml"/>
+    <import resource="applicationContextCollectionMerging.xml"/>
+
+    <import resource="autowire/applicationContext.xml"/>
+    <import resource="SpEL/applicationContextSpEL.xml"/>
+    <import resource="SpEL/applicationContextSpELAn.xml"/>
+    <import resource="SpEL/applicationContextSpELMapList.xml"/>
 
 
     <bean id="cityKishinev" class="java.lang.String">
@@ -28,6 +35,6 @@
                 <constructor-arg index="0" value="15/9"/>
             </bean>
         </property>
-            </bean>
+    </bean>
 
 </beans>

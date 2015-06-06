@@ -1,5 +1,14 @@
 package com.mtsmda.springCore;
 
+import com.mtsmda.springCore.SpEL.*;
+import com.mtsmda.springCore.SpEL.annotation.AuthorBean;
+import com.mtsmda.springCore.SpEL.annotation.BookBean;
+import com.mtsmda.springCore.autowire.Car;
+import com.mtsmda.springCore.autowire.Dog;
+import com.mtsmda.springCore.autowire.Elephant;
+import com.mtsmda.springCore.autowire.Frog;
+import com.mtsmda.springCore.autowire.annotation.Tiger;
+import com.mtsmda.springCore.collectionMerging.PersonCM;
 import com.mtsmda.springCore.java.Person;
 import com.mtsmda.springCore.properties.DBConfig;
 import org.springframework.context.ApplicationContext;
@@ -29,11 +38,15 @@ public class AppRun {
         /*springDateInject(applicationContext);*/
         springProperties(applicationContext);
         springInheritance(applicationContext);
-      /*  double c = 7;
+        double c = 7;
         Object ob = c;
-        System.out.println(ob.getClass().getCanonicalName());*/
+        System.out.println(ob.getClass().getCanonicalName());
         springRequired(applicationContext);
         springProperties2(applicationContext);
+        springLivecycle(applicationContext);
+        springCollectionMerging(applicationContext);
+        springAutowire(applicationContext);
+        springSpEL(applicationContext);
     }
 
     private static void scopeSpringRun(ApplicationContext applicationContext) {
@@ -86,13 +99,83 @@ public class AppRun {
     }
 
     private static void springRequired(ApplicationContext applicationContext) {
-        Person person = (Person) applicationContext.getBean("person");
+        com.mtsmda.springCore.required.Person person = (com.mtsmda.springCore.required.Person) applicationContext.getBean("person");
         System.out.println(person);
     }
 
     private static void springProperties2(ApplicationContext applicationContext) {
-        DBConfig dbConfig = (DBConfig) applicationContext.getBean("dbConfig");
-        System.out.println(dbConfig);
+        /*DBConfig dbConfig = (DBConfig) applicationContext.getBean("dbConfig");
+        System.out.println(dbConfig);*/
     }
 
+    private static void springLivecycle(ApplicationContext applicationContext) {
+        SpringLivecycle springLivecycle = (SpringLivecycle) applicationContext.getBean("springLivecycle");
+        System.out.println(springLivecycle);
+
+        SpringLivecycle springLivecycle1 = new SpringLivecycle();
+        springLivecycle1.setName("Ivan");
+        springLivecycle1.setPrice(new Double(19.8));
+        System.out.println(springLivecycle1);
+    }
+
+    private static void springCollectionMerging(ApplicationContext applicationContext) {
+        PersonCM personCM = (PersonCM) applicationContext.getBean("personCM");
+        System.out.println(personCM);
+        System.out.println(personCM.getAddressCMList().size());
+    }
+
+    private static void springAutowire(ApplicationContext applicationContext) {
+        Car car = (Car) applicationContext.getBean("car");
+        System.out.println(car);
+
+        Dog dog = (Dog) applicationContext.getBean("dog");
+        System.out.println(dog);
+
+        /*Elephant elephant = (Elephant) applicationContext.getBean("elephant");
+        System.out.println(elephant);*/
+
+        Frog frog = (Frog) applicationContext.getBean("frog");
+        System.out.println(frog);
+
+        Tiger tiger = (Tiger) applicationContext.getBean("tiger");
+        System.out.println(tiger);
+
+        Tiger tiger2 = (Tiger) applicationContext.getBean("tiger2");
+        System.out.println(tiger);
+    }
+
+    private static void springSpEL(ApplicationContext applicationContext){
+        Author author = (Author)applicationContext.getBean("author");
+        System.out.println(author);
+
+        BookBean bookBean = (BookBean)applicationContext.getBean("BookBean");
+        System.out.println(bookBean);
+
+        AuthorBean authorBean = (AuthorBean)applicationContext.getBean("AuthorBean");
+        System.out.println(authorBean);
+
+        Author authorNew = (Author)applicationContext.getBean("authorNew");
+        System.out.println(authorNew.getBookInfo());
+
+        Numbers numbers = (Numbers)applicationContext.getBean("numbers");
+        System.out.println(numbers);
+
+        System.out.println("\n");
+
+        Operators operators = (Operators)applicationContext.getBean("operators");
+        System.out.println(operators);
+
+        TernaryOperator ternaryOperator = (TernaryOperator)applicationContext.getBean("ternaryOperator");
+        System.out.println(ternaryOperator);
+
+        ListMapTest listMapTest = (ListMapTest)applicationContext.getBean("listMapTest");
+        System.out.println(listMapTest);
+
+        ListMapTestReal listMapTestReal = (ListMapTestReal) applicationContext.getBean("listMapTestReal");
+        System.out.println(listMapTestReal);
+
+
+        ExpressionParserApp expressionParserApp = new ExpressionParserApp();
+
+    }
 }

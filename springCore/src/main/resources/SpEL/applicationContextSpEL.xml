@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+
+    <bean id="book" class="com.mtsmda.springCore.SpEL.Book">
+        <property name="idBook" value="12345"/>
+        <property name="name" value="JAVA 8"/>
+    </bean>
+
+    <bean id="author" class="com.mtsmda.springCore.SpEL.Author">
+        <property name="idAuthor" value="#{book.idBook}"/>
+        <property name="book" value="#{book}"/>
+        <property name="bookTitle" value="#{book.name} GS"/>
+        <property name="name" value="G.Shildt"/>
+    </bean>
+
+
+    <bean id="bookNew" class="com.mtsmda.springCore.SpEL.Book">
+        <property name="idBook" value="12345"/>
+        <property name="name" value="JAVA 8"/>
+    </bean>
+
+    <bean id="authorNew" class="com.mtsmda.springCore.SpEL.Author">
+        <property name="idAuthor" value="#{book.idBook}"/>
+        <property name="book" value="#{book}"/>
+        <property name="bookTitle" value="#{book.name} GS"/>
+        <property name="name" value="G.Shildt"/>
+        <property name="bookInfo" value="#{bookNew.getFullBookInfo('Ivan Ivanov')}"/>
+    </bean>
+
+    <!--Operation-->
+    <bean id="numbers" class="com.mtsmda.springCore.SpEL.Numbers">
+        <property name="a" value="100"/>
+        <property name="b" value="150"/>
+        <property name="c" value="200"/>
+        <property name="d" value="250"/>
+        <property name="e" value="300"/>
+    </bean>
+
+    <bean id="operators" class="com.mtsmda.springCore.SpEL.Operators">
+        <property name="equalTest" value="#{numbers.a == 100}"/>
+        <property name="notEqualTest" value="#{numbers.a != numbers.b}"/>
+        <property name="lessThanTest" value="#{numbers.b lt numbers.a}"/>
+        <property name="lessThanOrEqualTest" value="#{numbers.c le numbers.b}"/>
+        <property name="greatThanTest" value="#{numbers.d > numbers.e}"/>
+        <property name="greatThanOrEqualTest" value="#{numbers.d >= numbers.c}"/>
+        <property name="andTest" value="#{numbers.a == 100 and numbers.b lt 100}"/>
+        <property name="orTest" value="#{numbers.a == 150 or numbers.b lt 250}"/>
+        <property name="notTest" value="#{!(numbers.a == 150)}"/>
+        <property name="addTest" value="#{numbers.a + numbers.b}"/>
+        <property name="addStringTest" value="#{'hello' + '@' + 'world'}"/>
+        <property name="subtractionTest" value="#{numbers.d - numbers.c}"/>
+        <property name="multiplicationTest" value="#{numbers.a * numbers.e}"/>
+        <property name="divisionTest" value="#{numbers.e / numbers.a}"/>
+        <property name="modulusTest" value="#{numbers.e % numbers.b}"/>
+        <property name="exponetialPowerTest" value="#{numbers.a ^ 2}"/>
+    </bean>
+
+    <bean id="ternaryOperator" class="com.mtsmda.springCore.SpEL.TernaryOperator">
+        <property name="check" value="#{numbers.a != 100 ? 'this is TRUE' : 'FALSE'}"/>
+    </bean>
+
+</beans>

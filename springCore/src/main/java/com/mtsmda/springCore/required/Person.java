@@ -29,4 +29,12 @@ public class Person {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", employee=" + employee +
+                '}';
+    }
 }
