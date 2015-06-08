@@ -18,12 +18,12 @@ import javax.sql.DataSource;
  * Created by c-DMITMINZ on 6/3/2015.
  */
 
-@Configuration
+/*@Configuration
 @ComponentScan(basePackages = "com.mtsmda")
-@EnableWebMvc
-public class MVCConfiguration extends WebMvcConfigurerAdapter{
+@EnableWebMvc*/
+public class MVCConfiguration /*extends WebMvcConfigurerAdapter*/{
 
-    @Bean
+    /*@Bean
     public ViewResolver getViewResolver(){
         InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
         internalResourceViewResolver.setPrefix("/WEB-INF/views/");
@@ -34,7 +34,7 @@ public class MVCConfiguration extends WebMvcConfigurerAdapter{
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/resources*//**").addResourceLocations("/resources/");
     }
 
     @Bean
@@ -49,6 +49,6 @@ public class MVCConfiguration extends WebMvcConfigurerAdapter{
 
     public ContactDAO getContactDAO(){
         return new ContactDAOImpl(getDataSource());
-    }
+    }*/
 
 }

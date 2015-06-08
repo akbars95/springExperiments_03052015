@@ -8,9 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>fgdf</title>
 </head>
 <body>
+
+home jsp
+
+<hr>
+This is hi ------ ${hi}
 
 </body>
 </html>

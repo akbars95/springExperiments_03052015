@@ -3,6 +3,8 @@ package com.mtsmda.controller;
 import com.mtsmda.dao.ContactDAO;
 import com.mtsmda.model.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,21 +16,24 @@ import java.util.List;
 /**
  * Created by c-DMITMINZ on 6/3/2015.
  */
-
+@Controller
 public class HomeController {
 
-    @Autowired
+    @Autowired(required = false)
+    @Qualifier(value = "contactDAOImplSP")
     private ContactDAO contactDAO;
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView listContact(ModelAndView modelAndView){
         List<Contact> contacts = contactDAO.getContacts();
         modelAndView.addObject("listContact", contacts);
+
+        modelAndView.addObject("hi", "hello my friend");
         modelAndView.setViewName("home");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/newContact", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/newContact", method = RequestMethod.GET)
     public ModelAndView newContact(ModelAndView modelAndView){
         Contact contact = new Contact();
         modelAndView.addObject("contact", contact);
@@ -57,5 +62,5 @@ public class HomeController {
         ModelAndView modelAndView = new ModelAndView("contactForm");
         modelAndView.addObject("contact", contact);
         return modelAndView;
-    }
+    }*/
 }
