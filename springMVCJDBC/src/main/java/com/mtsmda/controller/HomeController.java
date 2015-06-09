@@ -25,8 +25,30 @@ public class HomeController {
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView listContact(ModelAndView modelAndView){
+
+        /*get by id*/
+        /*Contact contact = contactDAO.getContact(2);
+        modelAndView.addObject("listContact", contact);*/
+
         List<Contact> contacts = contactDAO.getContacts();
         modelAndView.addObject("listContact", contacts);
+
+        /*insert*/
+        /*Contact contact = new Contact();
+        contact.setTelephone("079 389 982");
+        contact.setAddress("Kiev drugoi rayon");
+        contact.setEmail("petrov.petr@microsoft.com");
+        contact.setName("Petrov Petr Petrovic");*/
+        /*update*/
+        /*contact.setId(4);*/
+
+        /*contactDAO.saveOrUpdate(contact);*/
+
+
+        /*delete*/
+      /*  Contact contact = new Contact();
+        contact.setId(8);
+        contactDAO.delete(contact.getId());*/
 
         modelAndView.addObject("hi", "hello my friend");
         modelAndView.setViewName("home");

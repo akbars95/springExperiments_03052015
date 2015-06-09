@@ -1,1 +1,0 @@
-create DATABASE  IF NOT EXISTS contactdb  character set UTF8 COLLATE utf8_general_ci;

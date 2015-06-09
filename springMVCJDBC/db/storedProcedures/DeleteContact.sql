@@ -1,5 +1,5 @@
 DELIMITER //
-CREATE PROCEDURE DeleteContact (IN idIn int)
+CREATE PROCEDURE DeleteContact (IN contact_idIn int)
 BEGIN
-	DELETE FROM contact WHERE contact_id = idIn;
+	DELETE FROM contact WHERE contact_id = contact_idIn;
 END//
