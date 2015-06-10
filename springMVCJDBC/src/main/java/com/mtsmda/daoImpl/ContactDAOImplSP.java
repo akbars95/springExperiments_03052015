@@ -34,7 +34,7 @@ public class ContactDAOImplSP implements ContactDAO {
     }
 
     public void saveOrUpdate(Contact contact) {
-        List<SqlParameter> sqlParameters = new ArrayList<>();
+        List<SqlParameter> sqlParameters = new ArrayList<SqlParameter>();
         sqlParameters.add(SQL_PARAMETER_NAME);
         sqlParameters.add(SQL_PARAMETER_EMAIL);
         sqlParameters.add(SQL_PARAMETER_ADDRESS);
@@ -52,7 +52,7 @@ public class ContactDAOImplSP implements ContactDAO {
     }
 
     public void delete(Integer contactId) {
-        List<SqlParameter> sqlParameters = new ArrayList<>();
+        List<SqlParameter> sqlParameters = new ArrayList<SqlParameter>();
         sqlParameters.add(SQL_PARAMETER_ID);
         spContact = new SPContactImpl(dataSource, DELETE_CONTACT, sqlParameters);
         Map<String, Object> contactsMap = spContact.execute(contactId);
@@ -61,7 +61,7 @@ public class ContactDAOImplSP implements ContactDAO {
 
     public Contact getContact(Integer contactId) {
         List<Contact> contacts = null;
-        List<SqlParameter> sqlParameters = new ArrayList<>();
+        List<SqlParameter> sqlParameters = new ArrayList<SqlParameter>();
         sqlParameters.add(SQL_PARAMETER_ID);
         spContact = new SPContactImpl(dataSource, SELECT_CONTACT, sqlParameters);
         Map<String, Object> contactsMap = spContact.execute(contactId);
@@ -78,7 +78,7 @@ public class ContactDAOImplSP implements ContactDAO {
     }
 
     private List<Contact> getResultFromSP(Map<String, Object> contactsMap, List<Contact> contacts) {
-        contacts = new ArrayList<>();
+        contacts = new ArrayList<Contact>();
         if (!contactsMap.isEmpty()) {
             int i = 0;
             for (String key : contactsMap.keySet()) {

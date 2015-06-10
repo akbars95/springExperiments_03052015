@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:beans="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <context:property-placeholder location="classpath:mail.properties" order="2" ignore-unresolvable="true"/>
+
+    <!--mail-->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${mail.mailSender.host}"/>
+        <property name="port" value="${mail.mailSender.port}"/>
+        <!--<property name="port" value="587"/>-->
+        <property name="username" value="${mail.mailSender.username}"/>
+        <property name="password" value="${mail.mailSender.password}"/>
+        <property name="defaultEncoding" value="${mail.mailSender.defaultEncoding}"/>
+        <property name="javaMailProperties">
+            <props>
+                <!-- Use SMTP transport protocol -->
+                <prop key="mail.transport.protocol">${mail.mailSender.javaMailProperties_mail.transport.protocol}</prop>
+                <!-- Use SMTP-AUTH to authenticate to SMTP server -->
+                <prop key="mail.smtp.auth">${mail.mailSender.javaMailProperties_mail.smtp.auth}</prop>
+                <!-- Use TLS to encrypt communication with SMTP server -->
+                <prop key="mail.smtp.starttls.enable">${mail.mailSender.javaMailProperties_mail.smtp.starttls.enable}
+                </prop>
+                <!--<prop key="mail.debug">true</prop>-->
+                <prop key="mail.smtp.ssl.trust">${mail.mailSender.javaMailProperties_mail.smtp.ssl.trust}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="registrationService" class="com.mtsmda.myBlog.email.MailService">
+        <property name="javaMailSender" ref="mailSender"/>
+        <property name="velocityEngine" ref="velocityEngine"/>
+    </bean>
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <value>
+                resource.loader=class
+                class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </value>
+        </property>
+    </bean>
+
+</beans>

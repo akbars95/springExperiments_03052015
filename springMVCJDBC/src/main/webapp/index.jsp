@@ -1,5 +1,7 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+
+<a href="restful-services/rf/json/contacts">JSON contact</a>
+
 </body>
 </html>

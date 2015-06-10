@@ -1,16 +1,13 @@
 package com.mtsmda.myBlog.email;
 
-import com.mtsmda.myBlog.model.MessageMail;
+import com.mtsmda.myBlog.model.MailMessage;
 import com.mtsmda.myBlog.utils.BlogConstants;
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import javax.mail.internet.MimeMessage;
@@ -75,18 +72,18 @@ public class MailService {
         javaMailSender.send(simpleMailMessage);
     }
 
-    public boolean sendConfirmationEmail(final MessageMail messageMail){
+    public boolean sendConfirmationEmail(final MailMessage mailMessage){
         try{
         MimeMessagePreparator mimeMessagePreparator = new MimeMessagePreparator() {
             @Override
             public void prepare(MimeMessage mimeMessage) throws Exception {
                 MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, BlogConstants.ENCODING_UTF8);
-                mimeMessageHelper.setTo(messageMail.getMailTo());
-                mimeMessageHelper.setFrom(messageMail.getMailFrom());
-                mimeMessageHelper.setSubject(messageMail.getMailSubject());
+                mimeMessageHelper.setTo(mailMessage.getMailTo());
+                mimeMessageHelper.setFrom(mailMessage.getMailFrom());
+                mimeMessageHelper.setSubject(mailMessage.getMailSubject());
                 mimeMessage.setHeader("Content-Type", "text/html; charset=UTF-8");
                 Map<String, Object> stringObjectMap = new HashMap<>();
-                stringObjectMap.put("messageMail", messageMail);
+                stringObjectMap.put("mailMessage", mailMessage);
                 String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, BlogConstants.VELOCITY_MAIL_TEMPLATE_FILE_PATH, BlogConstants.ENCODING_UTF8, stringObjectMap);
                 mimeMessageHelper.setText(text, true);
             }
@@ -94,7 +91,7 @@ public class MailService {
         this.javaMailSender.send(mimeMessagePreparator);
         }
         catch (Exception e){
-            logger.info(this.getClass().getCanonicalName() + ".sendConfirmationEmail(final MessageMail messageMail)" + " - error - " + e.getMessage());
+            logger.info(this.getClass().getCanonicalName() + ".sendConfirmationEmail(final MailMessage mailMessage)" + " - error - " + e.getMessage());
             return false;
         }
         return true;

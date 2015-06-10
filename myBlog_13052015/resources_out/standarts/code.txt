@@ -1,0 +1,10 @@
+1)<rootProjectPath> + src/main/java - package com.mtsmda.myBlog:
+    -controller - spring MVC controllers
+    -email - email helper classes
+    -model - model, that is table class wrappers
+    -utils - common utils
+2)Controllers must be named on the template(controllerName + Controller), for example - MenuPagesController
+3)Model classes exactly name like table name, except first letter class must be uppercase
+    id - must be id + class name, for example - idMailMessage
+4)
+

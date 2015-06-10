@@ -5,18 +5,23 @@ import com.mtsmda.model.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+/*import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;*/
 import java.util.List;
 
 /**
  * Created by c-DMITMINZ on 6/3/2015.
  */
+/*
 @Controller
+@Path("/rf")
+*/
+@RestController
 public class HomeController {
 
     @Autowired(required = false)
@@ -53,6 +58,30 @@ public class HomeController {
         modelAndView.addObject("hi", "hello my friend");
         modelAndView.setViewName("home");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/home3/{name}", method = RequestMethod.GET, produces={"application/json"})
+    public List<Contact> listContactRF2(@PathVariable String name){
+
+       List<Contact> contacts = contactDAO.getContacts();
+        Contact contact = new Contact();
+        contact.setName(name);
+        contacts.add(0, contact);
+        return contacts;
+    }
+
+    @RequestMapping(value = "/home4/{name}", method = RequestMethod.GET, produces={"application/json"} )
+    public String listContactRF23(@PathVariable String name){
+        return "Name - " + name;
+    }
+
+    /*@GET
+    @Path("json/contacts")
+    @Produces("application/json")*/
+    @RequestMapping(value = "/home9", method = RequestMethod.GET, produces={"application/json"} )
+    public List<Contact> listContactRF(){
+        List<Contact> contacts = contactDAO.getContacts();
+        return contacts;
     }
 
     /*@RequestMapping(value = "/newContact", method = RequestMethod.GET)

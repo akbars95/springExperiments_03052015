@@ -1,0 +1,7 @@
+1)table name must be lowercase(CamelCase if greater than 1 word)
+2)table fields must be named - example(tableName_idField, tableName = contact, idField = id -> contact_id)
+3)stored procedure name standard is prefix(Insert, Update, Delete, Select, SelectAll with end letter s) and table name
+  first letter with Uppercase - for example (tableName = contact, InsertContact, UpdateContact, DeleteContact,
+  SelectContact, SelectAllContacts)
+4)stored procedure param standard is table field name + one of three suffixes(In, Out, InOut), for example -
+ contact_idIn: contact_id - field name and In is suffix

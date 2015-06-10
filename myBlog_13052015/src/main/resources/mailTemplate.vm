@@ -20,13 +20,13 @@
 <body style=" width: 100%; background-color: #eea236; color: white;">
 
 <div style="width: 90%; margin: 0 auto;">
-    <h1 style="text-align: center; font-size: 29px; color: green; font-weight: bold;">Subject this message - ${messageMail.mailSubject}</h1>
+    <h1 style="text-align: center; font-size: 29px; color: green; font-weight: bold;">Subject this message - ${mailMessage.mailSubject}</h1>
 
-    <p style=" font-size: 19px; color: #5cb85c;">Message was send from ${messageMail.mailFrom} to ${messageMail.mailTo}</p>
+    <p style=" font-size: 19px; color: #5cb85c;">Message was send from ${mailMessage.mailFrom} to ${mailMessage.mailTo}</p>
 
-    <p class="message_personInfo">This is message send ${messageMail.personName} with number phone - ${messageMail.phoneNumber}</p>
+    <p class="message_personInfo">This is message send ${mailMessage.personName} with number phone - ${mailMessage.phoneNumber}</p>
 
-    <p class="message_text"><span>Message - </span>${messageMail.mailText}</p>
+    <p class="message_text"><span>Message - </span>${mailMessage.mailText}</p>
 
 </div>
 </body>

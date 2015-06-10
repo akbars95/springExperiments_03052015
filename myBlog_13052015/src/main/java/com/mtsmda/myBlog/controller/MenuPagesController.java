@@ -4,30 +4,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import static com.mtsmda.myBlog.utils.PageNameUtil.*;
+
 /**
  * Created by dmitriim on 5/13/2015.
  */
 @Controller
 public class MenuPagesController {
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = INDEX_PAGE_REAL, method = RequestMethod.GET)
     public String indexPage(){
-        return "index";
+        return INDEX_PAGE;
     }
 
-    @RequestMapping(value = "/tutorial", method = RequestMethod.GET)
+    @RequestMapping(value = TUTORIAL_PAGE_REAL, method = RequestMethod.GET)
     public String tutorialPage(){
-        return "tutorial";
+        return TUTORIAL_PAGE;
     }
 
-    @RequestMapping(value = "/about_site", method = RequestMethod.GET)
+    @RequestMapping(value = ABOUT_SITE_PAGE_REAL, method = RequestMethod.GET)
     public String aboutSitePage(){
-        return "about_site";
+        return ABOUT_SITE_PAGE;
     }
 
-    @RequestMapping(value = "/contact_us", method = RequestMethod.GET)
+    @RequestMapping(value = CONTACT_US_PAGE_REAL, method = RequestMethod.GET)
     public String contactUsPage(){
-        return "contact_us";
+        return CONTACT_US_PAGE;
     }
 
 }

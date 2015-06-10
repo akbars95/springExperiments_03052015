@@ -9,7 +9,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<html ng-app="contactUsApp">
 <head>
     <title><spring:message code="page.title.contact_us"/></title>
     <link href="<c:url value="/resources/style/style.css" />" rel="stylesheet">
@@ -19,9 +19,9 @@
     <%--angular--%>
     <script src="<c:url value="/resources/js/angular.min.js" />"></script>
     <script src="<c:url value="/resources/js/application/contactUsApp.js" />"></script>
-    <script src="<c:url value="/resources/js/controller/" />"></script>
+    <script src="<c:url value="/resources/js/controller/contactUsCtrl.js" />"></script>
 </head>
-<body>
+<body ng-controller="contactUsCtrl">
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
 
@@ -77,6 +77,7 @@
                               placeholder="<spring:message code="contact_us.form.textMessagePerson"/>"></textarea><span
                             class="required_field hide"></span>
                     </td>
+                    <input type="hidden" name="currentTimeByUser" id="currentTimeByUser"/>
                 </tr>
                 <tr>
                     <td>
