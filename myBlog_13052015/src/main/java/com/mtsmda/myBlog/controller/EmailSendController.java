@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
+import static com.mtsmda.myBlog.utils.PageNameUtil.*;
+
 /**
  * Created by c-DMITMINZ on 5/21/2015.
  */
@@ -36,7 +38,7 @@ public class EmailSendController {
     @Autowired
     private CaptchaDAO contactDAO;
 
-    @RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
+    @RequestMapping(value = SEND_EMAIL_PAGE_REAL, method = RequestMethod.POST)
     public String sendEmail(HttpServletRequest request, ModelMap modelMap) {
         logger.info("input to sendEmail method");
         StringBuilder messageTemplate = new StringBuilder();
@@ -91,15 +93,16 @@ public class EmailSendController {
             logger.error("error sending mail");
         }*/
         logger.info(result ? "Message successfully send" : "Message error!");
-       return "redirect:/contact_us";
+       return REDIRECT + CONTACT_US_PAGE_REAL;
     }
 
-    @RequestMapping(value = "/updateCaptcha", method = RequestMethod.GET, produces={"application/json"} )
+    @RequestMapping(value = UPDATE_CAPTCHA_PAGE_REAL, method = RequestMethod.GET, produces={"application/json"} )
     public Captcha getRandomCaptcha(){
-
+        logger.info("get " + UPDATE_CAPTCHA_PAGE_REAL + " ws page");
         Captcha captcha = this.contactDAO.getRandomCaptcha();
+        logger.info("get captcha object " + captcha);
         captcha.setValueCaptcha("");
-        System.out.println(captcha);
+        logger.info("removed value captcha");
         return captcha;
     }
 

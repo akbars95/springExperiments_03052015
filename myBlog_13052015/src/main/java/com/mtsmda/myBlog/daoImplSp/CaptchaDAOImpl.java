@@ -3,6 +3,7 @@ package com.mtsmda.myBlog.daoImplSp;
 import com.mtsmda.myBlog.SP.CaptchaSP;
 import com.mtsmda.myBlog.dao.CaptchaDAO;
 import com.mtsmda.myBlog.model.Captcha;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -19,6 +20,8 @@ import static com.mtsmda.myBlog.model.dbConst.CaptchaDbConst.CaptchaSPParamName.
  * Created by c-DMITMINZ on 6/11/2015.
  */
 public class CaptchaDAOImpl implements CaptchaDAO {
+
+    private static final Logger logger = Logger.getLogger(CaptchaDAOImpl.class);
 
     private JdbcTemplate jdbcTemplate;
 
@@ -54,14 +57,17 @@ public class CaptchaDAOImpl implements CaptchaDAO {
 
     @Override
     public Captcha getRandomCaptcha() {
+        logger.info(this.getClass().getCanonicalName() + ".getRandomCaptcha()");
         List<Captcha> captchaList = null;
         Captcha captcha = null;
         captchaSP = new CaptchaSP(dataSource, SELECT_RANDOM_CAPTCHA, null);
+        logger.info("call " + SELECT_RANDOM_CAPTCHA + " stored procedure");
         Map<String, Object> contactsMap = captchaSP.execute();
         captchaList = getResultFromSP(contactsMap, captchaList);
         if (captchaList != null && !captchaList.isEmpty() && captchaList.get(0) != null) {
             captcha = captchaList.get(0);
         }
+        logger.info(this.getClass().getCanonicalName() + ".getRandomCaptcha()" + " return captcha object " + captcha);
         return captcha;
     }
 
@@ -77,6 +83,7 @@ public class CaptchaDAOImpl implements CaptchaDAO {
                         for (int j = 0; j < resultListWithContact.size(); j++) {
                             if (resultListWithContact.get(j) instanceof Map) {
                                 Map<String, Object> tableFieldMap = (Map<String, Object>) resultListWithContact.get(j);
+                                logger.info("get captcha object from result sp");
                                 Captcha captcha = new Captcha();
                                 captcha.setIdCaptcha(Integer.parseInt(tableFieldMap.get(CAPTCHA_ID).toString()));
                                 captcha.setPathToImage(tableFieldMap.get(CAPTCHA_PATH_TO_IMAGE).toString());

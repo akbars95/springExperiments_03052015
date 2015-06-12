@@ -25,21 +25,26 @@
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
 
-        <form> <%-- method="post" action="/myBlog/sendEmail"--%>
+        <form name="emailSendForm" novalidate="novalidate"> <%-- method="post" action="/myBlog/sendEmail"--%>
             <table ng-init="init()">
                 <tr>
                     <td><label for="namePerson"><spring:message code="contact_us.form.namePerson"/></label><span
                             class="required_field"></span></td>
-                    <td><input type="text" id="namePerson" name="namePerson"
+                    <td>
+                        <input type="text" id="namePerson" name="namePerson"
                                placeholder="<spring:message code="contact_us.form.namePerson"/>" size="20"
-                               <%--ng-class="emailForm.namePersonValidationClass" ng-change="namePersonChange()"--%>
-                               maxlength="50" ng-model="emailForm.namePerson" ng-minlength="5" ng-maxlength="50" required>
-                        <%--<span>Lost characters {{}} from {{}}</span>--%>
-                        <span ng-show="emailForm.namePerson.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</span>
-                        <span class="required_field hide"></span><%--
-                        <span class="error" ng-show="emailForm.namePerson.$error.required">АА<spring:message
-                                code="contact_us.form.validation.required"/></span>--%>
+                               maxlength="50" ng-model="emailForm.namePerson" ng-minlength="5" ng-maxlength="50"
+                               required>
 
+                        <small class="error" ng-show="emailSendForm.namePerson.$error.required">
+                            <spring:message code="contact_us.form.validation.required"/>
+                        </small>
+                        <small class="error" ng-show="emailSendForm.namePerson.$error.minlength">
+                            <spring:message code="contact_us.form.validation.minLength"/>
+                        </small>
+                        <small class="error" ng-show="emailSendForm.namePerson.$error.maxlength"><spring:message
+                                code="contact_us.form.validation.minLength"/></small>
+                        <p>Lost characters {{50 - emailForm.namePerson.length}} from 50</p>
                     </td>
                 </tr>
                 <tr>
