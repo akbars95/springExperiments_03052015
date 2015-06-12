@@ -31,4 +31,6 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
     <import resource="spring-database.xml"/>
 
+    <bean id="captchaDAO" class="com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl"/>
+
 </beans>

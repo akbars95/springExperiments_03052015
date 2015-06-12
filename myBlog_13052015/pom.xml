@@ -23,6 +23,9 @@
         <resteasy.version>3.0.9.Final</resteasy.version>
         <javax.servlet>3.0.1</javax.servlet>
         <tiles.version>3.0.1</tiles.version>
+        <jsp.version>2.2</jsp.version>
+        <jstl.version>1.2</jstl.version>
+        <jackson.version>2.4.1</jackson.version>
     </properties>
 
     <dependencies>
@@ -34,7 +37,7 @@
             <version>${mysql.version}</version>
         </dependency>
         <!--hibernate-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-annotations</artifactId>
             <version>${hibernate.annotations}</version>
@@ -50,7 +53,7 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
-        </dependency>
+        </dependency>-->
 
         <!--spring-->
         <dependency>
@@ -72,11 +75,11 @@
         </dependency>
 
         <!-- Spring and Transactions -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${spring-framework.version}</version>
-        </dependency>
+        </dependency>-->
 
         <!-- Spring ORM support -->
         <dependency>
@@ -98,6 +101,7 @@
             <version>${spring-framework.version}</version>
         </dependency>
 
+        <!--Commons DBCP-->
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
@@ -115,18 +119,18 @@
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
-            <version>2.2</version>
+            <version>${jsp.version}</version>
         </dependency>
 
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
         </dependency>
 
 
         <!--rest ful-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs</artifactId>
             <version>${resteasy.version}</version>
@@ -142,7 +146,7 @@
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jettison-provider</artifactId>
             <version>${resteasy.version}</version>
-        </dependency>
+        </dependency>-->
 
         <!--apache tiles-->
         <dependency>
@@ -215,7 +219,18 @@
             <version>2.0</version>
         </dependency>
 
+        <!--rest ful-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
 
     </dependencies>
@@ -228,11 +243,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.2</version>
+                <version>2.6</version>
             </plugin>
 
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>

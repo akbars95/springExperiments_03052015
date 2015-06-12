@@ -19,10 +19,11 @@ public class ConvertTextToUTF8 {
 
     public static String native2Ascii(String s) {
         StringBuffer sb = new StringBuffer();
+        char backslash = 92;
         for (int i = 0; i < s.length(); i++) {
             char aChar = s.charAt(i);
             if ((aChar < 0x0020) || (aChar > 0x007e)) {
-                sb.append('\\');
+                sb.append(backslash);
                 sb.append('u');
                 sb.append(toHex((aChar >> 12) & 0xF));
                 sb.append(toHex((aChar >> 8) & 0xF));

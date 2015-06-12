@@ -1,24 +1,28 @@
 package com.mtsmda.myBlog.controller;
 
+import com.mtsmda.myBlog.dao.CaptchaDAO;
 import com.mtsmda.myBlog.email.MailService;
+import com.mtsmda.myBlog.model.Captcha;
 import com.mtsmda.myBlog.model.MailMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by c-DMITMINZ on 5/21/2015.
  */
-@Controller
+@RestController
 public class EmailSendController {
 
     private static final Logger logger = Logger.getLogger(EmailSendController.class);
@@ -28,6 +32,9 @@ public class EmailSendController {
 
     @Autowired
     private VelocityEngine velocityEngine;
+
+    @Autowired
+    private CaptchaDAO contactDAO;
 
     @RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
     public String sendEmail(HttpServletRequest request, ModelMap modelMap) {
@@ -85,6 +92,15 @@ public class EmailSendController {
         }*/
         logger.info(result ? "Message successfully send" : "Message error!");
        return "redirect:/contact_us";
+    }
+
+    @RequestMapping(value = "/updateCaptcha", method = RequestMethod.GET, produces={"application/json"} )
+    public Captcha getRandomCaptcha(){
+
+        Captcha captcha = this.contactDAO.getRandomCaptcha();
+        captcha.setValueCaptcha("");
+        System.out.println(captcha);
+        return captcha;
     }
 
 }

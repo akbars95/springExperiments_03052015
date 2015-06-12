@@ -18,22 +18,29 @@
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
     <%--angular--%>
     <script src="<c:url value="/resources/js/angular.min.js" />"></script>
-    <script src="<c:url value="/resources/js/application/contactUsApp.js" />"></script>
-    <script src="<c:url value="/resources/js/controller/contactUsCtrl.js" />"></script>
+    <script src="<c:url value="/resources/js/application/blogApp.js" />"></script>
+    <script src="<c:url value="/resources/js/controller/blogCtrl.js" />"></script>
 </head>
 <body ng-controller="contactUsCtrl">
 <tiles:insertDefinition name="defaultTemplate">
     <tiles:putAttribute name="body">
 
-        <form method="post" action="/myBlog/sendEmail">
-            <table>
+        <form> <%-- method="post" action="/myBlog/sendEmail"--%>
+            <table ng-init="init()">
                 <tr>
                     <td><label for="namePerson"><spring:message code="contact_us.form.namePerson"/></label><span
                             class="required_field"></span></td>
                     <td><input type="text" id="namePerson" name="namePerson"
                                placeholder="<spring:message code="contact_us.form.namePerson"/>" size="20"
-                               maxlength="50"><span
-                            class="required_field hide"></span></td>
+                               <%--ng-class="emailForm.namePersonValidationClass" ng-change="namePersonChange()"--%>
+                               maxlength="50" ng-model="emailForm.namePerson" ng-minlength="5" ng-maxlength="50" required>
+                        <%--<span>Lost characters {{}} from {{}}</span>--%>
+                        <span ng-show="emailForm.namePerson.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</span>
+                        <span class="required_field hide"></span><%--
+                        <span class="error" ng-show="emailForm.namePerson.$error.required">АА<spring:message
+                                code="contact_us.form.validation.required"/></span>--%>
+
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="emailPerson"><spring:message code="contact_us.form.emailPerson"/></label><span
@@ -77,7 +84,21 @@
                               placeholder="<spring:message code="contact_us.form.textMessagePerson"/>"></textarea><span
                             class="required_field hide"></span>
                     </td>
-                    <input type="hidden" name="currentTimeByUser" id="currentTimeByUser"/>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="captcha"><spring:message
+                                code="contact_us.form.captcha"/></label><span class="required_field"></span>
+                        <input type="hidden" name="currentTimeByUser" id="currentTimeByUser"/>
+                    </td>
+                    <td>
+                        <input type="text" id="captcha" name="captcha"
+                               placeholder="<spring:message code="contact_us.form.captcha"/>" size="11"
+                               maxlength="11"><span class="required_field hide"></span>
+                        <img src="<c:url value="{{responseCaptcha.pathToImage}}"/>" class="captchaImg"/>
+                        <img ng-click="loadOtherImg()" style="cursor: pointer"
+                             src="<c:url value="/resources/images/update.png"/>"/>
+                    </td>
                 </tr>
                 <tr>
                     <td>
