@@ -1,0 +1,4 @@
+11.06.2015 18:01:32 INFO  EmailSendController:40 - input to sendEmail method
+11.06.2015 18:01:32 INFO  EmailSendController:71 - create message - 
+11.06.2015 18:01:33 INFO  MailService:94 - com.mtsmda.myBlog.email.MailService.sendConfirmationEmail(final MailMessage mailMessage) - error - Could not prepare mail; nested exception is java.lang.IllegalArgumentException: From address must not be null
+11.06.2015 18:01:33 INFO  EmailSendController:92 - Message error!

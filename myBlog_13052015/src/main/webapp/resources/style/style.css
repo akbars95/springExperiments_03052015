@@ -9,3 +9,16 @@ textarea { resize: none; }
     content:"*";
     color:red;
 }
+
+.captchaImg{
+    width: 175px;
+    height: 25px;
+}
+
+.validationSuccess{
+    border: 1px solid green;
+}
+
+.validationError{
+    border: 1px solid red;
+}

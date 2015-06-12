@@ -23,13 +23,14 @@ public class ContactDAOImplSP implements ContactDAO {
 
     private JdbcTemplate jdbcTemplate;
 
-    @Autowired
+    /*@Autowired*/
     private DataSource dataSource;
 
     private SPContactImpl spContact;
 
     @Autowired
     public ContactDAOImplSP(DataSource dataSource) {
+        this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
