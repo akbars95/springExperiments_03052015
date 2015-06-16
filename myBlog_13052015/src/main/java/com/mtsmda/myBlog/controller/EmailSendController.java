@@ -82,6 +82,7 @@ public class EmailSendController {
 
         result = mailService.sendConfirmationEmail(mailMessage);
 
+
        /*
         try {
             MailService mailService = new MailService(mailSender);

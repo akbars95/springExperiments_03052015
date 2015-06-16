@@ -11,9 +11,9 @@ import java.util.Map;
 /**
  * Created by c-DMITMINZ on 6/11/2015.
  */
-public class CaptchaSP extends StoredProcedure {
+public class BlogStoredProcedure extends StoredProcedure {
 
-    public CaptchaSP(DataSource dataSource, String nameSP, List<SqlParameter> sqlParameters) {
+    public BlogStoredProcedure(DataSource dataSource, String nameSP, List<SqlParameter> sqlParameters) {
         super(dataSource, nameSP);
         if(sqlParameters != null && !sqlParameters.isEmpty()){
             for(SqlParameter sqlParameter : sqlParameters){

@@ -1,6 +1,6 @@
 package com.mtsmda.myBlog.daoImplSp;
 
-import com.mtsmda.myBlog.SP.CaptchaSP;
+import com.mtsmda.myBlog.SP.BlogStoredProcedure;
 import com.mtsmda.myBlog.dao.CaptchaDAO;
 import com.mtsmda.myBlog.model.Captcha;
 import org.apache.log4j.Logger;
@@ -14,7 +14,6 @@ import java.util.Map;
 
 import static com.mtsmda.myBlog.model.dbConst.CaptchaDbConst.CaptchaFieldName.*;
 import static com.mtsmda.myBlog.model.dbConst.CaptchaDbConst.CaptchaSPName.*;
-import static com.mtsmda.myBlog.model.dbConst.CaptchaDbConst.CaptchaSPParamName.*;
 
 /**
  * Created by c-DMITMINZ on 6/11/2015.
@@ -27,7 +26,7 @@ public class CaptchaDAOImpl implements CaptchaDAO {
 
     private DataSource dataSource;
 
-    private CaptchaSP captchaSP;
+    private BlogStoredProcedure blogStoredProcedure;
 
     @Autowired
     public CaptchaDAOImpl(DataSource dataSource) {
@@ -60,9 +59,9 @@ public class CaptchaDAOImpl implements CaptchaDAO {
         logger.info(this.getClass().getCanonicalName() + ".getRandomCaptcha()");
         List<Captcha> captchaList = null;
         Captcha captcha = null;
-        captchaSP = new CaptchaSP(dataSource, SELECT_RANDOM_CAPTCHA, null);
+        blogStoredProcedure = new BlogStoredProcedure(dataSource, SELECT_RANDOM_CAPTCHA, null);
         logger.info("call " + SELECT_RANDOM_CAPTCHA + " stored procedure");
-        Map<String, Object> contactsMap = captchaSP.execute();
+        Map<String, Object> contactsMap = blogStoredProcedure.execute();
         captchaList = getResultFromSP(contactsMap, captchaList);
         if (captchaList != null && !captchaList.isEmpty() && captchaList.get(0) != null) {
             captcha = captchaList.get(0);
