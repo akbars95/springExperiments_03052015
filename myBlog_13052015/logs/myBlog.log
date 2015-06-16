@@ -672,3 +672,195 @@
 15.06.2015 18:29:46 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
 15.06.2015 18:29:46 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
 15.06.2015 18:29:46 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 10:06:16 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 10:06:18 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 10:06:18 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 10:06:18 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 10:06:18 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 10:06:18 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 10:06:18 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 10:06:18 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 10:50:03 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 10:50:04 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 10:50:04 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 10:50:04 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 10:50:04 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 10:50:04 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 10:50:04 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 10:50:04 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 10:50:24 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 10:50:25 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 10:50:25 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 10:50:25 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 10:50:25 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 10:50:25 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 10:50:25 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 10:50:25 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 10:50:38 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 10:50:39 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 10:50:39 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 10:50:39 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 10:50:39 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 10:50:39 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 10:50:39 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 10:50:39 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 10:50:57 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 10:50:58 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 10:50:58 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 10:50:58 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 10:50:58 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 10:50:58 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=2, pathToImage='/resources/images/captcha/asdfskhds15ds.png', valueCaptcha='GY5dfdk43rV'}
+16.06.2015 10:50:58 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=2, pathToImage='/resources/images/captcha/asdfskhds15ds.png', valueCaptcha='GY5dfdk43rV'}
+16.06.2015 10:50:58 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 10:52:16 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 10:52:18 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 10:52:18 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 10:52:18 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 10:52:18 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 10:52:18 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 10:52:18 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 10:52:18 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 10:52:34 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 10:52:35 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 10:52:35 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 10:52:35 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 10:52:35 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 10:52:35 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=5, pathToImage='/resources/images/captcha/eyte6yeh76iu64.png', valueCaptcha='M95GTGh10Bg'}
+16.06.2015 10:52:35 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=5, pathToImage='/resources/images/captcha/eyte6yeh76iu64.png', valueCaptcha='M95GTGh10Bg'}
+16.06.2015 10:52:35 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 11:01:40 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 11:01:42 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 11:01:42 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 11:01:42 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 11:01:42 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 11:01:42 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 11:01:42 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 11:01:42 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 11:03:57 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 11:03:59 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 11:03:59 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 11:03:59 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 11:04:00 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 11:04:00 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 11:04:00 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 11:04:00 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 11:05:10 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 11:05:12 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 11:05:12 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 11:05:12 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 11:05:12 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 11:05:12 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=2, pathToImage='/resources/images/captcha/asdfskhds15ds.png', valueCaptcha='GY5dfdk43rV'}
+16.06.2015 11:05:12 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=2, pathToImage='/resources/images/captcha/asdfskhds15ds.png', valueCaptcha='GY5dfdk43rV'}
+16.06.2015 11:05:12 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 11:05:57 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 11:05:57 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 11:05:57 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 11:05:57 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 11:05:57 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 11:05:57 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=1, pathToImage='/resources/images/captcha/45634bfg4.png', valueCaptcha='Cth0HspF5Bg'}
+16.06.2015 11:05:57 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=1, pathToImage='/resources/images/captcha/45634bfg4.png', valueCaptcha='Cth0HspF5Bg'}
+16.06.2015 11:05:57 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 11:07:25 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 11:07:25 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 11:07:25 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 11:07:25 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 11:07:25 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 11:07:25 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 11:07:25 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 11:07:25 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 12:17:08 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 12:17:10 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 12:17:10 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 12:17:10 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 12:17:10 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 12:17:10 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 12:17:10 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 12:17:10 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 12:36:11 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 12:36:13 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 12:36:13 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 12:36:13 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 12:36:13 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 12:36:13 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=1, pathToImage='/resources/images/captcha/45634bfg4.png', valueCaptcha='Cth0HspF5Bg'}
+16.06.2015 12:36:13 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=1, pathToImage='/resources/images/captcha/45634bfg4.png', valueCaptcha='Cth0HspF5Bg'}
+16.06.2015 12:36:13 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 12:38:04 INFO  EmailSendController:43 - input to sendEmail method
+16.06.2015 12:41:58 INFO  EmailSendController:74 - create message - 
+16.06.2015 12:42:00 INFO  MailService:94 - com.mtsmda.myBlog.email.MailService.sendConfirmationEmail(final MailMessage mailMessage) - error - Could not prepare mail; nested exception is java.lang.IllegalArgumentException: From address must not be null
+16.06.2015 12:42:00 INFO  EmailSendController:95 - Message error!
+16.06.2015 13:16:24 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 13:16:26 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 13:16:26 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 13:16:26 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 13:16:26 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 13:16:26 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 13:16:26 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 13:16:26 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 13:18:06 INFO  EmailSendController:43 - input to sendEmail method
+16.06.2015 13:18:32 INFO  EmailSendController:74 - create message - 
+16.06.2015 13:18:36 INFO  MailService:94 - com.mtsmda.myBlog.email.MailService.sendConfirmationEmail(final MailMessage mailMessage) - error - Could not prepare mail; nested exception is java.lang.IllegalArgumentException: From address must not be null
+16.06.2015 13:18:36 INFO  EmailSendController:95 - Message error!
+16.06.2015 13:36:17 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 13:36:19 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 13:36:19 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 13:36:19 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 13:36:19 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 13:36:19 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 13:36:19 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 13:36:19 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 13:37:39 INFO  EmailSendController:43 - input to sendEmail method
+16.06.2015 13:38:22 INFO  EmailSendController:74 - create message - Name - imyaMoeEmail is - 456456@mail.ruPhone number is - 125953Message subject is - fhgfghfdMessage  - dfsf
+16.06.2015 13:38:37 INFO  EmailSendController:95 - Message successfully send
+16.06.2015 13:52:20 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 13:52:22 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 13:52:22 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 13:52:22 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 13:52:22 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 13:52:22 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=2, pathToImage='/resources/images/captcha/asdfskhds15ds.png', valueCaptcha='GY5dfdk43rV'}
+16.06.2015 13:52:22 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=2, pathToImage='/resources/images/captcha/asdfskhds15ds.png', valueCaptcha='GY5dfdk43rV'}
+16.06.2015 13:52:22 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 13:53:02 INFO  EmailSendController:43 - input to sendEmail method
+16.06.2015 13:53:05 INFO  EmailSendController:74 - create message - Name - imyaMoeEmail is - 456456@mail.ruPhone number is - 125953Message subject is - fhgfghfdMessage  - gfh
+16.06.2015 13:53:10 INFO  EmailSendController:95 - Message successfully send
+16.06.2015 14:46:24 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 14:46:27 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 14:46:27 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 14:46:27 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 14:46:28 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 14:46:28 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 14:46:28 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=4, pathToImage='/resources/images/captcha/dfsg69werth.png', valueCaptcha='5YydfD97Ngg'}
+16.06.2015 14:46:28 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 14:47:49 INFO  EmailSendController:43 - input to sendEmail method
+16.06.2015 14:48:01 INFO  EmailSendController:74 - create message - Name - imyaMoeEmail is - 456456@mail.ruPhone number is - 125953Message subject is - simpleThemeMessage  - simpleThemeText
+16.06.2015 14:48:52 INFO  MailService:94 - com.mtsmda.myBlog.email.MailService.sendConfirmationEmail(final MailMessage mailMessage) - error - Mail server connection failed; nested exception is com.sun.mail.util.MailConnectException: Couldn't connect to host, port: smtp.gmail.com, 25; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection refused: connect. Failed messages: com.sun.mail.util.MailConnectException: Couldn't connect to host, port: smtp.gmail.com, 25; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection refused: connect
+16.06.2015 14:48:55 INFO  EmailSendController:95 - Message error!
+16.06.2015 14:59:17 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 15:02:29 INFO  MenuPagesController:38 - get /contact_us page
+16.06.2015 15:02:29 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 15:02:29 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 15:02:29 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 15:02:29 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 15:02:29 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 15:02:29 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=3, pathToImage='/resources/images/captcha/dfgre45fg.png', valueCaptcha='5Yydfdk43Vr'}
+16.06.2015 15:02:29 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 15:02:38 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 15:02:38 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 15:02:38 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 15:02:38 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 15:02:38 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=1, pathToImage='/resources/images/captcha/45634bfg4.png', valueCaptcha='Cth0HspF5Bg'}
+16.06.2015 15:02:38 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=1, pathToImage='/resources/images/captcha/45634bfg4.png', valueCaptcha='Cth0HspF5Bg'}
+16.06.2015 15:02:38 INFO  EmailSendController:105 - removed value captcha
+16.06.2015 15:03:14 INFO  EmailSendController:43 - input to sendEmail method
+16.06.2015 15:03:20 INFO  EmailSendController:74 - create message - Name - imyaMoeEmail is - 456456@mail.ruPhone number is - 125953Message subject is - simpleThemeMessage  - dfg54tyhrt
+16.06.2015 15:03:27 INFO  EmailSendController:95 - Message successfully send
+16.06.2015 15:03:30 INFO  EmailSendController:101 - get /updateCaptcha ws page
+16.06.2015 15:03:30 INFO  CaptchaDAOImpl:60 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha()
+16.06.2015 15:03:30 INFO  CaptchaDAOImpl:64 - call SelectRandomCaptcha stored procedure
+16.06.2015 15:03:30 INFO  CaptchaDAOImpl:86 - get captcha object from result sp
+16.06.2015 15:03:30 INFO  CaptchaDAOImpl:70 - com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl.getRandomCaptcha() return captcha object Captcha{idCaptcha=1, pathToImage='/resources/images/captcha/45634bfg4.png', valueCaptcha='Cth0HspF5Bg'}
+16.06.2015 15:03:30 INFO  EmailSendController:103 - get captcha object Captcha{idCaptcha=1, pathToImage='/resources/images/captcha/45634bfg4.png', valueCaptcha='Cth0HspF5Bg'}
+16.06.2015 15:03:30 INFO  EmailSendController:105 - removed value captcha

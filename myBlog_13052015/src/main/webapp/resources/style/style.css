@@ -17,10 +17,12 @@ textarea { resize: none; }
 
 .validationSuccess{
     border: 1px solid green;
+    background-color: rgb(196, 242, 196);
 }
 
 .validationError{
     border: 1px solid red;
+    background-color: rgb(249, 176, 176);
 }
 
 .lostChars{

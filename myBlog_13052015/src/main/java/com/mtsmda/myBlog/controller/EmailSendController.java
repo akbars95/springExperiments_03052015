@@ -38,8 +38,8 @@ public class EmailSendController {
     @Autowired
     private CaptchaDAO contactDAO;
 
-    @RequestMapping(value = SEND_EMAIL_PAGE_REAL, method = RequestMethod.POST)
-    public String sendEmail(HttpServletRequest request, ModelMap modelMap) {
+    @RequestMapping(value = SEND_EMAIL_PAGE_REAL, method = RequestMethod.POST, produces={"application/json"} )
+    public Boolean sendEmail(HttpServletRequest request, ModelMap modelMap) {
         logger.info("input to sendEmail method");
         StringBuilder messageTemplate = new StringBuilder();
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
@@ -93,7 +93,7 @@ public class EmailSendController {
             logger.error("error sending mail");
         }*/
         logger.info(result ? "Message successfully send" : "Message error!");
-       return REDIRECT + CONTACT_US_PAGE_REAL;
+       return result;
     }
 
     @RequestMapping(value = UPDATE_CAPTCHA_PAGE_REAL, method = RequestMethod.GET, produces={"application/json"} )

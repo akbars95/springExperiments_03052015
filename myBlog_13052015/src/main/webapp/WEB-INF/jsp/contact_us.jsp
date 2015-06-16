@@ -35,7 +35,7 @@
                         <input type="text" id="namePerson" name="namePerson"
                                placeholder="<spring:message code="contact_us.form.namePerson"/>" size="20"
                             <%--maxlength="{{emailForm.namePersonMaxLength}}"--%>
-                               ng-class="validationError"
+                               ng-class="emailForm.namePersonValidationClass"
                                ng-model="emailForm.namePerson" ng-minlength="emailForm.namePersonMinLength"
                                ng-maxlength="emailForm.namePersonMaxLength"
                                required>
@@ -51,8 +51,7 @@
                         </small>
                         <p ng-if="!emailSendForm.namePerson.$error.maxlength && !emailSendForm.namePerson.$error.minlength && !emailSendForm.namePerson.$error.required"
                            class="lostChars" ng-class="lostChars"><spring:message
-                                code="contact_us.form.validation.lostChars"/>{{emailForm.namePersonMaxLength
-                            - emailForm.namePerson.length}} <spring:message
+                                code="contact_us.form.validation.lostChars"/> {{emailForm.namePersonMaxLength - emailForm.namePerson.length}} <spring:message
                                     code="contact_us.form.validation.lostChars.from"/>
                             {{emailForm.namePersonMaxLength}}</p>
                     </td>
@@ -63,7 +62,7 @@
                             class="required_field"></span></td>
                     <td><input type="email" id="emailPerson" name="emailPerson"
                                placeholder="<spring:message code="contact_us.form.emailPerson"/>" size="20"
-                               ng-class="validationError"
+                               ng-class="emailForm.emailPersonValidationClass"
                                ng-model="emailForm.emailPerson" ng-minlength="emailForm.emailPersonMinLength"
                                ng-maxlength="emailForm.emailPersonMaxLength"
                                required>
@@ -93,7 +92,7 @@
                     </td>
                     <td><input type="text" id="phoneNumberPerson" name="phoneNumberPerson"
                                placeholder="<spring:message code="contact_us.form.phoneNumberPerson"/>" size="20"
-                               ng-class="validationError" numbers-only="numbers-only"
+                               ng-class="emailForm.phoneNumberPersonValidationClass" numbers-only="numbers-only"
                                ng-model="emailForm.phoneNumberPerson" ng-minlength="emailForm.phoneNumberPersonMinLength"
                                ng-maxlength="emailForm.phoneNumberPersonMaxLength">
                         <small class="error" ng-show="emailSendForm.phoneNumberPerson.$error.minlength">
@@ -120,7 +119,7 @@
                     <td>
                         <input type="text" id="subjectMessagePerson" name="subjectMessagePerson"
                                placeholder="<spring:message code="contact_us.form.subjectMessagePerson"/>" size="20"
-                               ng-class="validationError"
+                               ng-class="emailForm.subjectMessagePersonValidationClass"
                                ng-model="emailForm.subjectMessagePerson" ng-minlength="emailForm.subjectMessagePersonMinLength"
                                ng-maxlength="emailForm.subjectMessagePersonMaxLength"
                                required>
@@ -157,6 +156,7 @@
                     <td>
                     <textarea id="textMessagePerson" name="textMessagePerson" cols="100" rows="15"
                               placeholder="<spring:message code="contact_us.form.textMessagePerson"/>"
+                              ng-class="emailForm.textMessagePersonValidationClass"
                               ng-model="emailForm.textMessagePerson" ng-minlength="emailForm.textMessagePersonMinLength"
                               ng-maxlength="emailForm.textMessagePersonMaxLength"
                               required></textarea>
@@ -188,6 +188,7 @@
                     <td>
                         <input type="text" id="captcha" name="captcha"
                                placeholder="<spring:message code="contact_us.form.captcha"/>" size="11"
+                               ng-class="emailForm.captchaValidationClass"
                                ng-model="emailForm.captcha" ng-minlength="emailForm.captchaMinLength"
                                ng-maxlength="emailForm.captchaMaxLength"
                                required>
@@ -220,7 +221,7 @@
                                 code="contact_us.form.reset.btn"/></button>
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-default" id="sendBtn" name="sendBtn"><spring:message
+                        <button type="submit" class="btn btn-default" id="sendBtn" ng-disabled="emailSendForm.$invalid" name="sendBtn"><spring:message
                                 code="contact_us.form.send.btn"/></button>
                     </td>
                 </tr>
