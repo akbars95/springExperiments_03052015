@@ -22,3 +22,21 @@ textarea { resize: none; }
 .validationError{
     border: 1px solid red;
 }
+
+.lostChars{
+    color: green;
+    font-size: 14px;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+}
+
+.headerS{
+    padding-top: 5px;
+}
+
+.languageImage{
+    border: 1px solid #449d44;
+}
