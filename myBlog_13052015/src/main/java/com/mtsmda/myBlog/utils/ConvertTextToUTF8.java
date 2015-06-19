@@ -5,10 +5,7 @@ import org.springframework.util.StringUtils;
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Objects;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by c-DMITMINZ on 5/22/2015.
@@ -131,11 +128,14 @@ public class ConvertTextToUTF8 {
     }
 
     public static void main(String[] args) {
-        try {
+        /*try {
             System.out.println(convertPropertiesFile("E:\\simple\\j06052015\\springExperiments_03052015\\myBlog_13052015\\src\\main\\resources\\message_ru.properties"));
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
+
+        GregorianCalendar gregorianCalendar = new GregorianCalendar();
+
         /*System.out.println(new String("\u041E\u0447\u0438\u0441\u0442\u0438\u0442\u044C"));*/
 
        /* String text = "C:\\A\\B\\C";

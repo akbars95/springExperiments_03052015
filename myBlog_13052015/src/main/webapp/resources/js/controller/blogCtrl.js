@@ -6,7 +6,7 @@ var myBlog = "/myBlog/";
 var validationSuccessClass = "validationSuccess";
 var validationErrorClass = "validationError";
 
-contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location) {
+contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location, $timeout) {
 
     $scope.hostNameSite = myBlog;
     $scope.updateCaptchaURL = $scope.hostNameSite + "updateCaptcha/";
@@ -34,6 +34,9 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location) {
 
     /////email form
     $scope.emailForm = {};
+
+    $scope.emailForm.emailSendNow = false;
+    $scope.emailForm.emailSendNowTextProcessing = "";
 
     $scope.emailForm.namePerson = "";
     $scope.emailForm.namePersonMinLength = 5;
@@ -81,6 +84,10 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location) {
         $scope.emailForm.initStyleValidation();
     };
 
+    $scope.emailForm.responseFromServer = function(){
+        $scope.emailForm.emailSendNow = false;
+    };
+
     /*submit email*/
     $scope.emailForm.submitEmail = function () {
         $scope.emailForm.checkAllField();
@@ -91,7 +98,7 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location) {
         && $scope.emailForm.textMessagePersonValidationClass == validationSuccessClass
         && $scope.emailForm.captchaValidationClass == validationSuccessClass){
             var currentDate = new Date();
-            var dateRequest = currentDate.getDate() + "." + (currentDate.getMonth() + 1) + "." + currentDate.getFullYear();
+            var dateRequest = currentDate.getDate() + "." + ((currentDate.getMonth() + 1) > 9 ? "": "0" + (currentDate.getMonth() + 1)) + "." + currentDate.getFullYear();
             dateRequest += " " + currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds() + "." + currentDate.getMilliseconds();
 
             var responseEmailSend = $http({
@@ -108,17 +115,30 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location) {
                 captcha : $scope.emailForm.captcha
             })
         });
+
+            $scope.emailForm.emailSendNow = true;
+            $scope.emailForm.emailSendNowTextProcessing = "Email sending...";
+
             responseEmailSend.success(function(dataFromServer, status, headers, config){
-                if(dataFromServer){
+                if(dataFromServer.errorOrException){
                     $scope.emailForm.reset();
+                    $scope.emailForm.emailSendNowTextProcessing = "Email send is success!";
                 }
                 $scope.loadOtherImg();
+                $timeout(function(){
+                    $scope.emailForm.responseFromServer();
+                }, 2500);
             });
 
             responseEmailSend.error(function(data, status, headers, config){
-                var c = data;
+                if(!dataFromServer.errorOrException){
+                    $scope.emailForm.emailSendNowTextProcessing = "Error sending email! " + dataFromServer.errorOrExceptionDescription;
+                }
                 $scope.emailForm.reset();
                 $scope.loadOtherImg();
+                $timeout(function(){
+                    $scope.emailForm.responseFromServer();
+                }, 2500);
             });
 
         }

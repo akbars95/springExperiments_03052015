@@ -1,7 +1,7 @@
 package com.mtsmda.myBlog.email;
 
 import com.mtsmda.myBlog.model.MailMessage;
-import com.mtsmda.myBlog.utils.BlogConstants;
+import com.mtsmda.myBlog.utils.constants.BlogConstants;
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.mail.SimpleMailMessage;
@@ -92,7 +92,7 @@ public class MailService {
         }
         catch (Exception e){
             logger.info(this.getClass().getCanonicalName() + ".sendConfirmationEmail(final MailMessage mailMessage)" + " - error - " + e.getMessage());
-            return false;
+            throw e;
         }
         return true;
     }

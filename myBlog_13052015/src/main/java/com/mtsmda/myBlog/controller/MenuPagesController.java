@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import static com.mtsmda.myBlog.utils.PageNameUtil.*;
+import static com.mtsmda.myBlog.utils.constants.PageNameUtil.*;
 
 /**
  * Created by dmitriim on 5/13/2015.

@@ -42,3 +42,25 @@ textarea { resize: none; }
 .languageImage{
     border: 1px solid #449d44;
 }
+
+.sendEmailActive{
+    background-color: transparent;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+}
+
+.sendEmailActiveText{
+    background-color: green;
+    color: white;
+    font-size: 19px;
+    left: 50%;
+    padding: 15px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    z-index: 100;
+}

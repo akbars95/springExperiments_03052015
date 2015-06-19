@@ -227,6 +227,9 @@
                 </tr>
             </table>
         </form>
+        <div class="sendEmailActive" ng-show="emailForm.emailSendNow">
+            <p class="sendEmailActiveText">{{emailForm.emailSendNowTextProcessing}}</p>
+        </div>
     </tiles:putAttribute>
 </tiles:insertDefinition>
 

@@ -1,6 +1,5 @@
 package com.mtsmda.myBlog.model;
 
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -17,6 +16,7 @@ public class MailMessage {
     private String mailText;
     private GregorianCalendar sendDatePerson;
     private GregorianCalendar sendDateServer;
+    private String errorOrException;
 
     public MailMessage() {
 
@@ -92,6 +92,14 @@ public class MailMessage {
 
     public void setIdMailMessage(Integer idMailMessage) {
         this.idMailMessage = idMailMessage;
+    }
+
+    public String getErrorOrException() {
+        return errorOrException;
+    }
+
+    public void setErrorOrException(String errorOrException) {
+        this.errorOrException = errorOrException;
     }
 
     @Override

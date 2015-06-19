@@ -1,4 +1,4 @@
-package com.mtsmda.myBlog.utils;
+package com.mtsmda.myBlog.utils.constants;
 
 /**
  * Created by c-DMITMINZ on 5/26/2015.
