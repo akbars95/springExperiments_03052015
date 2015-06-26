@@ -192,12 +192,18 @@
                                ng-model="emailForm.captcha" ng-minlength="emailForm.captchaMinLength"
                                ng-maxlength="emailForm.captchaMaxLength"
                                required>
-
+                        <small class="error" ng-show="emailForm.captchaNotEquals">
+                            <spring:message code="contact_us.form.validation.captchaNotEquals"/>
+                        </small>
                         <small class="error" ng-show="emailSendForm.captcha.$error.required">
                             <spring:message code="contact_us.form.validation.required"/>
                         </small>
                         <small class="error" ng-show="emailSendForm.captcha.$error.minlength">
                             <spring:message code="contact_us.form.validation.minLength"/>
+                            {{emailForm.captchaMinLength}}
+                        </small>
+                        <small class="error" ng-show="emailForm.captchaNotLength11">
+                            <spring:message code="contact_us.form.validation.captchaNotLength11"/>
                             {{emailForm.captchaMinLength}}
                         </small>
                         <small class="error" ng-show="emailSendForm.captcha.$error.maxlength"><spring:message

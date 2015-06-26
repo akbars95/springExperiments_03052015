@@ -4,6 +4,7 @@ import java.util.GregorianCalendar;
 
 /**
  * Created by c-DMITMINZ on 5/26/2015.
+ * mailMessage
  */
 public class MailMessage {
 
@@ -27,7 +28,11 @@ public class MailMessage {
     }
 
     public void setMailTo(String mailTo) {
-        this.mailTo = mailTo;
+        if (mailTo.length() > 50) {
+            this.mailTo = mailTo.substring(0, 51);
+        } else {
+            this.mailTo = mailTo;
+        }
     }
 
     public String getMailFrom() {
@@ -35,6 +40,9 @@ public class MailMessage {
     }
 
     public void setMailFrom(String mailFrom) {
+        if(mailFrom.length() > 50){
+            this.mailFrom = mailFrom.substring(0, 51);
+        }
         this.mailFrom = mailFrom;
     }
 
@@ -43,6 +51,9 @@ public class MailMessage {
     }
 
     public void setMailText(String mailText) {
+        if(mailText.length() > 255){
+            this.mailText = mailText.substring(0, 256);
+        }
         this.mailText = mailText;
     }
 
@@ -51,6 +62,9 @@ public class MailMessage {
     }
 
     public void setMailSubject(String mailSubject) {
+        if(mailSubject.length() > 50){
+            this.mailSubject = mailSubject.substring(0, 51);
+        }
         this.mailSubject = mailSubject;
     }
 
@@ -59,6 +73,9 @@ public class MailMessage {
     }
 
     public void setPersonName(String personName) {
+        if(personName.length() > 50){
+            this.personName = personName.substring(0, 51);
+        }
         this.personName = personName;
     }
 
@@ -67,6 +84,9 @@ public class MailMessage {
     }
 
     public void setPhoneNumber(String phoneNumber) {
+        if(phoneNumber.length() > 25){
+            this.phoneNumber = phoneNumber.substring(0, 26);
+        }
         this.phoneNumber = phoneNumber;
     }
 
@@ -99,6 +119,9 @@ public class MailMessage {
     }
 
     public void setErrorOrException(String errorOrException) {
+        if(errorOrException.length() > 255){
+            this.errorOrException = errorOrException.substring(0, 256);
+        }
         this.errorOrException = errorOrException;
     }
 

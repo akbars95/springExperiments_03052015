@@ -26,10 +26,9 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location, $ti
 
     };
 
-    $scope.loadOtherImg = function(){
+    $scope.loadOtherImg = function () {
         $scope.init();
     };
-
 
 
     /////email form
@@ -61,9 +60,11 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location, $ti
     $scope.emailForm.captcha = "";
     $scope.emailForm.captchaMinLength = 11;
     $scope.emailForm.captchaMaxLength = 11;
+    $scope.emailForm.captchaNotEquals = false;
+    $scope.emailForm.captchaNotLength11 = false;
 
     /*init style validation*/
-    $scope.emailForm.initStyleValidation = function(){
+    $scope.emailForm.initStyleValidation = function () {
         $scope.emailForm.namePersonValidationClass = "";
         $scope.emailForm.emailPersonValidationClass = "";
         $scope.emailForm.phoneNumberPersonValidationClass = "";
@@ -84,59 +85,79 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location, $ti
         $scope.emailForm.initStyleValidation();
     };
 
-    $scope.emailForm.responseFromServer = function(){
+    $scope.emailForm.responseFromServer = function () {
         $scope.emailForm.emailSendNow = false;
     };
 
     /*submit email*/
     $scope.emailForm.submitEmail = function () {
         $scope.emailForm.checkAllField();
-        if($scope.emailForm.namePersonValidationClass == validationSuccessClass
+        if ($scope.emailForm.namePersonValidationClass == validationSuccessClass
             && $scope.emailForm.phoneNumberPersonValidationClass == validationSuccessClass
             && $scope.emailForm.phoneNumberPersonValidationClass == validationSuccessClass
-        && $scope.emailForm.subjectMessagePersonValidationClass == validationSuccessClass
-        && $scope.emailForm.textMessagePersonValidationClass == validationSuccessClass
-        && $scope.emailForm.captchaValidationClass == validationSuccessClass){
+            && $scope.emailForm.subjectMessagePersonValidationClass == validationSuccessClass
+            && $scope.emailForm.textMessagePersonValidationClass == validationSuccessClass
+            && $scope.emailForm.captchaValidationClass == validationSuccessClass) {
             var currentDate = new Date();
-            var dateRequest = currentDate.getDate() + "." + ((currentDate.getMonth() + 1) > 9 ? "": "0" + (currentDate.getMonth() + 1)) + "." + currentDate.getFullYear();
+            var dateRequest = currentDate.getDate() + "." + ((currentDate.getMonth() + 1) > 9 ? "" : "0" + (currentDate.getMonth() + 1)) + "." + currentDate.getFullYear();
             dateRequest += " " + currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds() + "." + currentDate.getMilliseconds();
 
             var responseEmailSend = $http({
-                method : 'POST',
-                url : $scope.sendEmail,
+                method: 'POST',
+                url: $scope.sendEmail,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: $.param({
-                namePerson : $scope.emailForm.namePerson,
-                emailPerson : $scope.emailForm.emailPerson,
-                phoneNumberPerson : $scope.emailForm.phoneNumberPerson,
-                subjectMessagePerson : $scope.emailForm.subjectMessagePerson,
-                textMessagePerson : $scope.emailForm.textMessagePerson,
-                currentTimeByUser : dateRequest,
-                captcha : $scope.emailForm.captcha
-            })
-        });
+                    namePerson: $scope.emailForm.namePerson,
+                    emailPerson: $scope.emailForm.emailPerson,
+                    phoneNumberPerson: $scope.emailForm.phoneNumberPerson,
+                    subjectMessagePerson: $scope.emailForm.subjectMessagePerson,
+                    textMessagePerson: $scope.emailForm.textMessagePerson,
+                    currentTimeByUser: dateRequest,
+                    captcha: $scope.emailForm.captcha,
+                    imageID: $scope.responseCaptcha.idCaptcha
+                })
+            });
 
             $scope.emailForm.emailSendNow = true;
             $scope.emailForm.emailSendNowTextProcessing = "Email sending...";
 
-            responseEmailSend.success(function(dataFromServer, status, headers, config){
-                if(dataFromServer.errorOrException){
+            responseEmailSend.success(function (dataFromServer, status, headers, config) {
+                if (dataFromServer.errorOrException) {
+                    if (dataFromServer.errorOrExceptionDescription == "captchaNotEquals") {
+                        $scope.loadOtherImg();
+                        $scope.emailForm.captchaNotEquals = true;
+                        $scope.emailForm.captchaNotLength11 = false;
+                        $scope.emailForm.emailSendNow = false;
+                        $scope.emailForm.captchaValidationClass = "";
+                        return;
+                    } else if (dataFromServer.errorOrExceptionDescription == "captchaNotLength11") {
+                        $scope.loadOtherImg();
+                        $scope.emailForm.captchaNotEquals = false;
+                        $scope.emailForm.captchaNotLength11 = true;
+                        $scope.emailForm.emailSendNow = false;
+                        $scope.emailForm.captchaValidationClass = "";
+                        return;
+                    }
                     $scope.emailForm.reset();
                     $scope.emailForm.emailSendNowTextProcessing = "Email send is success!";
                 }
+                $scope.emailForm.captchaNotEquals = false;
+                $scope.emailForm.captchaNotLength11 = false;
                 $scope.loadOtherImg();
-                $timeout(function(){
+                $timeout(function () {
                     $scope.emailForm.responseFromServer();
                 }, 2500);
             });
 
-            responseEmailSend.error(function(data, status, headers, config){
-                if(!dataFromServer.errorOrException){
+            responseEmailSend.error(function (data, status, headers, config) {
+                if (!dataFromServer.errorOrException) {
                     $scope.emailForm.emailSendNowTextProcessing = "Error sending email! " + dataFromServer.errorOrExceptionDescription;
                 }
+                $scope.emailForm.captchaNotEquals = false;
+                $scope.emailForm.captchaNotLength11 = false;
                 $scope.emailForm.reset();
                 $scope.loadOtherImg();
-                $timeout(function(){
+                $timeout(function () {
                     $scope.emailForm.responseFromServer();
                 }, 2500);
             });
@@ -163,7 +184,7 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location, $ti
             } else {
                 $scope.emailForm.phoneNumberPersonValidationClass = validationErrorClass;
             }
-        }else{
+        } else {
             $scope.emailForm.phoneNumberPersonValidationClass = validationSuccessClass;
         }
 

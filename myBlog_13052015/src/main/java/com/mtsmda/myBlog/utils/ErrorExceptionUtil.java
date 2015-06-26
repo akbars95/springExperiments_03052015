@@ -17,6 +17,11 @@ public class ErrorExceptionUtil {
         this.errorOrExceptionDescription = errorOrExceptionDescription;
     }
 
+    public void setErrorOrExceptionAndDescription(boolean errorOrException, String errorOrExceptionDescription){
+        setErrorOrException(errorOrException);
+        setErrorOrExceptionDescription(errorOrExceptionDescription);
+    }
+
     public boolean isErrorOrException() {
         return errorOrException;
     }

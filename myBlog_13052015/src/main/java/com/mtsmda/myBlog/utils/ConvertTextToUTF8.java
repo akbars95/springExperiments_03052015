@@ -134,7 +134,9 @@ public class ConvertTextToUTF8 {
             e.printStackTrace();
         }*/
 
-        GregorianCalendar gregorianCalendar = new GregorianCalendar();
+        dateFormatE();
+
+        /*System.out.println((10 > 10));*/
 
         /*System.out.println(new String("\u041E\u0447\u0438\u0441\u0442\u0438\u0442\u044C"));*/
 
@@ -142,5 +144,11 @@ public class ConvertTextToUTF8 {
         String newString = text.replace("\\", "/");
         System.out.println(newString);*/
 
+    }
+
+    private static void dateFormatE(){
+        GregorianCalendar gregorianCalendar = new GregorianCalendar();
+        DateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy HH:mm:ss.S");
+        System.out.println(dateFormat.format(gregorianCalendar.getTime()));
     }
 }

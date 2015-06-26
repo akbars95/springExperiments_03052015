@@ -3,9 +3,12 @@ package com.mtsmda.myBlog.daoImplSp;
 import com.mtsmda.myBlog.SP.BlogStoredProcedure;
 import com.mtsmda.myBlog.dao.CaptchaDAO;
 import com.mtsmda.myBlog.model.Captcha;
+import com.mtsmda.myBlog.model.dbConst.CaptchaDbConst;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.SqlParameter;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -46,7 +49,24 @@ public class CaptchaDAOImpl implements CaptchaDAO {
 
     @Override
     public Captcha getCaptcha(Integer captchaId) {
-        return null;
+        logger.info(this.getClass().getCanonicalName() + ".getCaptcha(Integer captchaId)");
+
+        List<Captcha> captchaList = null;
+        Captcha captcha = null;
+
+        List<SqlParameter> sqlParameters = new ArrayList<SqlParameter>();
+        sqlParameters.add(CaptchaDbConst.CaptchaSPParamName.SQL_PARAMETER_CAPTCHA_VALUE_CAPTCHA);
+
+
+        blogStoredProcedure = new BlogStoredProcedure(dataSource, SELECT_CAPTCHA, sqlParameters);
+        logger.info("call " + SELECT_CAPTCHA + " stored procedure");
+        //blogStoredProcedure.compile();
+        Map<String, Object> contactsMap = blogStoredProcedure.execute(captchaId);
+        captchaList = getResultFromSP(contactsMap, captchaList);
+        if (captchaList != null && !captchaList.isEmpty() && captchaList.get(0) != null) {
+            captcha = captchaList.get(0);
+        }
+        return captcha;
     }
 
     @Override
@@ -61,6 +81,7 @@ public class CaptchaDAOImpl implements CaptchaDAO {
         Captcha captcha = null;
         blogStoredProcedure = new BlogStoredProcedure(dataSource, SELECT_RANDOM_CAPTCHA, null);
         logger.info("call " + SELECT_RANDOM_CAPTCHA + " stored procedure");
+        blogStoredProcedure.compile();
         Map<String, Object> contactsMap = blogStoredProcedure.execute();
         captchaList = getResultFromSP(contactsMap, captchaList);
         if (captchaList != null && !captchaList.isEmpty() && captchaList.get(0) != null) {
@@ -68,6 +89,33 @@ public class CaptchaDAOImpl implements CaptchaDAO {
         }
         logger.info(this.getClass().getCanonicalName() + ".getRandomCaptcha()" + " return captcha object " + captcha);
         return captcha;
+    }
+
+    @Override
+    public boolean checkCaptcha(String captchaValue) {
+        logger.info(this.getClass().getCanonicalName() + ".checkCaptcha()");
+
+        List<Captcha> captchaList = null;
+        Captcha captcha = null;
+
+        List<SqlParameter> sqlParameters = new ArrayList<SqlParameter>();
+        sqlParameters.add(CaptchaDbConst.CaptchaSPParamName.SQL_PARAMETER_CAPTCHA_VALUE_CAPTCHA);
+
+
+        blogStoredProcedure = new BlogStoredProcedure(dataSource, CHECK_CAPTCHA, sqlParameters);
+        logger.info("call " + CHECK_CAPTCHA + " stored procedure");
+        //blogStoredProcedure.compile();
+        Map<String, Object> contactsMap = blogStoredProcedure.execute(captchaValue);
+        captchaList = getResultFromSP(contactsMap, captchaList);
+        if (captchaList != null && !captchaList.isEmpty() && captchaList.get(0) != null) {
+            captcha = captchaList.get(0);
+        }
+        if(captcha != null && StringUtils.isNotBlank(captcha.getValueCaptcha()) && captcha.getValueCaptcha().equals(captchaValue)){
+            logger.info("captcha is equal");
+            return true;
+        }
+
+        return false;
     }
 
     private List<Captcha> getResultFromSP(Map<String, Object> contactsMap, List<Captcha> list) {

@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 import java.text.DateFormat;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
@@ -41,7 +40,7 @@ public class EmailSendController {
     private VelocityEngine velocityEngine;
 
     @Autowired
-    private CaptchaDAO contactDAO;
+    private CaptchaDAO captchaDAO;
 
     @Autowired
     private MailMessageDAO mailMessageDAO;
@@ -50,9 +49,28 @@ public class EmailSendController {
     public ErrorExceptionUtil sendEmail(HttpServletRequest request, ModelMap modelMap) {
         logger.info("input to sendEmail method");
 
+        ErrorExceptionUtil errorExceptionUtil = new ErrorExceptionUtil();
+
         StringBuilder messageTemplate = new StringBuilder();
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         MailMessage mailMessage = new MailMessage();
+
+        if (StringUtils.isNotBlank(request.getParameter("captcha")) && StringUtils.isNotBlank(request.getParameter("imageID"))) {
+            String captcha = request.getParameter("captcha");
+            Integer imageID = Integer.parseInt(request.getParameter("imageID"));
+            Captcha captchaFromDB = captchaDAO.getCaptcha(imageID);
+            if (captcha.length() == 11) {
+                if (!captchaFromDB.getValueCaptcha().equals(captcha)) {
+                    errorExceptionUtil.setErrorOrExceptionAndDescription(true, "captchaNotEquals");
+                    return errorExceptionUtil;
+                }
+            }else{
+                errorExceptionUtil.setErrorOrExceptionAndDescription(true, "captchaNotLength11");
+                return errorExceptionUtil;
+            }
+        }
+
+
 
         if (StringUtils.isNotBlank(request.getParameter("namePerson"))) {
             messageTemplate.append("Name - " + request.getParameter("namePerson"));
@@ -82,8 +100,7 @@ public class EmailSendController {
 
         if (StringUtils.isNotBlank(request.getParameter("currentTimeByUser"))) {
             String currentTimeByUser = request.getParameter("currentTimeByUser");
-            messageTemplate.append("Message  - " + currentTimeByUser);
-            DateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy HH:mm:ss.S");/*  */
+            messageTemplate.append("Message  - " + currentTimeByUser);/*  */
             GregorianCalendar gregorianCalendar = new GregorianCalendar(Integer.parseInt(currentTimeByUser.substring(6, 10)), Integer.parseInt(currentTimeByUser.substring(3, 5)), Integer.parseInt(currentTimeByUser.substring(0, 2)),
                     Integer.parseInt(currentTimeByUser.substring(11, 13)), Integer.parseInt(currentTimeByUser.substring(14, 16)), Integer.parseInt(currentTimeByUser.substring(17, 19)));
             mailMessage.setSendDatePerson(gregorianCalendar);
@@ -107,17 +124,18 @@ public class EmailSendController {
             logger.error("send email error - " + e.getMessage());
         }
 
+        mailMessageDAO.saveOrUpdateMailMessage(mailMessage);
         logger.info("insert mail in database");
 
         logger.info(result ? "Message successfully send" : "Message error!");
-        ErrorExceptionUtil errorExceptionUtil = new ErrorExceptionUtil(result, (mailMessage.getErrorOrException() == null ? "": mailMessage.getErrorOrException()));
+        errorExceptionUtil.setErrorOrExceptionAndDescription(result, (mailMessage.getErrorOrException() == null ? "" : mailMessage.getErrorOrException()));
         return errorExceptionUtil;
     }
 
     @RequestMapping(value = UPDATE_CAPTCHA_PAGE_REAL, method = RequestMethod.GET, produces = {"application/json"})
     public Captcha getRandomCaptcha() {
         logger.info("get " + UPDATE_CAPTCHA_PAGE_REAL + " ws page");
-        Captcha captcha = this.contactDAO.getRandomCaptcha();
+        Captcha captcha = this.captchaDAO.getRandomCaptcha();
         logger.info("get captcha object " + captcha);
         captcha.setValueCaptcha("");
         logger.info("removed value captcha");

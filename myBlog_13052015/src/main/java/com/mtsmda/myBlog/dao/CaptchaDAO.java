@@ -20,4 +20,6 @@ public interface CaptchaDAO {
 
     public Captcha getRandomCaptcha();
 
+    public boolean checkCaptcha(String captcha);
+
 }

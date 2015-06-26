@@ -1,22 +1,27 @@
 package com.mtsmda.myBlog.model.dbConst;
 
-import org.springframework.jdbc.core.SqlInOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
 
-import static com.mtsmda.myBlog.model.dbConst.CommonConst.*;
-
 import java.sql.Types;
+
+import static com.mtsmda.myBlog.model.dbConst.CommonConst.PARAM_IN;
 
 /**
  * Created by c-DMITMINZ on 6/11/2015.
  */
-public interface CaptchaDbConst {
+public interface MailMessageDbConst {
 
     public interface CaptchaFieldName {
 
-        public static final String CAPTCHA_ID = "captcha_id";
-        public static final String CAPTCHA_PATH_TO_IMAGE = "captcha_pathToImage";
-        public static final String CAPTCHA_VALUE_CAPTCHA = "captcha_valueCaptcha";
+        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
+        public static final String MAIL_MESSAGE_MAILTO = "mailMessage_mailTo";
+        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
+        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
+        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
+        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
+        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
+        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
+        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
 
     }
 

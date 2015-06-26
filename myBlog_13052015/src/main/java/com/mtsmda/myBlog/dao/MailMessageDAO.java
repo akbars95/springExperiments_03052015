@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface MailMessageDAO {
 
-    public void saveOrUpdateMailMessage(MailMessage mailMessage);
+    public boolean saveOrUpdateMailMessage(MailMessage mailMessage);
 
-    public void deleteMailMessage(Integer mailMessageId);
+    public boolean deleteMailMessage(Integer mailMessageId);
 
     public MailMessage getMailMessage(Integer mailMessageId);
 

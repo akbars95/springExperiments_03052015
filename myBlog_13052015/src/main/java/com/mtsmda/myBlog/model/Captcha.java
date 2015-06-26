@@ -26,7 +26,11 @@ public class Captcha {
     }
 
     public void setPathToImage(String pathToImage) {
-        this.pathToImage = pathToImage;
+        if (pathToImage.length() > 255) {
+            this.pathToImage = pathToImage.substring(0, 256);
+        } else {
+            this.pathToImage = pathToImage;
+        }
     }
 
     public String getValueCaptcha() {
@@ -34,7 +38,11 @@ public class Captcha {
     }
 
     public void setValueCaptcha(String valueCaptcha) {
-        this.valueCaptcha = valueCaptcha;
+        if (valueCaptcha.length() > 11) {
+            this.valueCaptcha = valueCaptcha.substring(0, 12);
+        } else {
+            this.valueCaptcha = valueCaptcha;
+        }
     }
 
     @Override

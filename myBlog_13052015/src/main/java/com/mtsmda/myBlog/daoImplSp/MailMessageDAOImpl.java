@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by c-DMITMINZ on 6/16/2015.
  */
-public class MailMessageDAOImpl implements MailMessageDAO{
+public class MailMessageDAOImpl implements MailMessageDAO {
 
     private static final Logger logger = Logger.getLogger(MailMessageDAOImpl.class);
 
@@ -30,17 +30,21 @@ public class MailMessageDAOImpl implements MailMessageDAO{
     }
 
     @Override
-    public void saveOrUpdateMailMessage(MailMessage mailMessage) {
-        if(mailMessage != null){
-            if(mailMessage.getIdMailMessage() == null){
+    public boolean saveOrUpdateMailMessage(MailMessage mailMessage) {
+        if (mailMessage != null) {
+            if (mailMessage.getIdMailMessage() == null) {
+//insert
 
+            } else {
+                //update
             }
         }
+        return false;
     }
 
     @Override
-    public void deleteMailMessage(Integer mailMessageId) {
-
+    public boolean deleteMailMessage(Integer mailMessageId) {
+        return true;
     }
 
     @Override
