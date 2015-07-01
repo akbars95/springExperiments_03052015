@@ -11,39 +11,39 @@ import static com.mtsmda.myBlog.model.dbConst.CommonConst.PARAM_IN;
  */
 public interface MailMessageDbConst {
 
-    public interface CaptchaFieldName {
+    public interface MailMessageFieldName {
 
         public static final String MAIL_MESSAGE_ID = "mailMessage_id";
         public static final String MAIL_MESSAGE_MAILTO = "mailMessage_mailTo";
-        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
-        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
-        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
-        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
-        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
-        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
-        public static final String MAIL_MESSAGE_ID = "mailMessage_id";
+        public static final String MAIL_MESSAGE_MAILFROM = "mailMessage_mailFrom";
+        public static final String MAIL_MESSAGE_MAILSUBJECT = "mailMessage_mailSubject";
+        public static final String MAIL_MESSAGE_PERSONNAME = "mailMessage_personName";
+        public static final String MAIL_MESSAGE_PHONENUMBER = "mailMessage_phoneNumber";
+        public static final String MAIL_MESSAGE_MAILTEXT = "mailMessage_mailText";
+        public static final String MAIL_MESSAGE_SENDDATEPERSON = "mailMessage_sendDatePerson";
+        public static final String MAIL_MESSAGE_SENDDATESERVER = "mailMessage_sendDateServer";
+        public static final String MAIL_MESSAGE_ERROROREXCEPTION = "mailMessage_errorOrException";
 
     }
 
-    public interface CaptchaSPName {
+    public interface MailMessageSPName {
 
-        public static final String INSERT_CAPTCHA = "InsertCaptcha";
-        public static final String UPDATE_CAPTCHA = "UpdateCaptcha";
-        public static final String DELETE_CAPTCHA = "DeleteCaptcha";
-        public static final String SELECT_ALL_CAPTCHA = "SelectAllCaptcha";
-        public static final String SELECT_CAPTCHA = "SelectCaptcha";
-        public static final String SELECT_RANDOM_CAPTCHA = "SelectRandomCaptcha";
-        public static final String CHECK_CAPTCHA = "CheckCaptcha";
+        public static final String INSERT_MAILMESSAGE = "InsertMailMessage";
 
     }
 
-    public interface CaptchaSPParamName {
+    public interface MailMessageSPParamName {
 
-        public static final SqlParameter SQL_PARAMETER_ID = new SqlParameter(CaptchaFieldName.CAPTCHA_ID + PARAM_IN, Types.INTEGER);
-        public static final SqlParameter SQL_PARAMETER_CAPTCHA_PATH_TO_IMAGE = new SqlParameter(CaptchaFieldName.CAPTCHA_PATH_TO_IMAGE + PARAM_IN, Types.VARCHAR);
-        public static final SqlParameter SQL_PARAMETER_CAPTCHA_VALUE_CAPTCHA = new SqlParameter(CaptchaFieldName.CAPTCHA_VALUE_CAPTCHA + PARAM_IN, Types.VARCHAR);
-//        public static final SqlInOutParameter SQL_PARAMETER_RESULT_INOUT = new SqlInOutParameter("result" + PARAM_INOUT, Types.INTEGER);
-
+        public static final SqlParameter SQL_PARAMETER_ID = new SqlParameter(MailMessageFieldName.MAIL_MESSAGE_ID + PARAM_IN, Types.INTEGER);
+        public static final SqlParameter SQL_PARAMETER_MAIL_MESSAGE_MAILTO = new SqlParameter(MailMessageFieldName.MAIL_MESSAGE_MAILTO + PARAM_IN, Types.VARCHAR);
+        public static final SqlParameter SQL_PARAMETER_MAIL_MESSAGE_MAILFROM = new SqlParameter(MailMessageFieldName.MAIL_MESSAGE_MAILFROM + PARAM_IN, Types.VARCHAR);
+        public static final SqlParameter SQL_PARAMETER_MAIL_MESSAGE_MAILSUBJECT = new SqlParameter(MailMessageFieldName.MAIL_MESSAGE_MAILSUBJECT + PARAM_IN, Types.VARCHAR);
+        public static final SqlParameter SQL_PARAMETER_MAIL_MESSAGE_PERSONNAME = new SqlParameter(MailMessageFieldName.MAIL_MESSAGE_PERSONNAME + PARAM_IN, Types.VARCHAR);
+        public static final SqlParameter SQL_PARAMETER_MAIL_MESSAGE_PHONENUMBER = new SqlParameter(MailMessageFieldName.MAIL_MESSAGE_PHONENUMBER + PARAM_IN, Types.VARCHAR);
+        public static final SqlParameter SQL_PARAMETER_MAIL_MESSAGE_MAILTEXT = new SqlParameter(MailMessageFieldName.MAIL_MESSAGE_MAILTEXT + PARAM_IN, Types.VARCHAR);
+        public static final SqlParameter SQL_PARAMETER_MAIL_MESSAGE_SENDDATEPERSON = new SqlParameter(MailMessageFieldName.MAIL_MESSAGE_SENDDATEPERSON + PARAM_IN, Types.VARCHAR);
+        public static final SqlParameter SQL_PARAMETER_MAIL_MESSAGE_SENDDATESERVER = new SqlParameter(MailMessageFieldName.MAIL_MESSAGE_SENDDATESERVER + PARAM_IN, Types.VARCHAR);
+        public static final SqlParameter SQL_PARAMETER_MAIL_MESSAGE_ERROROREXCEPTION = new SqlParameter(MailMessageFieldName.MAIL_MESSAGE_ERROROREXCEPTION + PARAM_IN, Types.VARCHAR);
     }
 
 }

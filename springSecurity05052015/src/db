@@ -1,3 +1,5 @@
+create DATABASE springSecurity;
+
 CREATE TABLE `users` (
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
@@ -10,4 +12,4 @@ CREATE TABLE `user_roles` (
   `username` varchar(45) NOT NULL,
   `u_role` varchar(45) NOT NULL,
   PRIMARY KEY (`user_role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
