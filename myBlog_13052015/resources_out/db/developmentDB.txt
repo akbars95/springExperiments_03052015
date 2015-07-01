@@ -13,12 +13,15 @@
 -    article_id
 -    subcategory_id
 -    article_name
--    article_description
+-    article_htmltext
 -    article_author_id
 -    article_created_date
 -    article_last_updated_date
+
+-articleTag
+-    article_id
 -    tag_id
--
+
 -author
 -    author_id
 -    author_lastname
@@ -26,7 +29,8 @@
 -    author_middlename
 -    author_email
 -    author_sex
--
+-    author_dateOfBirth
+
 -tag
 -    tag_id
 -    tag_name
