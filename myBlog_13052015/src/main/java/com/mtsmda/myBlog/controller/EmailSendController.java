@@ -54,81 +54,86 @@ public class EmailSendController {
         StringBuilder messageTemplate = new StringBuilder();
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         MailMessage mailMessage = new MailMessage();
-
-        if (StringUtils.isNotBlank(request.getParameter("captcha")) && StringUtils.isNotBlank(request.getParameter("imageID"))) {
-            String captcha = request.getParameter("captcha");
-            Integer imageID = Integer.parseInt(request.getParameter("imageID"));
-            Captcha captchaFromDB = captchaDAO.getCaptcha(imageID);
-            if (captcha.length() == 11) {
-                if (!captchaFromDB.getValueCaptcha().equals(captcha)) {
-                    errorExceptionUtil.setErrorOrExceptionAndDescription(true, "captchaNotEquals");
-                    return errorExceptionUtil;
-                }
-            }else{
-                errorExceptionUtil.setErrorOrExceptionAndDescription(true, "captchaNotLength11");
-                return errorExceptionUtil;
-            }
-        }
-
-
-
-        if (StringUtils.isNotBlank(request.getParameter("namePerson"))) {
-            messageTemplate.append("Name - " + request.getParameter("namePerson"));
-            mailMessage.setPersonName(request.getParameter("namePerson"));
-        }
-
-        if (StringUtils.isNotBlank(request.getParameter("emailPerson"))) {
-            messageTemplate.append("Email is - " + request.getParameter("emailPerson"));
-            mailMessage.setMailFrom(request.getParameter("emailPerson"));
-        }
-
-        if (StringUtils.isNotBlank(request.getParameter("phoneNumberPerson"))) {
-            messageTemplate.append("Phone number is - " + request.getParameter("phoneNumberPerson"));
-            mailMessage.setPhoneNumber(request.getParameter("phoneNumberPerson"));
-        }
-
-        if (StringUtils.isNotBlank(request.getParameter("subjectMessagePerson"))) {
-            messageTemplate.append("Message subject is - " + request.getParameter("subjectMessagePerson"));
-            simpleMailMessage.setSubject(request.getParameter("subjectMessagePerson"));
-            mailMessage.setMailSubject(simpleMailMessage.getSubject());
-        }
-
-        if (StringUtils.isNotBlank(request.getParameter("textMessagePerson"))) {
-            messageTemplate.append("Message  - " + request.getParameter("textMessagePerson"));
-            mailMessage.setMailText(request.getParameter("textMessagePerson"));
-        }
-
-        if (StringUtils.isNotBlank(request.getParameter("currentTimeByUser"))) {
-            String currentTimeByUser = request.getParameter("currentTimeByUser");
-            messageTemplate.append("Message  - " + currentTimeByUser);/*  */
-            GregorianCalendar gregorianCalendar = new GregorianCalendar(Integer.parseInt(currentTimeByUser.substring(6, 10)), Integer.parseInt(currentTimeByUser.substring(3, 5)), Integer.parseInt(currentTimeByUser.substring(0, 2)),
-                    Integer.parseInt(currentTimeByUser.substring(11, 13)), Integer.parseInt(currentTimeByUser.substring(14, 16)), Integer.parseInt(currentTimeByUser.substring(17, 19)));
-            mailMessage.setSendDatePerson(gregorianCalendar);
-        }
-
-        logger.info("create message - " + messageTemplate.toString());
-
-        simpleMailMessage.setTo("mynzat.dmitrii.est.computer@gmail.com");
-        simpleMailMessage.setText(messageTemplate.toString());
-
-        mailMessage.setMailTo("mynzat.dmitrii.est.computer@gmail.com");
-        MailService mailService = new MailService(this.mailSender, this.velocityEngine);
-
         boolean result = false;
 
         try {
-            result = mailService.sendConfirmationEmail(mailMessage);
-            logger.info("send email successful");
+            if (StringUtils.isNotBlank(request.getParameter("captcha")) && StringUtils.isNotBlank(request.getParameter("imageID"))) {
+                String captcha = request.getParameter("captcha");
+                Integer imageID = Integer.parseInt(request.getParameter("imageID"));
+                Captcha captchaFromDB = captchaDAO.getCaptcha(imageID);
+                if (captcha.length() == 11) {
+                    if (!captchaFromDB.getValueCaptcha().equals(captcha)) {
+                        errorExceptionUtil.setErrorOrExceptionAndDescription(true, "captchaNotEquals");
+                        return errorExceptionUtil;
+                    }
+                } else {
+                    errorExceptionUtil.setErrorOrExceptionAndDescription(true, "captchaNotLength11");
+                    return errorExceptionUtil;
+                }
+            }
+
+
+            if (StringUtils.isNotBlank(request.getParameter("namePerson"))) {
+                messageTemplate.append("Name - " + request.getParameter("namePerson"));
+                mailMessage.setPersonName(request.getParameter("namePerson"));
+            }
+
+            if (StringUtils.isNotBlank(request.getParameter("emailPerson"))) {
+                messageTemplate.append("Email is - " + request.getParameter("emailPerson"));
+                mailMessage.setMailFrom(request.getParameter("emailPerson"));
+            }
+
+            if (StringUtils.isNotBlank(request.getParameter("phoneNumberPerson"))) {
+                messageTemplate.append("Phone number is - " + request.getParameter("phoneNumberPerson"));
+                mailMessage.setPhoneNumber(request.getParameter("phoneNumberPerson"));
+            }
+
+            if (StringUtils.isNotBlank(request.getParameter("subjectMessagePerson"))) {
+                messageTemplate.append("Message subject is - " + request.getParameter("subjectMessagePerson"));
+                simpleMailMessage.setSubject(request.getParameter("subjectMessagePerson"));
+                mailMessage.setMailSubject(simpleMailMessage.getSubject());
+            }
+
+            if (StringUtils.isNotBlank(request.getParameter("textMessagePerson"))) {
+                messageTemplate.append("Message  - " + request.getParameter("textMessagePerson"));
+                mailMessage.setMailText(request.getParameter("textMessagePerson"));
+            }
+
+            if (StringUtils.isNotBlank(request.getParameter("currentTimeByUser"))) {
+                String currentTimeByUser = request.getParameter("currentTimeByUser");
+                messageTemplate.append("Message  - " + currentTimeByUser);/*  */
+                GregorianCalendar gregorianCalendar = new GregorianCalendar(Integer.parseInt(currentTimeByUser.substring(6, 10)), Integer.parseInt(currentTimeByUser.substring(3, 5)) - 1, Integer.parseInt(currentTimeByUser.substring(0, 2)),
+                        Integer.parseInt(currentTimeByUser.substring(11, 13)), Integer.parseInt(currentTimeByUser.substring(14, 16)), Integer.parseInt(currentTimeByUser.substring(17, 19)));
+                mailMessage.setSendDatePerson(gregorianCalendar);
+            }
+
+            logger.info("create message - " + messageTemplate.toString());
+
+            simpleMailMessage.setTo("mynzat.dmitrii.est.computer@gmail.com");
+            simpleMailMessage.setText(messageTemplate.toString());
+
+            mailMessage.setMailTo("mynzat.dmitrii.est.computer@gmail.com");
+            MailService mailService = new MailService(this.mailSender, this.velocityEngine);
+
+            try {
+                result = mailService.sendConfirmationEmail(mailMessage);
+                logger.info("send email successful");
+            } catch (Exception e) {
+                mailMessage.setErrorOrException(e.getMessage());
+                logger.error("send email error - " + e.getMessage());
+            }
+
+            logger.info(result ? "Message successfully send" : "Message error!");
+            mailMessage.setSendDateServer(new GregorianCalendar());
+            result = mailMessageDAO.saveOrUpdateMailMessage(mailMessage);
+            logger.info(result ? "insert mail in database" : "Cannot insert mail in database!");
+
         } catch (Exception e) {
-            mailMessage.setErrorOrException(e.getMessage());
-            logger.error("send email error - " + e.getMessage());
+            errorExceptionUtil.setErrorOrExceptionAndDescription(true, "Exception - " + e.getMessage());
+            return errorExceptionUtil;
         }
 
-        mailMessageDAO.saveOrUpdateMailMessage(mailMessage);
-        logger.info("insert mail in database");
-
-        logger.info(result ? "Message successfully send" : "Message error!");
-        errorExceptionUtil.setErrorOrExceptionAndDescription(result, (mailMessage.getErrorOrException() == null ? "" : mailMessage.getErrorOrException()));
+        errorExceptionUtil.setErrorOrExceptionAndDescription(mailMessage.getErrorOrException() != null, (mailMessage.getErrorOrException() == null ? "" : mailMessage.getErrorOrException()));
         return errorExceptionUtil;
     }
 

@@ -6,6 +6,13 @@ var myBlog = "/myBlog/";
 var validationSuccessClass = "validationSuccess";
 var validationErrorClass = "validationError";
 
+function dateAddFirstNull(dateTime) {
+    if(dateTime >= 0 && dateTime < 10){
+        return "0" + dateTime;
+    }
+    return dateTime;
+}
+
 contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location, $timeout) {
 
     $scope.hostNameSite = myBlog;
@@ -99,8 +106,9 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location, $ti
             && $scope.emailForm.textMessagePersonValidationClass == validationSuccessClass
             && $scope.emailForm.captchaValidationClass == validationSuccessClass) {
             var currentDate = new Date();
-            var dateRequest = currentDate.getDate() + "." + ((currentDate.getMonth() + 1) > 9 ? "" : "0" + (currentDate.getMonth() + 1)) + "." + currentDate.getFullYear();
-            dateRequest += " " + currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds() + "." + currentDate.getMilliseconds();
+            var dateRequest = dateAddFirstNull(currentDate.getDate()) + "." + dateAddFirstNull(currentDate.getMonth() + 1) + "." + currentDate.getFullYear();
+            dateRequest += " " + dateAddFirstNull(currentDate.getHours()) + ":" + dateAddFirstNull(currentDate.getMinutes()) + ":"
+                + dateAddFirstNull(currentDate.getSeconds()) + "." + dateAddFirstNull(currentDate.getMilliseconds());
 
             var responseEmailSend = $http({
                 method: 'POST',
@@ -137,12 +145,16 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location, $ti
                         $scope.emailForm.emailSendNow = false;
                         $scope.emailForm.captchaValidationClass = "";
                         return;
+                    } else if (dataFromServer.errorOrExceptionDescription.indexOf("Exception") >= 0) {
+                        $scope.emailForm.emailSendNowTextProcessing = dataFromServer.errorOrExceptionDescription;
                     }
-                    $scope.emailForm.reset();
-                    $scope.emailForm.emailSendNowTextProcessing = "Email send is success!";
+                    else {
+                        $scope.emailForm.emailSendNowTextProcessing = "Email send is success!";
+                    }
                 }
                 $scope.emailForm.captchaNotEquals = false;
                 $scope.emailForm.captchaNotLength11 = false;
+                $scope.emailForm.reset();
                 $scope.loadOtherImg();
                 $timeout(function () {
                     $scope.emailForm.responseFromServer();
