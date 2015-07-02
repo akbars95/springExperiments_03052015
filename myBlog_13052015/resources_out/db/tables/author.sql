@@ -1,5 +1,5 @@
 CREATE TABLE `author` (
-  `author_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL AUTO_INCREMENT,
   `author_lastname` varchar(50) NOT NULL,
   `author_firstname` varchar(50) NOT NULL,
   `author_middlename` varchar(100) DEFAULT NULL,
