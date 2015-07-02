@@ -27,4 +27,8 @@ public interface PageNameUtil {
     /*send email*/
     public static final String SEND_EMAIL_PAGE = "sendEmail";
     public static final String SEND_EMAIL_PAGE_REAL = SITE_SEPARATOR + SEND_EMAIL_PAGE;
+
+    /*get all tutorials*/
+    public static final String GET_ALL_TUTORIALS = "get_all_tutorials";
+    public static final String GET_ALL_TUTORIALS_REAL = SITE_SEPARATOR + GET_ALL_TUTORIALS;
 }

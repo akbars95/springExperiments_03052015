@@ -250,3 +250,7 @@ contactUsApp.directive('numbersOnly', function () {
     }
 
 });
+
+tutorialApp.controller('tutorialCtrl',function ($scope, $http, $location, $timeout) {
+
+});
