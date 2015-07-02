@@ -5,11 +5,20 @@ package com.mtsmda.myBlog.model;
  */
 public class ArticleTag {
 
+    private Integer idArticleTag;
     private Article article;
     private Tag tag;
 
     public ArticleTag() {
 
+    }
+
+    public Integer getIdArticleTag() {
+        return idArticleTag;
+    }
+
+    public void setIdArticleTag(Integer idArticleTag) {
+        this.idArticleTag = idArticleTag;
     }
 
     public Article getArticle() {
