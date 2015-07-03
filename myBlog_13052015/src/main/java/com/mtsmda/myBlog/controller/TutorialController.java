@@ -1,7 +1,6 @@
 package com.mtsmda.myBlog.controller;
 
 import com.mtsmda.myBlog.dao.ArticleDAO;
-import com.mtsmda.myBlog.dao.MailMessageDAO;
 import com.mtsmda.myBlog.model.Article;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +16,9 @@ import static com.mtsmda.myBlog.utils.constants.PageNameUtil.GET_ALL_TUTORIALS_R
  * Created by c-DMITMINZ on 02.07.2015.
  */
 @RestController
-public class TutirialController {
+public class TutorialController {
 
-    private static final Logger logger = Logger.getLogger(TutirialController.class);
+    private static final Logger logger = Logger.getLogger(TutorialController.class);
 
     @Autowired
     private ArticleDAO articleDAO;

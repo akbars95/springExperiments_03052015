@@ -33,6 +33,6 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
     <bean id="captchaDAO" class="com.mtsmda.myBlog.daoImplSp.CaptchaDAOImpl"/>
     <bean id="mailMessageDAO" class="com.mtsmda.myBlog.daoImplSp.MailMessageDAOImpl"/>
-    <bean id="articleDAO" class="com.mtsmda.myBlog.daoImplSp.MailMessageDAOImpl"/>
+    <bean id="articleDAO" class="com.mtsmda.myBlog.daoImplSp.ArticleDAOImpl"/>
 
 </beans>
