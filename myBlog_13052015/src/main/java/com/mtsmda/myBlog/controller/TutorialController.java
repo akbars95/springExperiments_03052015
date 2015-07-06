@@ -23,12 +23,13 @@ public class TutorialController {
     @Autowired
     private ArticleDAO articleDAO;
 
-    @RequestMapping(value = GET_ALL_TUTORIALS_REAL, method = RequestMethod.POST, produces = {"application/json"})
+    @RequestMapping(value = GET_ALL_TUTORIALS_REAL, method = RequestMethod.GET, produces = {"application/json"})
     public List<Article> getAllTutorials(){
         logger.info("input to List<Article> getAllTutorials() method");
         List<Article> articles = null;
 
-
+        articles = articleDAO.getAllArticle();
+        logger.info(articles.size() + " articles");
 
         return articles;
     }

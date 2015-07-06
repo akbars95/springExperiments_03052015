@@ -21,7 +21,10 @@ public interface AuthorDbConst {
         public static final String AUTHOR_SEX = "author_sex";
         public static final String AUTHOR_DATEOFBIRTH = "author_dateOfBirth";
 
+        public static final String AUTHOR_SP_AUTHORNAME = "authorName";
+
     }
+
 
     public interface AuthorSPName {
 
