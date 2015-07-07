@@ -25,7 +25,7 @@ public class ProjectUtil {
 
     public static GregorianCalendar getGregorianCalendarFromString(String inputDate) throws ParseException {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
-        SimpleDateFormat simpleDateFormat = SimpleDateFormatPattern.SDF_FORMAT_EN_SEPARATOR_DASH;
+        SimpleDateFormat simpleDateFormat = SimpleDateFormatPattern.SDF_FORMAT_RU_MD_DEFAULT;
         Date date = simpleDateFormat.parse(inputDate);
         gregorianCalendar.setTime(date);
 

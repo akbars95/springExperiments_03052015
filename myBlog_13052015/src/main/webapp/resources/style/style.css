@@ -66,3 +66,35 @@ textarea { resize: none; }
     top: 50%;
     z-index: 100;
 }
+
+
+.oneTutorial{
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    width: 50%;
+    border-bottom: 2px solid green;
+    border-radius: 15px;
+}
+
+.oneTutorial span.delimiter{
+
+}
+
+.sortorder:after {
+    content: '\25b2';
+}
+.sortorder.reverse:after {
+    content: '\25bc';
+}
+
+td, th {
+    margin: 5px;
+    padding: 5px;
+}
+
+.content{
+    width: 90%;
+    margin: 0 auto;
+    outline: 1px solid green;
+}

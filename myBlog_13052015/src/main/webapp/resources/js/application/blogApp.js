@@ -3,4 +3,4 @@
  */
 var contactUsApp = angular.module('contactUsApp',[]);
 
-var tutorialApp = angular.module('tutorialApp',[]);
+var tutorialApp = angular.module('tutorialApp',['ngRoute']);

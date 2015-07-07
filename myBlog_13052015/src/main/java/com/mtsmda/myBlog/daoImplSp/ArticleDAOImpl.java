@@ -61,7 +61,7 @@ public class ArticleDAOImpl implements ArticleDAO {
         List<Article> articles = null;
         blogStoredProcedure = new BlogStoredProcedure(dataSource, ArticleDbConst.ArticleSPName.SELECT_ALL_ARTICLE, null);
         Map<String, Object> contactsMap = blogStoredProcedure.execute();
-        getResultFromSP(contactsMap, articles);
+        articles = getResultFromSP(contactsMap, articles);
         if (articles != null && !articles.isEmpty()) {
             logger.info(articles.size() + " articles");
             return articles;
@@ -70,7 +70,7 @@ public class ArticleDAOImpl implements ArticleDAO {
         return null;
     }
 
-    private void getResultFromSP(Map<String, Object> contactsMap, List<Article> articles) {
+    private List<Article> getResultFromSP(Map<String, Object> contactsMap, List<Article> articles) {
         articles = new ArrayList<Article>();
         if (!contactsMap.isEmpty()) {
             int i = 0;
@@ -116,6 +116,7 @@ public class ArticleDAOImpl implements ArticleDAO {
                 }
             }
         }
+        return articles;
     }
 
     /**

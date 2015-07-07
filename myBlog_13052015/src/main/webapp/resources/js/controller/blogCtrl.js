@@ -13,6 +13,20 @@ function dateAddFirstNull(dateTime) {
     return dateTime;
 }
 
+function getNormalDate(dateInMilliSeconds){
+    var dateIn = null;
+    if(dateInMilliSeconds == 0){
+        dateIn = new Date();
+    }else{
+        dateIn = new Date(dateInMilliSeconds);
+    }
+
+    var dateRequest = dateAddFirstNull(dateIn.getDate()) + "." + dateAddFirstNull(dateIn.getMonth() + 1) + "." + dateIn.getFullYear();
+    dateRequest += " " + dateAddFirstNull(dateIn.getHours()) + ":" + dateAddFirstNull(dateIn.getMinutes()) + ":"
+        + dateAddFirstNull(dateIn.getSeconds()) + "." + dateAddFirstNull(dateIn.getMilliseconds());
+    return dateRequest;
+}
+
 contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location, $timeout) {
 
     $scope.hostNameSite = myBlog;
@@ -105,10 +119,8 @@ contactUsApp.controller('contactUsCtrl', function ($scope, $http, $location, $ti
             && $scope.emailForm.subjectMessagePersonValidationClass == validationSuccessClass
             && $scope.emailForm.textMessagePersonValidationClass == validationSuccessClass
             && $scope.emailForm.captchaValidationClass == validationSuccessClass) {
-            var currentDate = new Date();
-            var dateRequest = dateAddFirstNull(currentDate.getDate()) + "." + dateAddFirstNull(currentDate.getMonth() + 1) + "." + currentDate.getFullYear();
-            dateRequest += " " + dateAddFirstNull(currentDate.getHours()) + ":" + dateAddFirstNull(currentDate.getMinutes()) + ":"
-                + dateAddFirstNull(currentDate.getSeconds()) + "." + dateAddFirstNull(currentDate.getMilliseconds());
+
+            var dateRequest = getNormalDate(0);
 
             var responseEmailSend = $http({
                 method: 'POST',
@@ -252,5 +264,34 @@ contactUsApp.directive('numbersOnly', function () {
 });
 
 tutorialApp.controller('tutorialCtrl',function ($scope, $http, $location, $timeout) {
+
+    $scope.hostNameSite = myBlog;
+    $scope.get_all_tutorialsURL = $scope.hostNameSite + "get_all_tutorials/";
+    $scope.tutorials = {};
+
+    $scope.init = function(){
+
+        var response = $http.get($scope.get_all_tutorialsURL);
+
+        response.success(function (data, status, headers, config) {
+            for(i = 0; i < data.length; i++){
+                data[i].articleCreatedDate = getNormalDate(data[i].articleCreatedDate);
+                data[i].articleLastUpdatedDate = getNormalDate(data[i].articleLastUpdatedDate);
+            }
+            $scope.tutorials = data;
+        });
+
+        response.error(function (data, status, headers, config) {
+            alert("Error")
+        });
+
+    };
+
+    $scope.predicate = 'articleCreatedDate';
+    $scope.reverse = true;
+    $scope.order = function(predicate) {
+        $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+        $scope.predicate = predicate;
+    };
 
 });
