@@ -267,6 +267,7 @@ tutorialApp.controller('tutorialCtrl',function ($scope, $http, $location, $timeo
 
     $scope.hostNameSite = myBlog;
     $scope.get_all_tutorialsURL = $scope.hostNameSite + "get_all_tutorials/";
+    $scope.get_tutorial = $scope.hostNameSite + "get_tutorial/";
     $scope.tutorials = {};
 
     $scope.init = function(){
@@ -294,4 +295,27 @@ tutorialApp.controller('tutorialCtrl',function ($scope, $http, $location, $timeo
         $scope.predicate = predicate;
     };
 
+    $scope.submitGetTutorial = function(idArticle){
+        var responseEmailSend = $http({
+            method: 'GET',
+            url: $scope.get_tutorial,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            data: $.param({
+                articleId: idArticle
+            })
+        });
+    };
+
 });
+
+/*tutorialApp.config(['$routeProvider'], function($routeProvider){
+    $routeProvider.when('/tutorial', {
+        templateUrl: 'tutorial',
+        controller: 'tutorialCtrl'
+    }).when('/tutorial/:tutorialId', {
+        templateUrl: 'tutorial-detail',
+        controller: 'tutorialCtrl'
+    }).otherwise({
+        redirectTo: '/tutorial'
+    });
+});*/

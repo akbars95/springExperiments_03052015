@@ -1,6 +1,7 @@
 package com.mtsmda.myBlog.model;
 
 import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  * Created by c-DMITMINZ on 02.07.2015.
@@ -14,6 +15,8 @@ public class Article {
     private Author author;
     private GregorianCalendar articleCreatedDate;
     private GregorianCalendar articleLastUpdatedDate;
+    private Integer articleCountRewiew;
+    private List<Tag> tags;
 
     public Article() {
 
@@ -73,5 +76,21 @@ public class Article {
 
     public void setArticleLastUpdatedDate(GregorianCalendar articleLastUpdatedDate) {
         this.articleLastUpdatedDate = articleLastUpdatedDate;
+    }
+
+    public Integer getArticleCountRewiew() {
+        return articleCountRewiew;
+    }
+
+    public void setArticleCountRewiew(Integer articleCountRewiew) {
+        this.articleCountRewiew = articleCountRewiew;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 }

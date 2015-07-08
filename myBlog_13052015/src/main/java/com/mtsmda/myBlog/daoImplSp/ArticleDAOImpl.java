@@ -2,16 +2,16 @@ package com.mtsmda.myBlog.daoImplSp;
 
 import com.mtsmda.myBlog.SP.BlogStoredProcedure;
 import com.mtsmda.myBlog.dao.ArticleDAO;
-import com.mtsmda.myBlog.model.Article;
-import com.mtsmda.myBlog.model.Author;
-import com.mtsmda.myBlog.model.SubCategory;
+import com.mtsmda.myBlog.model.*;
 import com.mtsmda.myBlog.model.dbConst.ArticleDbConst;
 import com.mtsmda.myBlog.model.dbConst.ArticleDbConst.*;
 import com.mtsmda.myBlog.model.dbConst.AuthorDbConst;
+import com.mtsmda.myBlog.model.dbConst.CategoryDbConst;
 import com.mtsmda.myBlog.model.dbConst.SubCategoryDbConst;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.SqlParameter;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -52,26 +52,41 @@ public class ArticleDAOImpl implements ArticleDAO {
 
     @Override
     public Article getArticle(Integer articleId) {
-        return null;
+        logger.info(this.getClass().getCanonicalName() + ".getArticle(Integer articleId)");
+        Article article = null;
+        ModelWrapper<Article> articleModelWrapper = null;
+
+        List<SqlParameter> sqlParameters = new ArrayList<SqlParameter>();
+        sqlParameters.add(ArticleSPParamName.SQL_PARAMETER_ID);
+
+        blogStoredProcedure = new BlogStoredProcedure(dataSource, ArticleSPName.SELECT_ARTICLE, sqlParameters);
+        Map<String, Object> contactsMap = blogStoredProcedure.execute(articleId);
+        getResultFromSP(contactsMap, ArticleSPName.SELECT_ARTICLE, articleModelWrapper);
+
+        blogStoredProcedure = new BlogStoredProcedure(dataSource, ArticleSPName.SELECT_TAGS_FOR_ARTICLE, sqlParameters);
+        contactsMap = blogStoredProcedure.execute(articleId);
+        getResultFromSP(contactsMap, ArticleSPName.SELECT_TAGS_FOR_ARTICLE, articleModelWrapper);
+
+        return article;
     }
 
     @Override
     public List<Article> getAllArticle() {
         logger.info(this.getClass().getCanonicalName() + ".getAllArticle()");
-        List<Article> articles = null;
-        blogStoredProcedure = new BlogStoredProcedure(dataSource, ArticleDbConst.ArticleSPName.SELECT_ALL_ARTICLE, null);
+        ModelWrapper<Article> articleModelWrapper = null;
+        blogStoredProcedure = new BlogStoredProcedure(dataSource, ArticleSPName.SELECT_ALL_ARTICLE, null);
         Map<String, Object> contactsMap = blogStoredProcedure.execute();
-        articles = getResultFromSP(contactsMap, articles);
-        if (articles != null && !articles.isEmpty()) {
-            logger.info(articles.size() + " articles");
-            return articles;
+        getResultFromSP(contactsMap, ArticleSPName.SELECT_ALL_ARTICLE, articleModelWrapper);
+        if (articleModelWrapper != null && articleModelWrapper.getList() != null && !articleModelWrapper.getList().isEmpty()) {
+            logger.info(articleModelWrapper.getList().size() + " articles");
+            return articleModelWrapper.getList();
         }
-        logger.info("ERROR! " + articles.size() + " articles");
-        return null;
+        logger.info("ERROR! " + articleModelWrapper.getList().size() + " articles");
+        return articleModelWrapper.getList();
     }
 
-    private List<Article> getResultFromSP(Map<String, Object> contactsMap, List<Article> articles) {
-        articles = new ArrayList<Article>();
+    private ModelWrapper<Article> getResultFromSP(Map<String, Object> contactsMap, String spName, ModelWrapper<Article> articleModelWrapper) {
+        List<Article> articles = new ArrayList<Article>();
         if (!contactsMap.isEmpty()) {
             int i = 0;
             for (String key : contactsMap.keySet()) {
@@ -82,29 +97,40 @@ public class ArticleDAOImpl implements ArticleDAO {
                         for (int j = 0; j < resultListWithContact.size(); j++) {
                             if (resultListWithContact.get(j) instanceof Map) {
                                 Map<String, Object> tableFieldMap = (Map<String, Object>) resultListWithContact.get(j);
-                                Article article = new Article();
+                                if (spName.equals(ArticleSPName.SELECT_ALL_ARTICLE) || spName.equals(ArticleSPName.SELECT_ALL_ARTICLE)) {
+                                    Article article = new Article();
 
-                                Author author = new Author();
-                                article.setAuthor(author);
+                                    Author author = new Author();
+                                    article.setAuthor(author);
 
-                                SubCategory subCategory = new SubCategory();
-                                article.setSubCategory(subCategory);
+                                    SubCategory subCategory = new SubCategory();
+                                    article.setSubCategory(subCategory);
 
-                                article.setIdArticle(Integer.parseInt(tableFieldMap.get(ArticleFieldName.ARTICLE_ID).toString()));
-                                article.setArticleName(tableFieldMap.get(ArticleFieldName.ARTICLE_NAME).toString());
-                                article.setArticleHtmltext(tableFieldMap.get(ArticleFieldName.ARTICLE_HTMLTEXT).toString());
-                                try {
-                                    article.setArticleCreatedDate(getGregorianCalendarFromString(tableFieldMap.get(ArticleFieldName.ARTICLE_CREATED_DATE).toString()));
-                                    article.setArticleLastUpdatedDate(getGregorianCalendarFromString(tableFieldMap.get(ArticleFieldName.ARTICLE_LAST_UPDATED_DATE).toString()));
-                                } catch (Exception e) {
-                                    logger.error("ERROR parsing date from string - " + e.getMessage());
+                                    article.setIdArticle(Integer.parseInt(tableFieldMap.get(ArticleFieldName.ARTICLE_ID).toString()));
+                                    article.setArticleName(tableFieldMap.get(ArticleFieldName.ARTICLE_NAME).toString());
+                                    article.setArticleHtmltext(tableFieldMap.get(ArticleFieldName.ARTICLE_HTMLTEXT).toString());
+                                    try {
+                                        article.setArticleCreatedDate(getGregorianCalendarFromString(tableFieldMap.get(ArticleFieldName.ARTICLE_CREATED_DATE).toString()));
+                                        article.setArticleLastUpdatedDate(getGregorianCalendarFromString(tableFieldMap.get(ArticleFieldName.ARTICLE_LAST_UPDATED_DATE).toString()));
+                                    } catch (Exception e) {
+                                        logger.error("ERROR parsing date from string - " + e.getMessage());
+                                    }
+
+                                    author.setAuthorFirstname(tableFieldMap.get(AuthorDbConst.AuthorFieldName.AUTHOR_SP_AUTHORNAME).toString());
+
+                                    subCategory.setSubcategoryName(tableFieldMap.get(SubCategoryDbConst.SubCategoryFieldName.SUBCATEGORY_NAME).toString());
+
+                                    if (spName.equals(ArticleSPName.SELECT_ALL_ARTICLE)) {
+                                        Category category = new Category();
+                                        category.setCategoryName(tableFieldMap.get(CategoryDbConst.CategoryFieldName.CATEGORY_NAME).toString());
+                                        subCategory.setCategory(category);
+                                    }
+
+                                    articles.add(article);
+                                }else if(spName.equals(ArticleSPName.SELECT_TAGS_FOR_ARTICLE)){
+                                    
                                 }
 
-                                author.setAuthorFirstname(tableFieldMap.get(AuthorDbConst.AuthorFieldName.AUTHOR_SP_AUTHORNAME).toString());
-
-                                subCategory.setSubcategoryName(tableFieldMap.get(SubCategoryDbConst.SubCategoryFieldName.SUBCATEGORY_NAME).toString());
-
-                                articles.add(article);
                             }
                         }
 
@@ -116,7 +142,8 @@ public class ArticleDAOImpl implements ArticleDAO {
                 }
             }
         }
-        return articles;
+        articleModelWrapper = new ModelWrapper<Article>(articles);
+        return articleModelWrapper;
     }
 
     /**

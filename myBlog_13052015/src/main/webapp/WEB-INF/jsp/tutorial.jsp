@@ -58,10 +58,8 @@
                 </tr>
             </table>
 
-            </p>
-
             <div ng-repeat="tutorial in tutorials | orderBy:predicate:reverse " class="oneTutorial">
-                <a href="{{tutorial.idArticle}}"><h2>{{tutorial.articleName}}</h2></a>
+                <a href="get_tutorial/{{tutorial.idArticle}}" ><h2>{{tutorial.articleName}}</h2></a>
 
                 <p>
                 <span class="subcategoryName"><spring:message
