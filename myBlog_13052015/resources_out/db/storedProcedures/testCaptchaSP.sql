@@ -22,6 +22,10 @@ call InsertMailMessage('mailMessage_mailToIn', 'mailMessage_mailFromIn', 'mailMe
 select *
 from mailmessage mm
 where 1 = 1;
-*/
+
 
 call SelectAllArticle();
+call SelectTagsForArticle(5);
+*/
+
+call SelectArticle(5);

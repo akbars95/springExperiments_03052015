@@ -8,4 +8,7 @@ BEGIN
   INNER JOIN subcategory sc ON sc.subcategory_id = ar.subcategory_id
   INNER JOIN category c ON c.category_id = sc.category_id
   where ar.article_id = article_idIn;
+  
+  call SelectTagsForArticle(article_idIn);
+  
 END;

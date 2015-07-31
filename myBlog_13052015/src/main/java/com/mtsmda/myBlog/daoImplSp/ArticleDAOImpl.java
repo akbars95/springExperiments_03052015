@@ -61,11 +61,11 @@ public class ArticleDAOImpl implements ArticleDAO {
 
         blogStoredProcedure = new BlogStoredProcedure(dataSource, ArticleSPName.SELECT_ARTICLE, sqlParameters);
         Map<String, Object> contactsMap = blogStoredProcedure.execute(articleId);
-        getResultFromSP(contactsMap, ArticleSPName.SELECT_ARTICLE, articleModelWrapper);
+        articleModelWrapper = getResultFromSP(contactsMap, ArticleSPName.SELECT_ARTICLE);
 
-        blogStoredProcedure = new BlogStoredProcedure(dataSource, ArticleSPName.SELECT_TAGS_FOR_ARTICLE, sqlParameters);
+        /*blogStoredProcedure = new BlogStoredProcedure(dataSource, ArticleSPName.SELECT_TAGS_FOR_ARTICLE, sqlParameters);
         contactsMap = blogStoredProcedure.execute(articleId);
-        getResultFromSP(contactsMap, ArticleSPName.SELECT_TAGS_FOR_ARTICLE, articleModelWrapper);
+        getResultFromSP(contactsMap, ArticleSPName.SELECT_TAGS_FOR_ARTICLE, articleModelWrapper);*/
 
         return article;
     }
@@ -76,7 +76,7 @@ public class ArticleDAOImpl implements ArticleDAO {
         ModelWrapper<Article> articleModelWrapper = null;
         blogStoredProcedure = new BlogStoredProcedure(dataSource, ArticleSPName.SELECT_ALL_ARTICLE, null);
         Map<String, Object> contactsMap = blogStoredProcedure.execute();
-        getResultFromSP(contactsMap, ArticleSPName.SELECT_ALL_ARTICLE, articleModelWrapper);
+        articleModelWrapper = getResultFromSP(contactsMap, ArticleSPName.SELECT_ALL_ARTICLE);
         if (articleModelWrapper != null && articleModelWrapper.getList() != null && !articleModelWrapper.getList().isEmpty()) {
             logger.info(articleModelWrapper.getList().size() + " articles");
             return articleModelWrapper.getList();
@@ -85,7 +85,8 @@ public class ArticleDAOImpl implements ArticleDAO {
         return articleModelWrapper.getList();
     }
 
-    private ModelWrapper<Article> getResultFromSP(Map<String, Object> contactsMap, String spName, ModelWrapper<Article> articleModelWrapper) {
+    private ModelWrapper<Article> getResultFromSP(Map<String, Object> contactsMap, String spName) {
+        ModelWrapper<Article> articleModelWrapper = null;
         List<Article> articles = new ArrayList<Article>();
         if (!contactsMap.isEmpty()) {
             int i = 0;
@@ -97,7 +98,7 @@ public class ArticleDAOImpl implements ArticleDAO {
                         for (int j = 0; j < resultListWithContact.size(); j++) {
                             if (resultListWithContact.get(j) instanceof Map) {
                                 Map<String, Object> tableFieldMap = (Map<String, Object>) resultListWithContact.get(j);
-                                if (spName.equals(ArticleSPName.SELECT_ALL_ARTICLE) || spName.equals(ArticleSPName.SELECT_ALL_ARTICLE)) {
+                                if (spName.equals(ArticleSPName.SELECT_ALL_ARTICLE) || spName.equals(ArticleSPName.SELECT_ARTICLE)) {
                                     Article article = new Article();
 
                                     Author author = new Author();
@@ -120,7 +121,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 
                                     subCategory.setSubcategoryName(tableFieldMap.get(SubCategoryDbConst.SubCategoryFieldName.SUBCATEGORY_NAME).toString());
 
-                                    if (spName.equals(ArticleSPName.SELECT_ALL_ARTICLE)) {
+                                    if (spName.equals(ArticleSPName.SELECT_ARTICLE)) {
                                         Category category = new Category();
                                         category.setCategoryName(tableFieldMap.get(CategoryDbConst.CategoryFieldName.CATEGORY_NAME).toString());
                                         subCategory.setCategory(category);
@@ -128,7 +129,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 
                                     articles.add(article);
                                 }else if(spName.equals(ArticleSPName.SELECT_TAGS_FOR_ARTICLE)){
-                                    
+
                                 }
 
                             }
