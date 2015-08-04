@@ -22,5 +22,10 @@
         </div>
     </div>
 </section>
+
+<a href="/spMVC/order/P15025/5">P15025</a>
+<a href="/spMVC/products/Smart Phone">Smart Phone</a>
+<a href="/spMVC/products/PC">PC</a>
+
 </body>
 </html>

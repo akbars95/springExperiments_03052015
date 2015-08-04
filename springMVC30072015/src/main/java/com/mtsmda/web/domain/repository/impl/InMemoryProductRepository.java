@@ -19,7 +19,7 @@ public class InMemoryProductRepository implements ProductRepository{
     public InMemoryProductRepository() {
         Product productIphone = new Product("15023", "Iphone 5s", new BigDecimal(550));
         productIphone.setDescription("Apple	iPhone	5s	smartphone	with	4.00-inch 640x1136	display	and	8-megapixel	rear camera");
-        productIphone.setCategory("Smart	Phone");
+        productIphone.setCategory("Smart Phone");
         productIphone.setManufacturer("Apple");
         productIphone.setUnitsInStock(1000);
 
@@ -29,11 +29,48 @@ public class InMemoryProductRepository implements ProductRepository{
         productLenovoK900.setManufacturer("Lenovo");
         productLenovoK900.setUnitsInStock(500);
 
+        Product productPCEverest = new Product("15035", "Everest 2000", new BigDecimal(950));
+        productPCEverest.setDescription("PC Everest 2000");
+        productPCEverest.setCategory("PC");
+        productPCEverest.setManufacturer("Everest");
+        productPCEverest.setUnitsInStock(10);
+
         products.add(productIphone);
         products.add(productLenovoK900);
+        products.add(productPCEverest);
     }
 
     public List<Product> getProducts() {
         return products;
     }
+
+    public Product getProductById(String productID) {
+        Product productResult = null;
+
+        for (Product product : products){
+            if(product != null && product.getProductId() != null && product.getProductId().equals(productID)){
+                productResult = product;
+            }
+        }
+
+        if(productResult == null){
+            throw new IllegalArgumentException("No product found with the product id: " + productID);
+        }
+
+        return productResult;
+    }
+
+    public List<Product> getProductByCategory(String category) {
+        List<Product> products = new ArrayList<Product>();
+
+        for (Product product : getProducts()){
+            if(category.equals(product.getCategory())){
+                products.add(product);
+            }
+        }
+
+        return products;
+    }
+
+
 }
