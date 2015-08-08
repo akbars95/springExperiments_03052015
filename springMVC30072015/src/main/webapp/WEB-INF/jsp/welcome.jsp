@@ -27,5 +27,15 @@
 <a href="/spMVC/products/Smart Phone">Smart Phone</a>
 <a href="/spMVC/products/PC">PC</a>
 
+<hr>
+Matrix variables
+<a href="/spMVC/filter/ByCriteria;brand=Everest;">Only Everest</a>
+<a href="/spMVC/filter/ByCriteria;brand=Everest,Lenovo;">Everest and Lenovo</a>
+<a href="/spMVC/filter/ByCriteria;brand=Everest;category=Smart Phone;">All</a>
+
+<a href="/spMVC/filter/ByCriteria;brand=Everest;category=Smart Phone;/Price;price=500">All and price > 500</a>
+
+<a href="/spMVC/productByIdAndCategory?id=15023&category=Smart Phone">Smart Phone - 15023</a>
+
 </body>
 </html>
