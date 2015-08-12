@@ -25,4 +25,9 @@ public interface ProductRepository {
 
     public Set<Product> getProductBetweenPrice(Map<String, List<String>> filterParams);
 
+
+    //chapter 4
+
+    public  void addProduct(Product product);
+
 }

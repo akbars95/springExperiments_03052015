@@ -179,5 +179,9 @@ class InMemoryProductRepository implements ProductRepository {
         return products;
     }
 
+    public void addProduct(Product product) {
+        getProducts().add(product);
+    }
+
 
 }
