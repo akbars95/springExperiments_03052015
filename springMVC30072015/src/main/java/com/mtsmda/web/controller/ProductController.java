@@ -69,4 +69,15 @@ public class ProductController {
         return "product";
     }
 
+    @RequestMapping(value = "/products/{category}/{Price}")
+    public String getProductsByCategoryPriceManufacturer(Model model, @PathVariable(value = "category") String productCategory, @MatrixVariable(pathVar = "Price") Map<String, List<String>> filterPrice, @RequestParam("manufacturer") String manufacturer) {
+        Set<Product> returnResult = new HashSet<Product>();
+        returnResult.addAll(productService.getProductByCategory(productCategory));
+        returnResult.retainAll(productService.getProductsByManufacturer(manufacturer));
+        returnResult.retainAll(productService.getProductBetweenPrice(filterPrice));
+
+        model.addAttribute("products", returnResult);
+
+        return "products";
+    }
 }

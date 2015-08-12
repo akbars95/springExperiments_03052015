@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>Welcome</title>
@@ -36,6 +37,9 @@ Matrix variables
 <a href="/spMVC/filter/ByCriteria;brand=Everest;category=Smart Phone;/Price;price=500">All and price > 500</a>
 
 <a href="/spMVC/productByIdAndCategory?id=15023&category=Smart Phone">Smart Phone - 15023</a>
+
+<a href="<spring:url value="/products/PC/Price;low=7060;high=9500?manufacturer=Samsung"/>">Path variable, matrix variable, GET param</a>
+<a href="<spring:url value="/products/PC/Price;low=7050;high=9500?manufacturer=Samsung"/>">Path variable, matrix variable, GET param 2 </a>
 
 </body>
 </html>

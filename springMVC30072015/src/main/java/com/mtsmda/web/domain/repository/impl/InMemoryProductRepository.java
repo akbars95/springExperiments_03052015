@@ -34,9 +34,23 @@ class InMemoryProductRepository implements ProductRepository {
         productPCEverest.setManufacturer("Everest");
         productPCEverest.setUnitsInStock(10);
 
+        Product productPCSamsung = new Product("15085", "Samsung 2502", new BigDecimal(7050));
+        productPCSamsung.setDescription("PC Samsung 2502");
+        productPCSamsung.setCategory("PC");
+        productPCSamsung.setManufacturer("Samsung");
+        productPCSamsung.setUnitsInStock(105);
+
+        Product productPCSamsung3502 = new Product("15085", "Samsung 3502", new BigDecimal(9050));
+        productPCSamsung3502.setDescription("PC LG 3502");
+        productPCSamsung3502.setCategory("PC");
+        productPCSamsung3502.setManufacturer("Samsung");
+        productPCSamsung3502.setUnitsInStock(1058);
+
         products.add(productIphone);
         products.add(productLenovoK900);
         products.add(productPCEverest);
+        products.add(productPCSamsung);
+        products.add(productPCSamsung3502);
     }
 
     public List<Product> getProducts() {
@@ -94,6 +108,18 @@ class InMemoryProductRepository implements ProductRepository {
         return productsToReturn;
     }
 
+    public List<Product> getProductsByManufacturer(String manufacturer) {
+        List<Product> products = new ArrayList<Product>();
+
+        for (Product product : getProducts()) {
+            if (manufacturer.equals(product.getManufacturer())) {
+                products.add(product);
+            }
+        }
+
+        return products;
+    }
+
     private void filterProcess(Map<String, List<String>> filterParams, Set<Product> productsToReturn) {
         Set<String> criterias = filterParams.keySet();
 
@@ -123,6 +149,34 @@ class InMemoryProductRepository implements ProductRepository {
                 }
             }
         }
+    }
+
+    public Set<Product> getProductBetweenPrice(Map<String, List<String>> filterParams) {
+        Set<Product> products = new HashSet<Product>();
+
+        String low = filterParams.keySet().contains("low") ? filterParams.keySet().iterator().next() : null;
+        String high = filterParams.keySet().contains("high") ? filterParams.keySet().iterator().next() : null;
+
+        for (String s : filterParams.keySet()){
+            if(s.contains("low")){
+                low = filterParams.get("low").get(0);
+            }
+            if(s.contains("high")){
+                high = filterParams.get("high").get(0);
+            }
+        }
+
+        double priceLow = Double.parseDouble(low);
+        double priceHigh = Double.parseDouble(high);
+
+        for (Product product : getProducts()) {
+
+            if(product.getUnitPrice().doubleValue() <= priceHigh && product.getUnitPrice().doubleValue() >= priceLow){
+                products.add(product);
+            }
+        }
+
+        return products;
     }
 
 
