@@ -24,7 +24,7 @@
                     <table>
                         <tr>
                             <td>
-                                <label>Product id</label>
+                                <label><spring:message code="addProduct.labelProductID"/></label>
                             </td>
                             <td>
                                 <form:input path="productId" id="productId" />
