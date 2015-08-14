@@ -41,6 +41,8 @@ Matrix variables
 
 <a href="<spring:url value="/products/PC/Price;low=7060;high=9500?manufacturer=Samsung"/>">Path variable, matrix variable, GET param</a>
 <a href="<spring:url value="/products/PC/Price;low=7050;high=9500?manufacturer=Samsung"/>">Path variable, matrix variable, GET param 2 </a>
+<br>
+<a href="<spring:url value="/add"/>">Add Product</a>
 
 </body>
 </html>

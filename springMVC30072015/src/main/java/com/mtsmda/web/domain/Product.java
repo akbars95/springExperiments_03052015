@@ -1,6 +1,7 @@
 package com.mtsmda.web.domain;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created by MTSMDA on 01.08.2015.
@@ -16,14 +17,15 @@ public class Product {
     private long unitsInOrder;
     private boolean discontinued;
     private String condition;
+    private Date addDate;
 
     public Product() {
     }
 
-    public	Product(String	productId,	String	name,	BigDecimal	unitPrice)	{
-        this.productId	=	productId;
-        this.name	=	name;
-        this.unitPrice	=	unitPrice;
+    public Product(String productId, String name, BigDecimal unitPrice) {
+        this.productId = productId;
+        this.name = name;
+        this.unitPrice = unitPrice;
     }
 
     public String getProductId() {
@@ -104,6 +106,14 @@ public class Product {
 
     public void setCondition(String condition) {
         this.condition = condition;
+    }
+
+    public Date getAddDate() {
+        return addDate;
+    }
+
+    public void setAddDate(Date addDate) {
+        this.addDate = addDate;
     }
 
     @Override

@@ -4,11 +4,17 @@ import com.mtsmda.web.domain.Product;
 import com.mtsmda.web.domain.repository.ProductRepository;
 import com.mtsmda.web.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -87,8 +93,20 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String processAddNewProductForm(@ModelAttribute("newProduct") Product product){
+    public String processAddNewProductForm(@ModelAttribute("newProduct") Product product, BindingResult bindingResult){
+        String [] suppressedFields = bindingResult.getSuppressedFields();
+        if(suppressedFields.length > 0){
+            throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+        }
         productService.addProduct(product);
         return "redirect:/products";
+    }
+
+    @InitBinder()
+    public void initialiseBinder(WebDataBinder webDataBinder){
+        webDataBinder.setDisallowedFields("unitsInOrder" ,"addDate");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        CustomDateEditor customDateEditor = new CustomDateEditor(dateFormat, false);
+        webDataBinder.registerCustomEditor(Date.class, customDateEditor);
     }
 }
