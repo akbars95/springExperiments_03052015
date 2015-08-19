@@ -50,7 +50,11 @@
 		href="<spring:url value="/products/PC/Price;low=7050;high=9500?manufacturer=Samsung"/>">Path
 		variable, matrix variable, GET param 2 </a>
 	<br>
-	<a href="<spring:url value="/add"/>">Add Product</a>
+	<s><a href="<spring:url value="/add"/>" title="While don't work!">Add
+			Product</a></s>
+			
+			<hr>
+			<a href="<spring:url value="/home/welcome/greeting"/>">Greeting</a>
 
 </body>
 </html>
