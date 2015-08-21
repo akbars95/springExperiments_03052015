@@ -54,7 +54,11 @@
 			Product</a></s>
 			
 			<hr>
-			<a href="<spring:url value="/home/welcome/greeting"/>">Greeting</a>
+			<a href="<spring:url value="/home/welcome/Fgreeting"/>">Greeting forward</a><br>
+			<a href="<spring:url value="/home/welcome/Rgreeting"/>">Greeting redirect</a><br>
+			<a href="<spring:url value="/home/welcome/hello"/>">Hello</a><br>
+			<a href="<spring:url value="/home/welcome/google"/>">Google</a><br>
+			<a href="<spring:url value="/home/welcome/Fgoogle"/>">Google forward</a><br>
 
 </body>
 </html>
