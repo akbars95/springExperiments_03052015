@@ -34,6 +34,10 @@
 						<p>Description ${product.description}</p>
 
 						<p>Category ${product.category}</p>
+						<div>
+						<img src="<spring:url value="/resources/images/products/${product.productId}.jpg" htmlEscape="true"/>">
+						</div>
+						
 					</c:forEach>
 				</div>
 

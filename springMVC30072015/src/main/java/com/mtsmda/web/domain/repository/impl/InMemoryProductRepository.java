@@ -40,7 +40,7 @@ class InMemoryProductRepository implements ProductRepository {
         productPCSamsung.setManufacturer("Samsung");
         productPCSamsung.setUnitsInStock(105);
 
-        Product productPCSamsung3502 = new Product("15085", "Samsung 3502", new BigDecimal(9050));
+        Product productPCSamsung3502 = new Product("15095", "Samsung 3502", new BigDecimal(9050));
         productPCSamsung3502.setDescription("PC LG 3502");
         productPCSamsung3502.setCategory("PC");
         productPCSamsung3502.setManufacturer("Samsung");

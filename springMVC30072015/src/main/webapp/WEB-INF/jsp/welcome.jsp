@@ -59,6 +59,10 @@
 			<a href="<spring:url value="/home/welcome/hello"/>">Hello</a><br>
 			<a href="<spring:url value="/home/welcome/google"/>">Google</a><br>
 			<a href="<spring:url value="/home/welcome/Fgoogle"/>">Google forward</a><br>
+			
+			<hr>
+			<h1>Images Static resources</h1>
+			<a href="<spring:url value="/images/all"/>">All Images</a>
 
 </body>
 </html>
