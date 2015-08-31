@@ -5,13 +5,17 @@ import com.mtsmda.web.domain.repository.ProductRepository;
 import com.mtsmda.web.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -93,10 +97,20 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String processAddNewProductForm(@ModelAttribute("newProduct") Product product, BindingResult bindingResult){
+    public String processAddNewProductForm(@ModelAttribute("newProduct") Product product, BindingResult bindingResult, HttpServletRequest request){
         String [] suppressedFields = bindingResult.getSuppressedFields();
         if(suppressedFields.length > 0){
             throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+        }
+        MultipartFile productImage = product.getProductImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("\\resources\\images\\products\\" + product.getProductId() + ".png");
+        if(productImage != null && !productImage.isEmpty()){
+            try{
+                productImage.transferTo(new File(rootDirectory + "\\"));
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
         }
         productService.addProduct(product);
         return "redirect:/products";
@@ -104,7 +118,7 @@ public class ProductController {
 
     @InitBinder()
     public void initialiseBinder(WebDataBinder webDataBinder){
-        webDataBinder.setDisallowedFields("unitsInOrder" ,"addDate");
+        webDataBinder.setDisallowedFields("unitsInOrder" ,"addDate", "productImage");
         DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
         CustomDateEditor customDateEditor = new CustomDateEditor(dateFormat, false);
         webDataBinder.registerCustomEditor(Date.class, customDateEditor);

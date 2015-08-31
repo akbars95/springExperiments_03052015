@@ -1,5 +1,7 @@
 package com.mtsmda.web.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -18,6 +20,7 @@ public class Product {
     private boolean discontinued;
     private String condition;
     private Date addDate;
+    private MultipartFile productImage;
 
     public Product() {
     }
@@ -114,6 +117,14 @@ public class Product {
 
     public void setAddDate(Date addDate) {
         this.addDate = addDate;
+    }
+
+    public MultipartFile getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(MultipartFile productImage) {
+        this.productImage = productImage;
     }
 
     @Override
