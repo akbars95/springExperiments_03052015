@@ -2,12 +2,7 @@ package com.mtsmda.book_library.web.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "book_categories")
@@ -22,7 +17,9 @@ public class BookCategory implements Serializable{
 	
 	@Column(name = "book_category_name", nullable = false, unique = true)
 	private String bookCategoryName;
-	
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "book_category_id", nullable = false)
 	private BookSubCategory bookSubCategory;
 	
 	public BookCategory() {

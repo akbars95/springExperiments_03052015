@@ -27,11 +27,12 @@ public class BookSubCategory implements Serializable {
 
 	@Column(name = "book_sub_category_name", nullable = false, unique = true)
 	private String bookSubCategoryName;
-	
-	private BookCategory BookSubCategory;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "bookSubCategory")
-	private Set<Book> books = new HashSet<>();
+	private Set<BookCategory> bookCategories = new HashSet<BookCategory>();
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "bookSubCategory")
+	private Set<Book> books = new HashSet<Book>();
 
 	public BookSubCategory() {
 

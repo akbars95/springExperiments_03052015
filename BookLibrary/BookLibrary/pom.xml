@@ -19,6 +19,7 @@
         <hibernate.version>4.3.11.Final</hibernate.version>
         <springframework.version>4.2.1.RELEASE</springframework.version>
         <jstl.version>1.2</jstl.version>
+        <mysql.version>5.1.31</mysql.version>
     </properties>
 
     <dependencies>
@@ -66,6 +67,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
         </dependency>
 
 
