@@ -29,7 +29,7 @@ public class BookLanguage implements Serializable {
 	private String bookLanguage;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "bookLanguage")
-	private Set<Book> books = new HashSet<>();
+	private Set<Book> books = new HashSet<Book>();
 
 	public BookLanguage() {
 
