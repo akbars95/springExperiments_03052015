@@ -29,7 +29,7 @@ public class Publisher implements Serializable {
 	private String publisherName;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "publisher")
-	private Set<Book> books = new HashSet<>();
+	private Set<Book> books = new HashSet<Book>();
 
 	public Publisher() {
 

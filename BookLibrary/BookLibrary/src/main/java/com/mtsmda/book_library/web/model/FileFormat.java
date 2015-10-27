@@ -29,7 +29,7 @@ public class FileFormat implements Serializable {
 	private String fileFormat;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "fileFormat")
-	private Set<Book> books = new HashSet<>();
+	private Set<Book> books = new HashSet<Book>();
 
 	public FileFormat() {
 

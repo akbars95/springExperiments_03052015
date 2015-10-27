@@ -15,5 +15,8 @@
 
 <h1>${pageName}</h1>
 
+<h2>EN - ${bookLangEN}</h2>
+<h2>RU - ${bookLangRU}</h2>
+
 </body>
 </html>
