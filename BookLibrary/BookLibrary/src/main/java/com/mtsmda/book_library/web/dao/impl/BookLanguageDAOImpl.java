@@ -4,6 +4,7 @@ import com.mtsmda.book_library.web.dao.BookLanguageDAO;
 import com.mtsmda.book_library.web.model.BookLanguage;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,8 +23,10 @@ public class BookLanguageDAOImpl implements BookLanguageDAO {
 
     public boolean insertBookLanguage(BookLanguage bookLanguage) {
         try{
-            Session session = this.sessionFactory.getCurrentSession();
+            Session session = this.sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
             session.persist(bookLanguage);
+            transaction.commit();
         }
         catch (Exception e){
             return false;

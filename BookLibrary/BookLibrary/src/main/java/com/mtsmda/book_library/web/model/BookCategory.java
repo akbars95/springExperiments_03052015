@@ -14,8 +14,8 @@ public class BookCategory implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "book_category_id", nullable = false, unique = true)
-    private Integer bookCategoryId;
+    @Column(name = "book_sub_category_id", nullable = false, unique = true)
+    private Integer bookSubCategoryId;
 
     @Column(name = "book_category_name", nullable = false, unique = true)
     private String bookCategoryName;
@@ -29,11 +29,11 @@ public class BookCategory implements Serializable {
     }
 
     public Integer getBookCategoryId() {
-        return bookCategoryId;
+        return bookSubCategoryId;
     }
 
-    public void setBookCategoryId(Integer bookCategoryId) {
-        this.bookCategoryId = bookCategoryId;
+    public void setBookCategoryId(Integer bookSubCategoryId) {
+        this.bookSubCategoryId = bookSubCategoryId;
     }
 
     public String getBookCategoryName() {
@@ -59,7 +59,7 @@ public class BookCategory implements Serializable {
 
         BookCategory that = (BookCategory) o;
 
-        if (bookCategoryId != null ? !bookCategoryId.equals(that.bookCategoryId) : that.bookCategoryId != null)
+        if (bookSubCategoryId != null ? !bookSubCategoryId.equals(that.bookSubCategoryId) : that.bookSubCategoryId != null)
             return false;
         if (bookCategoryName != null ? !bookCategoryName.equals(that.bookCategoryName) : that.bookCategoryName != null)
             return false;
@@ -69,7 +69,7 @@ public class BookCategory implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = bookCategoryId != null ? bookCategoryId.hashCode() : 0;
+        int result = bookSubCategoryId != null ? bookSubCategoryId.hashCode() : 0;
         result = 31 * result + (bookCategoryName != null ? bookCategoryName.hashCode() : 0);
         result = 31 * result + (bookSubCategory != null ? bookSubCategory.hashCode() : 0);
         return result;
@@ -78,7 +78,7 @@ public class BookCategory implements Serializable {
     @Override
     public String toString() {
         return "BookCategory{" +
-                "bookCategoryId=" + bookCategoryId +
+                "bookSubCategoryId=" + bookSubCategoryId +
                 ", bookCategoryName='" + bookCategoryName + '\'' +
                 ", bookSubCategory=" + bookSubCategory +
                 '}';

@@ -14,6 +14,10 @@ public class BookLanguageServiceImpl implements BookLanguageService{
 
     private BookLanguageDAO bookLanguageDAO;
 
+    public void setBookLanguageDAO(BookLanguageDAO bookLanguageDAO) {
+        this.bookLanguageDAO = bookLanguageDAO;
+    }
+
     public boolean insertBookLanguage(BookLanguage bookLanguage) {
         return bookLanguageDAO.insertBookLanguage(bookLanguage);
     }

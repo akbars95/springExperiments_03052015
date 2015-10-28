@@ -21,16 +21,16 @@ public class BookLanguage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue()
 	@Column(name = "book_language_id", nullable = false, unique = true)
 	private Integer bookLanguageId;
 
 	@Column(name = "book_language", nullable = false, unique = true, length = 50)
 	private String bookLanguage;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "bookLanguage")
+	/*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "bookLanguage")
 	private Set<Book> books = new HashSet<Book>();
-
+*/
 	public BookLanguage() {
 
 	}
@@ -55,21 +55,21 @@ public class BookLanguage implements Serializable {
 		this.bookLanguage = bookLanguage;
 	}
 
-	public Set<Book> getBooks() {
+	/*public Set<Book> getBooks() {
 		return books;
 	}
 
 	public void setBooks(Set<Book> books) {
 		this.books = books;
 	}
-
+*/
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((bookLanguage == null) ? 0 : bookLanguage.hashCode());
 		result = prime * result + ((bookLanguageId == null) ? 0 : bookLanguageId.hashCode());
-		result = prime * result + ((books == null) ? 0 : books.hashCode());
+		//result = prime * result + ((books == null) ? 0 : books.hashCode());
 		return result;
 	}
 
@@ -92,17 +92,17 @@ public class BookLanguage implements Serializable {
 				return false;
 		} else if (!bookLanguageId.equals(other.bookLanguageId))
 			return false;
-		if (books == null) {
+		/*if (books == null) {
 			if (other.books != null)
 				return false;
 		} else if (!books.equals(other.books))
-			return false;
+			return false;*/
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "BookLanguage [bookLanguageId=" + bookLanguageId + ", bookLanguage=" + bookLanguage + ", books=" + books
+		return "BookLanguage [bookLanguageId=" + bookLanguageId + ", bookLanguage=" + bookLanguage + ", books=" //+ books
 				+ "]";
 	}
 

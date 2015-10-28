@@ -26,7 +26,8 @@ public class IndexController {
 
 
 
-	@RequestMapping(value = {"/, /index"}, method = RequestMethod.GET)
+	//@RequestMapping(value = {"/, /index"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String indexPage(ModelAndView modelAndView){
 		BookLanguage bookLanguage = new BookLanguage();
 		bookLanguage.setBookLanguage("en");
@@ -35,11 +36,11 @@ public class IndexController {
 		bookLanguage.setBookLanguage("ru");
 		
 		boolean insertBookLanguage = bookLanguageService.insertBookLanguage(bookLanguage);
-		boolean insertBookLanguage2 = bookLanguageService.insertBookLanguage(bookLanguageRU);
+		//boolean insertBookLanguage2 = bookLanguageService.insertBookLanguage(bookLanguageRU);
 		
         modelAndView.addObject("pageName","Index");
         modelAndView.addObject("bookLangEN", insertBookLanguage);
-        modelAndView.addObject("bookLangRU", insertBookLanguage2);
+        modelAndView.addObject("bookLangRU", true);
         return "index";
     }
 
