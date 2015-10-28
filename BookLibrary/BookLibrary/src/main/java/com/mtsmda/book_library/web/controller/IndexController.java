@@ -36,11 +36,12 @@ public class IndexController {
 		bookLanguage.setBookLanguage("ru");
 		
 		boolean insertBookLanguage = bookLanguageService.insertBookLanguage(bookLanguage);
-		//boolean insertBookLanguage2 = bookLanguageService.insertBookLanguage(bookLanguageRU);
+		boolean insertBookLanguage2 = bookLanguageService.insertBookLanguage(bookLanguageRU);
+		System.out.println(insertBookLanguage);
 		
         modelAndView.addObject("pageName","Index");
-        modelAndView.addObject("bookLangEN", insertBookLanguage);
-        modelAndView.addObject("bookLangRU", true);
+        modelAndView.addObject("bookLangEN", insertBookLanguage ? "OK": "BAD");
+        modelAndView.addObject("bookLangRU", insertBookLanguage2 ? "OK": "BAD");
         return "index";
     }
 
