@@ -25,7 +25,7 @@ public class BookCategory implements Serializable {
     private BookSubCategory bookSubCategory;
 
     public BookCategory() {
-
+    	
     }
 
     public Integer getBookCategoryId() {
