@@ -1,4 +1,4 @@
-package com.mtsmda.book_library.web.model;
+package com.mtsmda.book_library.web.domain;
 
 import java.io.Serializable;
 import java.util.HashSet;
