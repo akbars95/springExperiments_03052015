@@ -1,11 +1,10 @@
 package com.mtsmda.souvenir.service;
 
-import com.mtsmda.souvenir.dao.SouvenirDAO;
-import com.mtsmda.souvenir.model.Souvenir;
+import com.mtsmda.souvenir.repository.SouvenirRepository;
 
 /**
  * Created by MTSMDA on 16.11.2015.
  */
-public interface SouvenirService extends SouvenirDAO {
+public interface SouvenirService extends SouvenirRepository {
 
 }

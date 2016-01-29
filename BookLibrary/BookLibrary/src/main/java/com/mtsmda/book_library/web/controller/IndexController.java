@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mtsmda.book_library.web.model.BookLanguage;
+import com.mtsmda.book_library.web.domain.BookLanguage;
+import com.mtsmda.book_library.web.domain.repository.BookLanguageRepository;
 import com.mtsmda.book_library.web.service.BookLanguageService;
 
 /**
@@ -16,7 +17,7 @@ import com.mtsmda.book_library.web.service.BookLanguageService;
 @Controller
 public class IndexController {
 
-	private BookLanguageService bookLanguageService;
+	private BookLanguageRepository bookLanguageRepository; 
 	
 	@Autowired(required = true)
 	@Qualifier(value = "bookLanguageService")

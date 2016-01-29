@@ -1,10 +1,10 @@
-package com.mtsmda.book_library.web.dao;
+package com.mtsmda.book_library.web.domain.repository;
 
 import java.util.List;
 
 import com.mtsmda.book_library.web.domain.Book;
 
-public interface BookDAO {
+public interface BookRepository {
 	
 	public void addBook(Book book);
 	public void updateBook(Book book);

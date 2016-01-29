@@ -1,11 +1,12 @@
-package com.mtsmda.souvenir.dao.impl;
+package com.mtsmda.souvenir.repository.impl;
 
-import com.mtsmda.souvenir.dao.SouvenirDAO;
+import com.mtsmda.souvenir.repository.SouvenirRepository;
 import com.mtsmda.souvenir.model.Souvenir;
 import com.mtsmda.souvenir.sp.SouvenirStoredProcedure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ import static com.mtsmda.souvenir.model.sp.SouvenirSP.*;
 /**
  * Created by MTSMDA on 19.11.2015.
  */
-public class SouvenirDAOImplSP implements SouvenirDAO{
+@Repository("souvenirRepository")
+public class SouvenirRepositoryImplSP implements SouvenirRepository {
 
     @Autowired
     @Qualifier(value = "mySqlDataSource")

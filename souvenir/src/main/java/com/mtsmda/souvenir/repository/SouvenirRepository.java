@@ -1,4 +1,4 @@
-package com.mtsmda.souvenir.dao;
+package com.mtsmda.souvenir.repository;
 
 import com.mtsmda.souvenir.model.Souvenir;
 
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by MTSMDA on 16.11.2015.
  */
-public interface SouvenirDAO {
+public interface SouvenirRepository {
 
     public boolean insertSouvenir(Souvenir souvenir);
     public boolean updateSouvenir(Souvenir souvenir);

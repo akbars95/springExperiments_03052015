@@ -26,8 +26,7 @@
 					</c:if>
 				</div>
 
-				<form action="<c:url value="/j_spring_security_check"></c:url>"
-					method="post">
+				<form action="/j_spring_security_check" method="post">
 					<table>
 						<tr>
 							<td><label>User name</label></td>

@@ -12,6 +12,9 @@ public class Souvenir implements Serializable{
     private String souvenirDescription;
     private Boolean souvenirShow;
     private String souvenirPath;
+    private SouvenirCategory souvenirCategory;
+    private Double souvenirPrice;
+    private Integer souvenirCountOfDaysForOrder;
 
     public Souvenir() {
 
@@ -57,6 +60,30 @@ public class Souvenir implements Serializable{
         this.souvenirPath = souvenirPath;
     }
 
+    public SouvenirCategory getSouvenirCategory() {
+        return souvenirCategory;
+    }
+
+    public void setSouvenirCategory(SouvenirCategory souvenirCategory) {
+        this.souvenirCategory = souvenirCategory;
+    }
+
+    public Double getSouvenirPrice() {
+        return souvenirPrice;
+    }
+
+    public void setSouvenirPrice(Double souvenirPrice) {
+        this.souvenirPrice = souvenirPrice;
+    }
+
+    public Integer getSouvenirCountOfDaysForOrder() {
+        return souvenirCountOfDaysForOrder;
+    }
+
+    public void setSouvenirCountOfDaysForOrder(Integer souvenirCountOfDaysForOrder) {
+        this.souvenirCountOfDaysForOrder = souvenirCountOfDaysForOrder;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -64,21 +91,28 @@ public class Souvenir implements Serializable{
 
         Souvenir souvenir = (Souvenir) o;
 
-        if (!souvenirId.equals(souvenir.souvenirId)) return false;
+        if (souvenirId != null ? !souvenirId.equals(souvenir.souvenirId) : souvenir.souvenirId != null) return false;
         if (!souvenirName.equals(souvenir.souvenirName)) return false;
         if (!souvenirDescription.equals(souvenir.souvenirDescription)) return false;
         if (!souvenirShow.equals(souvenir.souvenirShow)) return false;
-        return souvenirPath.equals(souvenir.souvenirPath);
+        if (!souvenirPath.equals(souvenir.souvenirPath)) return false;
+        if (souvenirCategory != null ? !souvenirCategory.equals(souvenir.souvenirCategory) : souvenir.souvenirCategory != null)
+            return false;
+        if (!souvenirPrice.equals(souvenir.souvenirPrice)) return false;
+        return souvenirCountOfDaysForOrder.equals(souvenir.souvenirCountOfDaysForOrder);
 
     }
 
     @Override
     public int hashCode() {
-        int result = souvenirId.hashCode();
+        int result = souvenirId != null ? souvenirId.hashCode() : 0;
         result = 31 * result + souvenirName.hashCode();
         result = 31 * result + souvenirDescription.hashCode();
         result = 31 * result + souvenirShow.hashCode();
         result = 31 * result + souvenirPath.hashCode();
+        result = 31 * result + (souvenirCategory != null ? souvenirCategory.hashCode() : 0);
+        result = 31 * result + souvenirPrice.hashCode();
+        result = 31 * result + souvenirCountOfDaysForOrder.hashCode();
         return result;
     }
 
@@ -90,6 +124,9 @@ public class Souvenir implements Serializable{
                 ", souvenirDescription='" + souvenirDescription + '\'' +
                 ", souvenirShow=" + souvenirShow +
                 ", souvenirPath='" + souvenirPath + '\'' +
+                ", souvenirCategory=" + souvenirCategory +
+                ", souvenirPrice=" + souvenirPrice +
+                ", souvenirCountOfDaysForOrder=" + souvenirCountOfDaysForOrder +
                 '}';
     }
 }

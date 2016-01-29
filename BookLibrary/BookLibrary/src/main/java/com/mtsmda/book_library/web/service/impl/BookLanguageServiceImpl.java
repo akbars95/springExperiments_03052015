@@ -1,8 +1,8 @@
 package com.mtsmda.book_library.web.service.impl;
 
 import com.mtsmda.book_library.web.dao.BookLanguageDAO;
-import com.mtsmda.book_library.web.model.Book;
-import com.mtsmda.book_library.web.model.BookLanguage;
+import com.mtsmda.book_library.web.domain.Book;
+import com.mtsmda.book_library.web.domain.BookLanguage;
 import com.mtsmda.book_library.web.service.BookLanguageService;
 
 import java.util.List;

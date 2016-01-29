@@ -1,7 +1,7 @@
-package com.mtsmda.book_library.web.dao.impl;
+package com.mtsmda.book_library.web.domain.repository.impl;
 
-import com.mtsmda.book_library.web.dao.BookLanguageDAO;
 import com.mtsmda.book_library.web.domain.BookLanguage;
+import com.mtsmda.book_library.web.domain.repository.BookLanguageRepository;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,7 +14,7 @@ import java.util.List;
  * Created by MTSMDA on 26.10.2015.
  */
 @Repository
-public class BookLanguageDAOImpl implements BookLanguageDAO {
+public class BookLanguageRepositoryImpl implements BookLanguageRepository {
 
     private SessionFactory sessionFactory;
 

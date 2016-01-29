@@ -2,12 +2,14 @@ package com.mtsmda.souvenir.service.impl;
 
 import com.mtsmda.souvenir.model.Souvenir;
 import com.mtsmda.souvenir.service.SouvenirService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by MTSMDA on 18.11.2015.
  */
+@Service("souvenirService")
 public class SouvenirServiceImpl implements SouvenirService {
 
     @Override
