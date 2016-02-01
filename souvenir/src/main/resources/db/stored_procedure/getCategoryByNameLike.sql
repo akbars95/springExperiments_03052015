@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getCategoryByNameLike`(IN souvenir_categoryIN VARCHAR(50))
+CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `getCategoryByNameLike`(IN souvenir_categoryIN VARCHAR(50))
 BEGIN
 select *
 from souvenir_categories sc

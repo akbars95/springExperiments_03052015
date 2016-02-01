@@ -16,31 +16,31 @@ import java.util.List;
 public class SouvenirCategoryServiceImpl implements SouvenirCategoryService {
 
     @Autowired
-    @Qualifier("souvenirCategoryDAO")
-    private SouvenirCategoryRepository souvenirCategoryDAO;
+    @Qualifier("souvenirCategoryRepository")
+    private SouvenirCategoryRepository souvenirCategoryRepository;
 
     @Override
     public boolean insertSouvenirCategory(SouvenirCategory souvenirCategory) {
-        return souvenirCategoryDAO.insertSouvenirCategory(souvenirCategory);
+        return souvenirCategoryRepository.insertSouvenirCategory(souvenirCategory);
     }
 
     @Override
     public boolean updateSouvenirCategory(SouvenirCategory souvenirCategory) {
-        return souvenirCategoryDAO.updateSouvenirCategory(souvenirCategory);
+        return souvenirCategoryRepository.updateSouvenirCategory(souvenirCategory);
     }
 
     @Override
     public boolean deleteSouvenirCategory(SouvenirCategory souvenirCategory) {
-        return souvenirCategoryDAO.deleteSouvenirCategory(souvenirCategory);
+        return souvenirCategoryRepository.deleteSouvenirCategory(souvenirCategory);
     }
 
     @Override
     public SouvenirCategory getSouvenirCategory(Integer souvenirCategoryId) {
-        return souvenirCategoryDAO.getSouvenirCategory(souvenirCategoryId);
+        return souvenirCategoryRepository.getSouvenirCategory(souvenirCategoryId);
     }
 
     @Override
     public List<SouvenirCategory> getAllSouvenirCategories() {
-        return souvenirCategoryDAO.getAllSouvenirCategories();
+        return souvenirCategoryRepository.getAllSouvenirCategories();
     }
 }

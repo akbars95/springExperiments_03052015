@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllCategories`()
+CREATE PROCEDURE `getAllCategories`()
 BEGIN
 select * from souvenir_categories;
 END$$

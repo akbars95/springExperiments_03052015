@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` TRIGGER `souvenir`.`souvenirs_AFTER_INSERT` AFTER INSERT ON `souvenirs` FOR EACH ROW
+CREATE DEFINER=`souvenir`@`localhost` TRIGGER `souvenir`.`souvenirs_AFTER_INSERT` AFTER INSERT ON `souvenirs` FOR EACH ROW
 BEGIN
 SET @lastID = 0;
 

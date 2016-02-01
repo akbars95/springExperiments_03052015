@@ -1,3 +1,5 @@
+use souvenir;
+
 CREATE TABLE `souvenir_categories` (
   `souvenir_category_id` int(11) NOT NULL AUTO_INCREMENT,
   `souvenir_category` varchar(50) CHARACTER SET utf8 NOT NULL,
