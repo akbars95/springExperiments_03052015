@@ -14,6 +14,6 @@ public class HelloController {
 	@RequestMapping(value = {"/", "/home", "/index"}, method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
 		model.addAttribute("message", "Hello world!");
-		return "hello";
+		return "index";
 	}
 }
