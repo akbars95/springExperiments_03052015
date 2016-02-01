@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getLastAddedCategoryIdgetLastAddedCategoryId`()
+CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `getLastAddedCategoryIdgetLastAddedCategoryId`()
 BEGIN
 select MAX(souvenir_category_id)
     from souvenir_categories;

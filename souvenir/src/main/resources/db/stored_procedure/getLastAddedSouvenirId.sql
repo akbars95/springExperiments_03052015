@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getLastAddedSouvenirId`(INOUT lastID INT)
+CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `getLastAddedSouvenirId`(INOUT lastID INT)
 BEGIN
 	select MAX(souvenir_id) into lastID
     from souvenirs;

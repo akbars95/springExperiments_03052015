@@ -1,4 +1,7 @@
-CREATE DATABASE IF NOT EXISTS `souvenir` CHARACTER SET utf8 COLLATE utf8_general_ci; /*case insensetive*/
-CREATE DATABASE IF NOT EXISTS `souvenir` CHARACTER SET utf8 COLLATE utf8_general_cs; /*case sensetive*/
+DROP DATABASE IF EXISTS souvenir;
+DROP USER 'souvenir'@'localhost';
 
-CREATE DATABASE IF NOT EXISTS `souvenir` CHARACTER SET utf8 COLLATE utf8_bin;
+CREATE DATABASE IF NOT EXISTS souvenir CHARACTER SET utf8 COLLATE utf8_bin;
+
+CREATE USER 'souvenir'@'localhost' IDENTIFIED BY 'souvenir12345';
+GRANT ALL PRIVILEGES ON souvenir. * TO 'souvenir'@'localhost';

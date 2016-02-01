@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertsouvenirs`(IN souvenir_nameIN VARCHAR(50), IN souvenir_descriptionIN VARCHAR(255), IN souvenir_showIN TINYINT(1), IN souvenir_pathIN VARCHAR(300), 
+CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `insertsouvenirs`(IN souvenir_nameIN VARCHAR(50), IN souvenir_descriptionIN VARCHAR(255), IN souvenir_showIN TINYINT(1), IN souvenir_pathIN VARCHAR(300),
 									IN souvenir_category_idIN INT(11), IN souvenir_priceIN DECIMAL(8,2), IN souvenir_count_of_days_for_orderIN INT(11))
 BEGIN
 	insert into souvenirs(souvenir_name, souvenir_description, souvenir_show, souvenir_path, souvenir_category_id, souvenir_price, souvenir_count_of_days_for_order)
