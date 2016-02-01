@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HelloController {
 
+	
+	
 
 	@RequestMapping(value = {"/", "/home", "/index"}, method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
