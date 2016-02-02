@@ -17,38 +17,43 @@
 </c:forEach>
 <!-- end stylesheets -->
 
+<!-- scripts -->
+<c:forEach var="script" items="${javascripts}">
+	<script src="<c:url value="${script}"/>"></script>
+</c:forEach>
+<!-- end scripts -->
+
+
+
 </head>
-<body>
+<body style="display: inherit !important;">
 
-	<!-- header -->
-	<div id="header">
-		<tiles:insertAttribute name="header" />
+	<div class="container">
+		<!-- header -->
+		<div id="header">
+			<tiles:insertAttribute name="header" />
+		</div>
+		<!-- end header  -->
+
+		<!-- menu -->
+		<div id="menu">
+			<tiles:insertAttribute name="menu" />
+		</div>
+		<!-- end menu  -->
+
+		<!-- content -->
+		<div id="content">
+			<tiles:insertAttribute name="content" />
+		</div>
+		<!-- end content -->
+
+		<!-- footer -->
+		<div id="footer">
+			<tiles:insertAttribute name="footer" />
+		</div>
+		<!-- end footer -->
+
 	</div>
-	<!-- end header  -->
-
-	<!-- menu -->
-	<div id="menu">
-		<tiles:insertAttribute name="menu" />
-	</div>
-	<!-- end menu  -->
-
-	<!-- content -->
-	<div id="content">
-		<tiles:insertAttribute name="content" />
-	</div>
-	<!-- end content -->
-
-	<!-- footer -->
-	<div id="footer">
-		<tiles:insertAttribute name="footer" />
-	</div>
-	<!-- end footer -->
-
-	<!-- scripts -->
-	<c:forEach var="script" items="${javascripts}">
-		<script src="<c:url value="${script}"/>"></script>
-	</c:forEach>
-	<!-- end scripts -->
 
 </body>
 </html>

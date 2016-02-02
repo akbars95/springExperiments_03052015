@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,11 +34,11 @@ public class CommonSQLScript {
         readFiles(folder + "db_create.sql");
         readFilesFromFolder(strings, folder);
         writeFiles(file);
-        System.out.println("Done");
+        System.out.println("Done - " + new Date());
     }
 
     private void readFilesFromFolder(List<String> strings, String folder) {
-        String[] folders = new String[]{"table", "view", "trigger", "stored_procedure"};
+        String[] folders = new String[]{"table", "view", "trigger", "stored_procedure", "function"};
         for (String current : folders) {
             getFilesRecursively(folder + current, strings);
             this.stringBuilderSQLText.append("\n").append("\t\t/*").append(current + "s").append("*/").append("\n");

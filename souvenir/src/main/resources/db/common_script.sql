@@ -78,10 +78,12 @@ DELIMITER ;
 
 
 		/*stored_procedures*/
+DELIMITER $$
 CREATE PROCEDURE deleteCategoryById (IN souvenir_category_idIN int(11))
 BEGIN
 	DELETE FROM souvenir_categories WHERE souvenir_category_id = souvenir_category_idIN;
-END;
+END$$
+DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE `getAllCategories`()
@@ -174,4 +176,58 @@ CALL `souvenir`.`updateCategory`('Category 999', 6);
 CALL `souvenir`.`deleteCategoryById`(6);
 
 
+
+
+		/*functions*/
+DROP FUNCTION IF EXISTS souvenir.souvenirIsUpdated;
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `souvenirIsUpdated`(souvenir_idIN int(11)) RETURNS varchar(5) CHARSET utf8
+BEGIN
+
+DECLARE isUpdated VARCHAR(5);
+  DECLARE created_datetimeL datetime;
+  DECLARE last_update_datetimeL datetime;
+
+  select created_datetime, last_update_datetime into created_datetimeL, last_update_datetimeL
+  FROM souvenirs_audit sa
+  where sa.souvenir_id = souvenir_idIN;
+
+  IF created_datetimeL = last_update_datetimeL
+  THEN SET isUpdated = 'false';
+  ELSE SET isUpdated = 'true';
+  END IF;
+
+	RETURN isUpdated;
+
+END$$
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS souvenir.souvenirIsUpdatedV2;
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION souvenir.`souvenirIsUpdatedV2`(souvenir_idIN int(11)) RETURNS VARCHAR(5) CHARSET utf8
+BEGIN
+  DECLARE isUpdated VARCHAR(5);
+  DECLARE created_datetimeL datetime;
+  
+  select created_datetime into created_datetimeL
+  FROM souvenirs_audit sa
+  where sa.created_datetime = sa.last_update_datetime and sa.souvenir_id = souvenir_idIN;
+  
+  IF created_datetimeL is null
+  THEN SET isUpdated = 'true';
+  ELSE SET isUpdated = 'false';
+  END IF;
+  
+	RETURN isUpdated;
+END$$
+DELIMITER ;
+
+delete from souvenirs_audit;
+
+insert into souvenirs_audit values(1, now(), now());
+insert into souvenirs_audit values(2, now(), now() + 1);
+
+select souvenirIsUpdated(1);
+select souvenirIsUpdatedV2(1);
 

@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+.activeLanguage {
+	color: green;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.activeLanguage:hover {
+	text-decoration: none;
+	color: blue;
+}
+
+.languageBar ul li {
+    display: inline;
+    border-left: 10px solid yellowgreen;
+    border-bottom: 2px solid yellowgreen;
+}
