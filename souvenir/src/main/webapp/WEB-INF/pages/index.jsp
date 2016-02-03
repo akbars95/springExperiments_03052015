@@ -20,9 +20,6 @@
 <script src="${lessJS}"></script>
 </head>
 <body> --%>
-
-
-
 <tiles:insertDefinition name="defaultTemplate">
 	<tiles:putAttribute name="title">
 		<spring:message code="page.home.title" />
