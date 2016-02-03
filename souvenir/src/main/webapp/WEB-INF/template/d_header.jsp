@@ -5,18 +5,18 @@
 
 <div class="header ">
 	<div class="languageBar text-right">
-		<span><spring:message code="language.label" />:</span>
-		<c:set var="salary" value="activeLanguage" />
+		<%-- <span><spring:message code="language.label" />:</span> --%>
+		<c:set var="currentLanguageClass" value="activeLanguage" />
 		<ul>
 			<li><a href="?lang=en"
-				class="<c:if test="${pageContext.response.locale == 'en'}"><c:out value="${salary}" /></c:if>">
+				class="<c:if test="${pageContext.response.locale == 'en'}"><c:out value="${currentLanguageClass}" /></c:if>">
 					<spring:message code="language.english" />
 			</a></li>
 			<li><a href="?lang=md"
-				class="<c:if test="${pageContext.response.locale == 'md'}"><c:out value="${salary}" /></c:if>"><spring:message
+				class="<c:if test="${pageContext.response.locale == 'md'}"><c:out value="${currentLanguageClass}" /></c:if>"><spring:message
 						code="language.moldavian" /></a></li>
 			<li><a href="?lang=ru"
-				class="<c:if test="${pageContext.response.locale == 'ru'}"><c:out value="${salary}" /></c:if>"><spring:message
+				class="<c:if test="${pageContext.response.locale == 'ru'}"><c:out value="${currentLanguageClass}" /></c:if>"><spring:message
 						code="language.russian" /></a></li>
 		</ul>
 	</div>

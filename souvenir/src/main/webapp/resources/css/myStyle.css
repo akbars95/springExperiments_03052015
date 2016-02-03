@@ -16,3 +16,31 @@
     border-left: 10px solid yellowgreen;
     border-bottom: 2px solid yellowgreen;
 }
+
+img.contact_img{
+	width: 100%;
+}
+
+span.numbers{
+    display: block;
+    border: 5px solid green;
+    border-radius: 55px;
+    width: 25%;
+    background-color: yellow;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 9px;
+    cursor: pointer;
+}
+
+#googleMap{
+	width: 75%;
+	height: 250px;
+	margin: 0 auto;
+}
+
+#person_email{
+	width: 50%;
+}

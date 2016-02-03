@@ -1,5 +1,12 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="menu">
+
+<script type="text/javascript">
+//alert(location.pathname);
+</script>
 
     <nav class="navbar navbar-default">
         <div class="container-fluid">

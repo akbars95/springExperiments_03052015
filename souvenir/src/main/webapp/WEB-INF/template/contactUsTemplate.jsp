@@ -23,6 +23,30 @@
 </c:forEach>
 <!-- end scripts -->
 
+<script type="text/javascript">
+	/* google maps api */
+	var myCenter=new google.maps.LatLng(47.043318, 28.867029);
+	function initialize() {
+		var mapProp = {
+			center : new google.maps.LatLng(47.043318, 28.867029),
+			zoom : 17,
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("googleMap"),
+				mapProp);
+		var marker=new google.maps.Marker({
+			  position:myCenter,
+			  });
+		marker.setMap(map);
+		var infowindow = new google.maps.InfoWindow({
+			  content:"Souvenir!"
+			  });
+
+			infowindow.open(map,marker);
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
 </head>
 <body style="display: inherit !important;">
 

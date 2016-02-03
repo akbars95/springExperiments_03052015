@@ -8,13 +8,14 @@
 	<name>souvenir</name>
 
 	<properties>
-		<spring.version>4.1.1.RELEASE</spring.version>
+		<spring.version>4.2.1.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<mysql.version>5.1.35</mysql.version>
 		<commons-dbcp.version>1.4</commons-dbcp.version>
 		<servlet.version>2.5</servlet.version>
 		<jsp.version>2.1</jsp.version>
 		<java.version>1.7</java.version>
+		<email.version>1.4.7</email.version>
 	</properties>
 
 	<dependencies>
@@ -51,6 +52,13 @@
 			<version>${spring.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- java web -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -100,6 +108,13 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.11</version>
+		</dependency>
+
+		<!-- email -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${email.version}</version>
 		</dependency>
 
 		<!-- testing -->
