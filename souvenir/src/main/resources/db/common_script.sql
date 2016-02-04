@@ -40,6 +40,13 @@ CREATE TABLE `souvenirs_audit` (
   `last_update_datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+CREATE TABLE `captcha` (
+  `captcha_id` int(11) NOT NULL AUTO_INCREMENT,
+  `captcha_value` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `captcha_url_file` varchar(255) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`captcha_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 		/*views*/
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `fullselectsouvenirs` AS
@@ -79,6 +86,13 @@ DELIMITER ;
 
 		/*stored_procedures*/
 DELIMITER $$
+CREATE PROCEDURE deleteCaptcha (IN captcha_idIN int(11))
+BEGIN
+	DELETE FROM captcha WHERE captcha_id = captcha_idIN;
+END$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE PROCEDURE deleteCategoryById (IN souvenir_category_idIN int(11))
 BEGIN
 	DELETE FROM souvenir_categories WHERE souvenir_category_id = souvenir_category_idIN;
@@ -86,9 +100,23 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
+CREATE PROCEDURE getAllCaptcha ()
+BEGIN
+	SELECT * FROM captcha;
+END$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE PROCEDURE `getAllCategories`()
 BEGIN
 select * from souvenir_categories;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE getCaptchaById (IN captcha_idIN int(11))
+BEGIN
+	SELECT * FROM captcha WHERE captcha_id = captcha_idIN;
 END$$
 DELIMITER ;
 
@@ -128,6 +156,13 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
+CREATE PROCEDURE insertCaptcha (IN captcha_valueIN varchar(10), IN captcha_url_fileIN varchar(255))
+BEGIN
+	INSERT INTO captcha(captcha_value, captcha_url_file) VALUES(captcha_valueIN, captcha_url_fileIN);
+END$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `insertCategory`(IN souvenir_categoryIN varchar(50))
 BEGIN
 INSERT INTO souvenir_categories(souvenir_category) values(souvenir_categoryIN);
@@ -154,6 +189,13 @@ DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `selectSouvenir`(IN souvenirIdIN int(11))
 BEGIN
 	SELECT * FROM fullselectsouvenirs WHERE souvenir_id = souvenirIdIN;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE updateCaptcha (IN captcha_idIN int(11), IN captcha_valueIN varchar(10), IN captcha_url_fileIN varchar(255))
+BEGIN
+	UPDATE captcha SET captcha_value = captcha_valueIN, captcha_url_file = captcha_url_fileIN WHERE captcha_id = captcha_idIN;
 END$$
 DELIMITER ;
 

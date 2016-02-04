@@ -37,6 +37,7 @@ public class CommonSQLScript {
         System.out.println("Done - " + new Date());
     }
 
+
     private void readFilesFromFolder(List<String> strings, String folder) {
         String[] folders = new String[]{"table", "view", "trigger", "stored_procedure", "function"};
         for (String current : folders) {

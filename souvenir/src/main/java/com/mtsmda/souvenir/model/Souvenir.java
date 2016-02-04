@@ -7,7 +7,13 @@ import java.io.Serializable;
  */
 public class Souvenir implements Serializable{
 
-    private Integer souvenirId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	private Integer souvenirId;
     private String souvenirName;
     private String souvenirDescription;
     private Boolean souvenirShow;

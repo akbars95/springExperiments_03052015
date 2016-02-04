@@ -1,4 +1,6 @@
+DELIMITER $$
 CREATE PROCEDURE getAllCaptcha ()
 BEGIN
 	SELECT * FROM captcha;
-END;
+END$$
+DELIMITER ;
