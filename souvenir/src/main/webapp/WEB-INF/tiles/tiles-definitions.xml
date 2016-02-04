@@ -29,8 +29,12 @@
 		</put-list-attribute>
 	</definition>
 
-	<definition name="contactUsTemplate" extends="defaultTemplate" template="/WEB-INF/template/contactUsTemplate.jsp">
-
+	<definition name="contactUsTemplate" extends="defaultTemplate"
+		template="/WEB-INF/template/contactUsTemplate.jsp">
+		<put-list-attribute name="javascripts" inherit="true" cascade="true">
+			<add-attribute value="/resources/js/angularJS/angular.min.js" />
+			<add-attribute value="/resources/js/angularJS/souvenir.angularJS.js" />
+		</put-list-attribute>
 	</definition>
 
 </tiles-definitions>

@@ -15,9 +15,13 @@ public class CaptchaSP {
 	public static final String GET_ALL_CAPTCHA_SP_NAME = "getAllCaptcha";
 	public static final String GET_RANDOM_CAPTCHA_SP_NAME = "getRandomCaptcha";
 
-	public static final String CAPTCHA_ID_IN_SP_PARAM_NAME = "captcha_id" + IN;
-	public static final String CAPTCHA_VALUE_IN_SP_PARAM_NAME = "captcha_value" + IN;
-	public static final String CAPTCHA_URL_FILE_IN_SP_PARAM_NAME = "captcha_url_file" + IN;
+	public static final String CAPTCHA_ID = "captcha_id";
+	public static final String CAPTCHA_VALUE = "captcha_value";
+	public static final String CAPTCHA_URL_FILE = "captcha_url_file";
+
+	public static final String CAPTCHA_ID_IN_SP_PARAM_NAME = CAPTCHA_ID + IN;
+	public static final String CAPTCHA_VALUE_IN_SP_PARAM_NAME = CAPTCHA_VALUE + IN;
+	public static final String CAPTCHA_URL_FILE_IN_SP_PARAM_NAME = CAPTCHA_URL_FILE + IN;
 
 	public static final SqlParameter CAPTCHA_ID_IN_SP_SQL_PARAM = new SqlParameter(CAPTCHA_ID_IN_SP_PARAM_NAME,
 			Types.INTEGER);
