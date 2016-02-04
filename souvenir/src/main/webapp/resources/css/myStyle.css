@@ -1,14 +1,14 @@
 @CHARSET "UTF-8";
 
 .activeLanguage {
-	color: green;
-	font-weight: bold;
-	text-decoration: none;
+    color: green;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .activeLanguage:hover {
-	text-decoration: none;
-	color: blue;
+    text-decoration: none;
+    color: blue;
 }
 
 .languageBar ul li {
@@ -17,11 +17,11 @@
     border-bottom: 2px solid yellowgreen;
 }
 
-img.contact_img{
-	width: 100%;
+img.contact_img {
+    width: 100%;
 }
 
-span.numbers{
+span.numbers {
     display: block;
     border: 5px solid green;
     border-radius: 55px;
@@ -35,12 +35,13 @@ span.numbers{
     cursor: pointer;
 }
 
-#googleMap{
-	width: 75%;
-	height: 250px;
-	margin: 0 auto;
+#googleMap {
+    width: 75%;
+    height: 250px;
+    margin: 0 auto;
 }
 
-#person_email{
-	width: 50%;
+#person_email {
+    width: 50%;
+    display: inline;
 }

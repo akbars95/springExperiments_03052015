@@ -27,3 +27,10 @@ CREATE TABLE `souvenirs_audit` (
   `created_datetime` datetime DEFAULT NULL,
   `last_update_datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `captcha` (
+  `captcha_id` int(11) NOT NULL AUTO_INCREMENT,
+  `captcha_value` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `captcha_url_file` varchar(255) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`captcha_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
