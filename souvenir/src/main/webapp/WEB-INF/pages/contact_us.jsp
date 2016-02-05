@@ -48,48 +48,72 @@
 					</p>
 				</div>
 				<div class="col-lg-5 col-md-7 col-sm-7 col-xs-7">
+					<div class="alert alert-success" role="alert"
+						ng-show="responseFormSuccess">
+						<spring:message code="page.contactus.form.response.success" />
+					</div>
+					<div class="alert alert-danger" role="alert"
+						ng-show="responseFormError">
+						<spring:message code="page.contactus.form.response.error" />
+					</div>
 					<form class="form-horizontal" action="/sendemail" method="post"
-						enctype="application/x-www-form-urlencoded">
+						enctype="application/x-www-form-urlencoded"
+						novalidate="novalidate">
 						<div class="form-group">
-							<label for="person_name" class="col-sm-2 control-label contact_us_form_item">
-								<spring:message code="page.contactus.form.name.label" />
+							<label for="person_name"
+								class="col-sm-2 control-label contact_us_form_item"> <spring:message
+									code="page.contactus.form.name.label" />
 							</label>
 							<div class="col-sm-10">
 								<input type="text" name="person_name" class="form-control"
-									id="person_name"
+									id="person_name" ng-model="formDataSendEmail.messageName"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.name.label"/>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="person_email" class="col-sm-2 control-label contact_us_form_item"><spring:message
+							<label for="person_email"
+								class="col-sm-2 control-label contact_us_form_item"><spring:message
 									code="page.contactus.form.email.label" /></label>
 							<div class="col-sm-10">
-								<input type="email" class="form-control" id="person_email"
-									name="person_email"
+								<input type="text" class="form-control" id="person_email"
+									name="person_email" ng-model="formDataSendEmail.messageEmail"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.email.label"/>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="person_message" class="col-sm-2 control-label contact_us_form_item"><spring:message
+							<label for="person_message"
+								class="col-sm-2 control-label contact_us_form_item"><spring:message
 									code="page.contactus.form.message.label" /></label>
 
 							<div class="col-sm-10">
-								<textarea class="form-control" rows="5" id="person_message" name="person_message"
+								<textarea class="form-control" rows="5" id="person_message"
+									name="person_message" ng-model="formDataSendEmail.messageText"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.message.label"/>"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="person_сaptcha" class="col-sm-2 control-label contact_us_form_item"><spring:message
+							<label for="person_сaptcha"
+								class="col-sm-2 control-label contact_us_form_item"><spring:message
 									code="page.contactus.form.сaptcha.label" /></label>
 							<div class="col-sm-10">
-								<input type="email" class="form-control" id="person_сaptcha"
+								<input type="text" class="form-control" id="person_сaptcha"
 									name="person_сaptcha"
+									ng-model="formDataSendEmail.messageCaptcha"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.сaptcha.label"/>">
 								<img ng-src="{{currentCaptcha.captchaUrlFile}}" /> <img
 									id="refreshCaptchaBtn" ng-click="refreshCaptcha()"
 									src="<spring:url value="/resources/images/arrow_refresh.png" htmlEscape="true"/>" />
 							</div>
 						</div>
+						<%-- <div class="form-group">
+							<label for="person_file"
+								class="col-sm-2 control-label contact_us_form_item"><spring:message
+									code="page.contactus.form.message.label" /></label>
+
+							<div class="col-sm-10">
+								<input type="file" name="person_file" id="person_file">
+							</div>
+						</div> --%>
 						<div class="form-group">
 							<div class="col-sm-5 col-xs-5 text-center">
 								<button type="reset" class="btn btn-danger" name="reset">
@@ -98,7 +122,8 @@
 							</div>
 							<div
 								class="col-sm-offset-2 col-sm-5 col-xm-offset-2 col-xs-5 text-center">
-								<button type="submit" class="btn btn-success">
+								<button type="button" class="btn btn-success"
+									ng-click="sendFormToServer()">
 									<spring:message code="page.contactus.form.send.btn" />
 								</button>
 							</div>

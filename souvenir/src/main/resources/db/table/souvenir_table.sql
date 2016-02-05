@@ -34,3 +34,16 @@ CREATE TABLE `captcha` (
   `captcha_url_file` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`captcha_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `message` (
+  `message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `message_name` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `message_email` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `message_text_m` text CHARACTER SET utf8 NOT NULL,
+  `message_captcha_id` int(11) NOT NULL,
+  PRIMARY KEY (`message_id`),
+  UNIQUE KEY `message_id_UNIQUE` (`message_id`),
+  KEY `message_ci_captcha_id_idx` (`message_captcha_id`),
+  CONSTRAINT `message_ci_captcha_id` FOREIGN KEY (`message_captcha_id`) REFERENCES `captcha` (`captcha_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
