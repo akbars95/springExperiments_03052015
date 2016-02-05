@@ -41,11 +41,22 @@ span.numbers {
 	margin: 0 auto;
 }
 
-#person_email {
+#person_сaptcha {
 	width: 50%;
 	display: inline;
 }
 
 #refreshCaptchaBtn {
 	cursor: pointer;
+}
+
+label.contact_us_form_item::after{
+	content: '*';
+	color: red;
+	font-size: 19px;
+	font-weight: bold;
+}
+
+textarea {
+	resize: none;
 }

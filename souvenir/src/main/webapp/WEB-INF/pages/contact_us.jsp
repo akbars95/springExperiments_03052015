@@ -51,7 +51,7 @@
 					<form class="form-horizontal" action="/sendemail" method="post"
 						enctype="application/x-www-form-urlencoded">
 						<div class="form-group">
-							<label for="inputEmail3" class="col-sm-2 control-label">
+							<label for="person_name" class="col-sm-2 control-label contact_us_form_item">
 								<spring:message code="page.contactus.form.name.label" />
 							</label>
 							<div class="col-sm-10">
@@ -61,7 +61,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="person_email" class="col-sm-2 control-label"><spring:message
+							<label for="person_email" class="col-sm-2 control-label contact_us_form_item"><spring:message
 									code="page.contactus.form.email.label" /></label>
 							<div class="col-sm-10">
 								<input type="email" class="form-control" id="person_email"
@@ -70,21 +70,20 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="person_message" class="col-sm-2 control-label"><spring:message
+							<label for="person_message" class="col-sm-2 control-label contact_us_form_item"><spring:message
 									code="page.contactus.form.message.label" /></label>
 
 							<div class="col-sm-10">
-								<textarea class="form-control" rows="5"
-									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.message.label"/>">
-							</textarea>
+								<textarea class="form-control" rows="5" id="person_message" name="person_message"
+									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.message.label"/>"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="person_email" class="col-sm-2 control-label"><spring:message
+							<label for="person_сaptcha" class="col-sm-2 control-label contact_us_form_item"><spring:message
 									code="page.contactus.form.сaptcha.label" /></label>
 							<div class="col-sm-10">
-								<input type="email" class="form-control" id="person_email"
-									name="person_email"
+								<input type="email" class="form-control" id="person_сaptcha"
+									name="person_сaptcha"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.сaptcha.label"/>">
 								<img ng-src="{{currentCaptcha.captchaUrlFile}}" /> <img
 									id="refreshCaptchaBtn" ng-click="refreshCaptcha()"

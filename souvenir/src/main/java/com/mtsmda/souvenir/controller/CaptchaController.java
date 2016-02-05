@@ -26,6 +26,11 @@ public class CaptchaController {
 			captchaFromClient.setCaptchaId(new Double(Math.random() * 20).intValue());
 		}
 		Captcha randomCaptcha = captchaService.getRandomCaptcha(captchaFromClient);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return randomCaptcha;
 	}
 
