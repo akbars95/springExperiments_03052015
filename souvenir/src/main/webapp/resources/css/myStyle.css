@@ -60,3 +60,7 @@ label.contact_us_form_item::after{
 textarea {
 	resize: none;
 }
+
+.form-horizontal .control-label{
+	text-align: left;
+}
