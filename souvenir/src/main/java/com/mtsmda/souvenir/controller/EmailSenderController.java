@@ -48,10 +48,10 @@ public class EmailSenderController {
         logger.info("new message - " + message.toString());
         System.out.println(message);
         boolean insertMessage = messageService.insertMessage(message);
-        insertMessage = false;
+        /*insertMessage = false;
         if (!insertMessage) {
             throw new RuntimeException("Error");
-        }
+        }*/
         return insertMessage;
     }
 
@@ -59,13 +59,11 @@ public class EmailSenderController {
     public String sendEmail(@RequestParam(value = "messageName", required = false) String messageName,
                             @RequestParam(value = "messageEmail", required = false) String messageEmail,
                             @RequestParam(value = "messageText", required = false) String messageText,
-                            @RequestParam(value = "messageCaptcha", required = false) String messageCaptcha,
-                            HttpServletRequest httpServletRequest/*,
+                            @RequestParam(value = "messageCaptcha", required = false) String messageCaptcha/*,
                             final @RequestParam CommonsMultipartFile attachFile*/) {
 
 
         System.out.println(messageName + " - " + messageCaptcha);
-        Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();
         /*SimpleMailMessage message = new SimpleMailMessage();
 
         message.setFrom(mail.getMailFrom());

@@ -5,9 +5,12 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by MTSMDA on 30.01.2016.
@@ -46,6 +49,7 @@ public class CommonSQLScript {
             for (String currentFileName : strings) {
                 readFiles(currentFileName);
             }
+            
             strings.clear();
         }
     }

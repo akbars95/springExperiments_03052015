@@ -7,7 +7,7 @@ var contactUsApp = angular.module('contactUsApp', []);
 contactUsApp
     .controller(
     'contactUsCtrl',
-    function ($scope, $http) {
+    function ($scope, $http, $timeout) {
         $scope.currentCaptcha = "";
         $scope.updateCaptchaURL = host + "/update_captcha";
         $scope.sendEmailURLURL = host + "/sendemail";
@@ -79,11 +79,18 @@ contactUsApp
                         console.log(response);
                         $scope.responseFormSuccess = true;
                         $scope.responseFormError = false;
+                        $timeout(callAtTimeout, 3000);
                     }).error(function (response) {
                         $scope.responseFormSuccess = false;
                         $scope.responseFormError = true;
+                        $timeout(callAtTimeout, 3000);
                     });
             }
+        }
+        
+        function callAtTimeout() {
+        	$scope.responseFormSuccess = false;
+        	$scope.responseFormError = false;
         }
 
         $scope.showFileUpload = false;
@@ -92,3 +99,4 @@ contactUsApp
         };
 
     });
+
