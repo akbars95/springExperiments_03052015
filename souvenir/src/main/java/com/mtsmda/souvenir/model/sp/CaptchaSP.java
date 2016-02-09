@@ -14,6 +14,9 @@ public class CaptchaSP {
 	public static final String GET_CAPTCHA_BY_ID_SP_NAME = "getCaptchaById";
 	public static final String GET_ALL_CAPTCHA_SP_NAME = "getAllCaptcha";
 	public static final String GET_RANDOM_CAPTCHA_SP_NAME = "getRandomCaptcha";
+	public static final String checkCaptcha = "checkCaptcha";
+
+	public static final String GET_MAX_ID_CAPTCHA_FN_NAME = "getMaxIdCaptcha";
 
 	public static final String CAPTCHA_ID = "captcha_id";
 	public static final String CAPTCHA_VALUE = "captcha_value";

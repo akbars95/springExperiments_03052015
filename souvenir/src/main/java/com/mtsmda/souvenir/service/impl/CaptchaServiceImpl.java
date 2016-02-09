@@ -48,4 +48,14 @@ public class CaptchaServiceImpl implements CaptchaService {
 		return captchaRepository.getRandomCaptcha(captchaUser);
 	}
 
+	@Override
+	public Integer getMaxIdCaptcha() {
+		return captchaRepository.getMaxIdCaptcha();
+	}
+
+	@Override
+	public boolean checkCaptcha(Captcha captcha) {
+		return captchaRepository.checkCaptcha(captcha);
+	}
+
 }

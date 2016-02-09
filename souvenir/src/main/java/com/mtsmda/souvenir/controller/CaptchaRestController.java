@@ -12,7 +12,7 @@ import com.mtsmda.souvenir.model.Captcha;
 import com.mtsmda.souvenir.service.CaptchaService;
 
 @RestController
-public class CaptchaController {
+public class CaptchaRestController {
 
 	@Autowired
 	@Qualifier("captchaService")
@@ -20,8 +20,8 @@ public class CaptchaController {
 
 	@RequestMapping(value = "/update_captcha", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Captcha getRandomCaptcha(@RequestBody Captcha captchaFromClient) {
-		if(captchaFromClient != null && captchaFromClient.getCaptchaId() == null){
-			captchaFromClient.setCaptchaId(new Double(Math.random() * 20).intValue());
+		if (captchaFromClient != null && captchaFromClient.getCaptchaId() == null) {
+			captchaFromClient.setCaptchaId(new Double(Math.random() * captchaService.getMaxIdCaptcha()).intValue());
 		}
 		Captcha randomCaptcha = captchaService.getRandomCaptcha(captchaFromClient);
 		try {
@@ -30,6 +30,14 @@ public class CaptchaController {
 			e.printStackTrace();
 		}
 		return randomCaptcha;
+	}
+
+	@RequestMapping(value = "/check_captcha", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public boolean getCheckCaptcha(@RequestBody Captcha captchaFromClient) {
+		if (captchaFromClient == null) {
+			return false;
+		}
+		return captchaService.checkCaptcha(captchaFromClient);
 	}
 
 }

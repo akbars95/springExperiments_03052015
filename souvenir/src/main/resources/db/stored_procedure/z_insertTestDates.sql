@@ -8,6 +8,8 @@ CALL `souvenir`.`insertCategory`('Category 6');
 CALL `souvenir`.`updateCategory`('Category 999', 6);
 CALL `souvenir`.`deleteCategoryById`(6);
 
+CALL `souvenir`.`checkCaptcha`(3, '1e345t$');
+
 
 
 

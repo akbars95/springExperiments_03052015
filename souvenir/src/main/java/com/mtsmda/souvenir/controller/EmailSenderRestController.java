@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class EmailSenderController {
+public class EmailSenderRestController {
 
     private Logger logger = Logger.getLogger(getClass());
 

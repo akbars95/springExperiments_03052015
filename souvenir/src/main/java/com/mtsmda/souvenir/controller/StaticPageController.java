@@ -1,9 +1,5 @@
 package com.mtsmda.souvenir.controller;
 
-import java.io.File;
-import java.net.URL;
-import java.util.Properties;
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

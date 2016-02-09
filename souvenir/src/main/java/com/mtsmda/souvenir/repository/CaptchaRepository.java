@@ -1,6 +1,5 @@
 package com.mtsmda.souvenir.repository;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.mtsmda.souvenir.model.Captcha;
@@ -13,5 +12,8 @@ public interface CaptchaRepository {
 	public Captcha getCaptchaById(Integer idCaptcha);
 	public List<Captcha> getAllCaptcha();
 	public Captcha getRandomCaptcha(Captcha captchaUser);
+	
+	public Integer getMaxIdCaptcha();
+	public boolean checkCaptcha(Captcha captcha);
 	
 }

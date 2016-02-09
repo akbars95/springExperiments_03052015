@@ -105,4 +105,16 @@ public class CaptchaRepositoryImplSP implements CaptchaRepository {
 		return captcha;
 	}
 
+	@Override
+	public Integer getMaxIdCaptcha() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean checkCaptcha(Captcha captcha) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
