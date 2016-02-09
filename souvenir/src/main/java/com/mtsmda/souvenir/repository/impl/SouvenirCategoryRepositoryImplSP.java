@@ -9,6 +9,7 @@ import com.mtsmda.souvenir.sp.SouvenirStoredProcedure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
@@ -22,7 +23,7 @@ import static com.mtsmda.souvenir.model.sp.SouvenirCategorySP.*;
 /**
  * Created by c-DMITMINZ on 29.01.2016.
  */
-@Service("souvenirCategoryRepository")
+@Repository("souvenirCategoryRepository")
 public class SouvenirCategoryRepositoryImplSP implements SouvenirCategoryRepository {
 
 	@Autowired

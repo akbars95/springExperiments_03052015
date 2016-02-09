@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.mtsmda.souvenir.exception.SouvenirException;
@@ -23,7 +24,7 @@ import com.mtsmda.souvenir.model.Message;
 import com.mtsmda.souvenir.repository.MessageRepository;
 import com.mtsmda.souvenir.sp.SouvenirStoredProcedure;
 
-@Service("messageRepository")
+@Repository("messageRepository")
 public class MessageRepositoryImplSP implements MessageRepository {
 
 	@Autowired

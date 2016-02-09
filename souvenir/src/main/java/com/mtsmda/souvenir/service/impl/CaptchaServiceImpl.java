@@ -14,7 +14,8 @@ import com.mtsmda.souvenir.service.CaptchaService;
 public class CaptchaServiceImpl implements CaptchaService {
 
 	@Autowired
-	@Qualifier("captchaRepository")
+//	@Qualifier("captchaRepository")
+	@Qualifier("captchaRepositoryImplSPJavaStandard")
 	private CaptchaRepository captchaRepository;
 
 	@Override

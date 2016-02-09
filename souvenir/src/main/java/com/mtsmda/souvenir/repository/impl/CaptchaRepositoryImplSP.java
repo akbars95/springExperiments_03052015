@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.SocketUtils;
 
@@ -24,7 +25,7 @@ import com.mtsmda.souvenir.model.sp.CaptchaSP;
 import com.mtsmda.souvenir.repository.CaptchaRepository;
 import com.mtsmda.souvenir.sp.SouvenirStoredProcedure;
 
-@Service("captchaRepository")
+@Repository("captchaRepository")
 public class CaptchaRepositoryImplSP implements CaptchaRepository {
 
 	@Autowired

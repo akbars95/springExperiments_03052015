@@ -1,5 +1,6 @@
 package com.mtsmda.souvenir.repository;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.mtsmda.souvenir.model.Captcha;
