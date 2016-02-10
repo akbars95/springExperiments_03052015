@@ -47,6 +47,20 @@ CREATE TABLE `captcha` (
   PRIMARY KEY (`captcha_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+CREATE TABLE `message` (
+  `message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `message_name` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `message_email` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `message_text_m` text CHARACTER SET utf8 NOT NULL,
+  `message_captcha_id` int(11) NOT NULL,
+  PRIMARY KEY (`message_id`),
+  UNIQUE KEY `message_id_UNIQUE` (`message_id`),
+  KEY `message_ci_captcha_id_idx` (`message_captcha_id`),
+  CONSTRAINT `message_ci_captcha_id` FOREIGN KEY (`message_captcha_id`) REFERENCES `captcha` (`captcha_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+
 
 		/*views*/
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `fullselectsouvenirs` AS
@@ -85,6 +99,13 @@ DELIMITER ;
 
 
 		/*stored_procedures*/
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `checkCaptcha`(IN captcha_idIN INT(11), IN captcha_valueIN VARCHAR(10))
+BEGIN
+	SELECT * FROM captcha c where c.captcha_id = captcha_idIN AND c.captcha_value = captcha_valueIN;
+END$$
+DELIMITER ;
+
 DELIMITER $$
 CREATE PROCEDURE deleteCaptcha (IN captcha_idIN int(11))
 BEGIN
@@ -156,6 +177,26 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getRandomCaptcha`(IN captcha_idIN INT(11))
+BEGIN
+	DECLARE maxIdCaptcha int;
+    DECLARE captcha_idNew int;
+    
+	select round(rand() * getMaxIdCaptcha()) into maxIdCaptcha;
+    
+    WHILE maxIdCaptcha = captcha_idIN DO
+		select round(rand() * getMaxIdCaptcha()) into maxIdCaptcha;
+	END WHILE;
+    
+    while captcha_idNew is null do
+		select c.captcha_id into captcha_idNew from captcha c where captcha_id = maxIdCaptcha;
+    end while;
+    
+    select c.captcha_id, c.captcha_url_file from captcha c where captcha_id = maxIdCaptcha;
+END$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE PROCEDURE insertCaptcha (IN captcha_valueIN varchar(10), IN captcha_url_fileIN varchar(255))
 BEGIN
 	INSERT INTO captcha(captcha_value, captcha_url_file) VALUES(captcha_valueIN, captcha_url_fileIN);
@@ -166,6 +207,14 @@ DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `insertCategory`(IN souvenir_categoryIN varchar(50))
 BEGIN
 INSERT INTO souvenir_categories(souvenir_category) values(souvenir_categoryIN);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertMessage`(IN message_nameIN VARCHAR(50), IN message_emailIN VARCHAR(50), IN message_text_mIN TEXT, IN message_captcha_idIN INT(11))
+BEGIN
+	INSERT INTO message(message_name, message_email, message_text_m, message_captcha_id) 
+    VALUES(message_nameIN, message_emailIN, message_text_mIN, message_captcha_idIN);
 END$$
 DELIMITER ;
 
@@ -216,6 +265,8 @@ CALL `souvenir`.`insertCategory`('Category 5');
 CALL `souvenir`.`insertCategory`('Category 6');
 CALL `souvenir`.`updateCategory`('Category 999', 6);
 CALL `souvenir`.`deleteCategoryById`(6);
+
+CALL `souvenir`.`checkCaptcha`(3, '1e345t$');
 
 
 
