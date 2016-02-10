@@ -12,11 +12,6 @@ import java.util.List;
 		"deleteCategoryById", "getCategoryById", "getCategoryByNameLike", "getAllCategories" })
 public class SouvenirCategory implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	private Integer souvenirCategoryId;
 	private String souvenirCategory;
 	private List<Souvenir> souvenirs;

@@ -1,7 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%-- <html>
 <head>
 <spring:url
@@ -21,14 +21,18 @@
 </head>
 <body> --%>
 <tiles:insertDefinition name="defaultTemplate">
-    <tiles:putAttribute name="title">
-        <spring:message code="page.home.title"/>
-    </tiles:putAttribute>
-    <tiles:putAttribute name="content">
-        <div class="">
+	<tiles:putAttribute name="title">
+		<spring:message code="page.home.title" />
+	</tiles:putAttribute>
+	<tiles:putAttribute name="content">
+		<div class="">
 
-            <h1>${message}</h1>
+			<h1>${message}</h1>
 
-        </div>
-    </tiles:putAttribute>
+			<spring:url value="/adminPiece/souvenir/insert"
+				var="adminInsertSouvenirUrl" htmlEscape="true" />
+			<a href="${adminInsertSouvenirUrl}">Admin</a>
+
+		</div>
+	</tiles:putAttribute>
 </tiles:insertDefinition>

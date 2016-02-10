@@ -4,21 +4,33 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-	<!-- templates -->
-	<definition name="defaultTemplate" template="/WEB-INF/template/default_template.jsp">
+	<definition name="commonTemplate">
 		<put-attribute name="title" value="" cascade="true" />
-		<put-attribute name="header" value="/WEB-INF/template/d_header.jsp"
-			cascade="true" />
-		<put-attribute name="menu" value="/WEB-INF/template/d_menu.jsp"
-			cascade="true" />
 		<put-attribute name="content" value="" cascade="true" />
-		<put-attribute name="footer" value="/WEB-INF/template/d_footer.jsp"
-			cascade="true" />
 		<put-list-attribute name="javascripts" cascade="true">
 			<!-- <add-attribute value="/resources/less/less.min.js" /> -->
 			<add-attribute value="/resources/js/jquery-1.12.0.min.js" />
 			<add-attribute value="/resources/bootstrap-3.3.6-dist/js/bootstrap.min.js" />
-			<add-attribute value="/resources/js/google_maps.js" />
+			<add-attribute value="/resources/js/angularJS/angular.min.js" />
+		</put-list-attribute>
+		<put-list-attribute name="stylesheets" cascade="true">
+			<add-attribute
+				value="/resources/bootstrap-3.3.6-dist/css/bootstrap.min.css" />
+		</put-list-attribute>
+	</definition>
+
+	<!-- templates -->
+	<definition name="defaultTemplate" template="/WEB-INF/template/default_template.jsp"
+		extends="commonTemplate">
+		<put-attribute name="header" value="/WEB-INF/template/d_header.jsp"
+			cascade="true" />
+		<put-attribute name="menu" value="/WEB-INF/template/d_menu.jsp"
+			cascade="true" />
+		<put-attribute name="footer" value="/WEB-INF/template/d_footer.jsp"
+			cascade="true" />
+		<put-list-attribute name="javascripts" cascade="true"
+			inherit="true">
+			<!-- <add-attribute value="/resources/less/less.min.js" /> -->
 			<add-attribute value="/resources/js/jsScripts.js" />
 		</put-list-attribute>
 		<put-list-attribute name="stylesheets" cascade="true">
@@ -31,9 +43,19 @@
 
 	<definition name="contactUsTemplate" extends="defaultTemplate"
 		template="/WEB-INF/template/contactUsTemplate.jsp">
-		<put-list-attribute name="javascripts" inherit="true" cascade="true">
-			<add-attribute value="/resources/js/angularJS/angular.min.js" />
+		<put-list-attribute name="javascripts" inherit="true"
+			cascade="true">
+			<add-attribute value="/resources/js/google_maps.js" />
 			<add-attribute value="/resources/js/angularJS/souvenir.angularJS.js" />
+		</put-list-attribute>
+	</definition>
+
+	<definition name="defaultAdminTemplate" extends="commonTemplate"
+		template="/WEB-INF/template/default_admin_template.jsp">
+		<put-list-attribute name="javascripts" inherit="true"
+			cascade="true">
+			<add-attribute value="/resources/js/angularJS/adminPiece/souvenir.adminPiece.angularJS.js" />
+			
 		</put-list-attribute>
 	</definition>
 

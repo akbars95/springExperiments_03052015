@@ -49,7 +49,7 @@ public class CommonSQLScript {
             for (String currentFileName : strings) {
                 readFiles(currentFileName);
             }
-            
+
             strings.clear();
         }
     }

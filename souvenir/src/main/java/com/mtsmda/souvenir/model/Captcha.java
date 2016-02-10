@@ -7,11 +7,6 @@ import java.io.Serializable;
  */
 public class Captcha implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	private Integer captchaId;
 	private String captchaValue;
 	private String captchaUrlFile;
@@ -47,6 +42,49 @@ public class Captcha implements Serializable {
 
 	public void setCaptchaUrlFile(String captchaUrlFile) {
 		this.captchaUrlFile = captchaUrlFile;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((captchaId == null) ? 0 : captchaId.hashCode());
+		result = prime * result + ((captchaUrlFile == null) ? 0 : captchaUrlFile.hashCode());
+		result = prime * result + ((captchaValue == null) ? 0 : captchaValue.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Captcha other = (Captcha) obj;
+		if (captchaId == null) {
+			if (other.captchaId != null)
+				return false;
+		} else if (!captchaId.equals(other.captchaId))
+			return false;
+		if (captchaUrlFile == null) {
+			if (other.captchaUrlFile != null)
+				return false;
+		} else if (!captchaUrlFile.equals(other.captchaUrlFile))
+			return false;
+		if (captchaValue == null) {
+			if (other.captchaValue != null)
+				return false;
+		} else if (!captchaValue.equals(other.captchaValue))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Captcha [captchaId=" + captchaId + ", captchaValue=" + captchaValue + ", captchaUrlFile="
+				+ captchaUrlFile + "]";
 	}
 
 }

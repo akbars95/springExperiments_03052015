@@ -1,0 +1,9 @@
+Model class:(in parentheses Example)
+	package: model
+	class name - CamelCase(Captcha)
+	properties name - Java standard convention
+	implementations - Serializable
+	constructors - empty(is required) and etc...
+	Object methods - hashCode, equals, toString
+	get-, set- ters
+	class annotation - 

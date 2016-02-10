@@ -16,7 +16,7 @@ import java.util.List;
 public class SouvenirCategoryServiceImpl implements SouvenirCategoryService {
 
     @Autowired
-    @Qualifier("souvenirCategoryRepository")
+    @Qualifier("souvenirCategoryRepositoryImplSPJavaStandard")
     private SouvenirCategoryRepository souvenirCategoryRepository;
 
     @Override

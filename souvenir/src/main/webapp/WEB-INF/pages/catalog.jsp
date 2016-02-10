@@ -15,7 +15,7 @@
 		<spring:message code="page.catalog.title" />
 	</tiles:putAttribute>
 	<tiles:putAttribute name="content">
-		<div class="">
+		<div class="" ng-app="catalogApp" ng-controller="catalogCtrl">
 			
 		</div>
 	</tiles:putAttribute>
