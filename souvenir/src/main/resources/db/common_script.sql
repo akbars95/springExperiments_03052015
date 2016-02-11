@@ -12,14 +12,14 @@ GRANT ALL PRIVILEGES ON souvenir. * TO 'souvenir'@'localhost';
 		/*tables*/
 use souvenir;
 
-CREATE TABLE `souvenir_categories` (
+CREATE TABLE `SOUVENIR_CATEGORIES` (
   `souvenir_category_id` int(11) NOT NULL AUTO_INCREMENT,
   `souvenir_category` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`souvenir_category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
-CREATE TABLE `souvenirs` (
+CREATE TABLE `SOUVENIRS` (
   `souvenir_id` int(11) NOT NULL AUTO_INCREMENT,
   `souvenir_name` varchar(50) NOT NULL,
   `souvenir_description` varchar(255) DEFAULT NULL,
@@ -34,20 +34,20 @@ CREATE TABLE `souvenirs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `souvenirs_audit` (
+CREATE TABLE `SOUVENIRS_AUDIT` (
   `souvenir_id` int(11) NOT NULL,
   `created_datetime` datetime DEFAULT NULL,
   `last_update_datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-CREATE TABLE `captcha` (
+CREATE TABLE `CAPTCHA` (
   `captcha_id` int(11) NOT NULL AUTO_INCREMENT,
   `captcha_value` varchar(10) CHARACTER SET utf8 NOT NULL,
   `captcha_url_file` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`captcha_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-CREATE TABLE `message` (
+CREATE TABLE `MESSAGE` (
   `message_id` int(11) NOT NULL AUTO_INCREMENT,
   `message_name` varchar(50) CHARACTER SET utf8 NOT NULL,
   `message_email` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -63,9 +63,9 @@ CREATE TABLE `message` (
 
 
 		/*views*/
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `fullselectsouvenirs` AS
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `FULL_SELECT_SOUVENIRS` AS
 select `s`.`souvenir_id` AS `souvenir_id`,`s`.`souvenir_name` AS `souvenir_name`,`s`.`souvenir_description` AS `souvenir_description`,`s`.`souvenir_show` AS `souvenir_show`,`s`.`souvenir_path` AS `souvenir_path`,`s`.`souvenir_category_id` AS `souvenir_category_id`,`s`.`souvenir_price` AS `souvenir_price`,`s`.`souvenir_count_of_days_for_order` AS `souvenir_count_of_days_for_order`,`sc`.`souvenir_category` AS `souvenir_category`
-from (`souvenirs` `s` join `souvenir_categories` `sc` on((`s`.`souvenir_category_id` = `sc`.`souvenir_category_id`)));
+from (`SOUVENIRS` `s` join `SOUVENIR_CATEGORIES` `sc` on((`s`.`souvenir_category_id` = `sc`.`souvenir_category_id`)));
 
 
 		/*triggers*/
@@ -73,15 +73,15 @@ USE `souvenir`;
 
 DELIMITER $$
 
-DROP TRIGGER IF EXISTS souvenir.souvenirs_AFTER_INSERT$$
+DROP TRIGGER IF EXISTS souvenir.SOUVENIRS_AFTER_INSERT$$
 USE `souvenir`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `souvenir`.`souvenirs_AFTER_INSERT` AFTER INSERT ON `souvenirs` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `souvenir`.`SOUVENIRS_AFTER_INSERT` AFTER INSERT ON `SOUVENIRS` FOR EACH ROW
 BEGIN
 SET @lastID = 0;
 
 CALL `souvenir`.`getLastAddedSouvenirId`(@lastID);
 
-insert into souvenirs_audit(souvenir_id, created_datetime, last_update_datetime) values(NEW.souvenir_id , current_timestamp(), now());/*@lastID instead of NEW.souvenir_id */
+insert into SOUVENIRS_AUDIT(souvenir_id, created_datetime, last_update_datetime) values(NEW.souvenir_id , current_timestamp(), now());/*@lastID instead of NEW.souvenir_id */
 END$$
 DELIMITER ;
 
@@ -89,11 +89,11 @@ USE `souvenir`;
 
 DELIMITER $$
 
-DROP TRIGGER IF EXISTS souvenir.souvenirs_AFTER_UPDATE$$
+DROP TRIGGER IF EXISTS souvenir.SOUVENIRS_AFTER_UPDATE$$
 USE `souvenir`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `souvenir`.`souvenirs_AFTER_UPDATE` AFTER UPDATE ON `souvenirs` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `souvenir`.`SOUVENIRS_AFTER_UPDATE` AFTER UPDATE ON `SOUVENIRS` FOR EACH ROW
 BEGIN
-	update souvenirs_audit set last_update_datetime = now() where souvenir_id = OLD.souvenir_id;
+	update SOUVENIRS_AUDIT set last_update_datetime = now() where souvenir_id = OLD.souvenir_id;
 END$$
 DELIMITER ;
 
@@ -102,49 +102,56 @@ DELIMITER ;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `checkCaptcha`(IN captcha_idIN INT(11), IN captcha_valueIN VARCHAR(10))
 BEGIN
-	SELECT * FROM captcha c where c.captcha_id = captcha_idIN AND c.captcha_value = captcha_valueIN;
+	SELECT * FROM CAPTCHA c where c.captcha_id = captcha_idIN AND c.captcha_value = captcha_valueIN;
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE deleteCaptcha (IN captcha_idIN int(11))
 BEGIN
-	DELETE FROM captcha WHERE captcha_id = captcha_idIN;
+	DELETE FROM CAPTCHA WHERE captcha_id = captcha_idIN;
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE deleteCategoryById (IN souvenir_category_idIN int(11))
 BEGIN
-	DELETE FROM souvenir_categories WHERE souvenir_category_id = souvenir_category_idIN;
+	DELETE FROM SOUVENIR_CATEGORIES WHERE souvenir_category_id = souvenir_category_idIN;
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE getAllCaptcha ()
 BEGIN
-	SELECT * FROM captcha;
+	SELECT * FROM CAPTCHA;
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE `getAllCategories`()
 BEGIN
-select * from souvenir_categories;
+select * from SOUVENIR_CATEGORIES;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllSouvenirs`()
+BEGIN
+	SELECT * FROM SOUVENIR;
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE getCaptchaById (IN captcha_idIN int(11))
 BEGIN
-	SELECT * FROM captcha WHERE captcha_id = captcha_idIN;
+	SELECT * FROM CAPTCHA WHERE captcha_id = captcha_idIN;
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE `getCategoryById` (IN souvenir_category_idIN INT(11))
 BEGIN
-SELECT * from souvenir_categories sc
+SELECT * from SOUVENIR_CATEGORIES sc
 where sc.souvenir_category_id = souvenir_category_idIN;
 END$$
 
@@ -155,7 +162,7 @@ DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `getCategoryByNameLike`(IN souvenir_categoryIN VARCHAR(50))
 BEGIN
 select *
-from souvenir_categories sc
+from SOUVENIR_CATEGORIES sc
 where sc.souvenir_category like souvenir_categoryIN;
 END$$
 DELIMITER ;
@@ -164,7 +171,7 @@ DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `getLastAddedCategoryIdgetLastAddedCategoryId`()
 BEGIN
 select MAX(souvenir_category_id)
-    from souvenir_categories;
+    from SOUVENIR_CATEGORIES;
 END$$
 DELIMITER ;
 
@@ -172,7 +179,7 @@ DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `getLastAddedSouvenirId`(INOUT lastID INT)
 BEGIN
 	select MAX(souvenir_id) into lastID
-    from souvenirs;
+    from SOUVENIRS;
 END$$
 DELIMITER ;
 
@@ -189,40 +196,40 @@ BEGIN
 	END WHILE;
     
     while captcha_idNew is null do
-		select c.captcha_id into captcha_idNew from captcha c where captcha_id = maxIdCaptcha;
+		select c.captcha_id into captcha_idNew from CAPTCHA c where captcha_id = maxIdCaptcha;
     end while;
     
-    select c.captcha_id, c.captcha_url_file from captcha c where captcha_id = maxIdCaptcha;
+    select c.captcha_id, c.captcha_url_file from CAPTCHA c where captcha_id = maxIdCaptcha;
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE insertCaptcha (IN captcha_valueIN varchar(10), IN captcha_url_fileIN varchar(255))
 BEGIN
-	INSERT INTO captcha(captcha_value, captcha_url_file) VALUES(captcha_valueIN, captcha_url_fileIN);
+	INSERT INTO CAPTCHA(captcha_value, captcha_url_file) VALUES(captcha_valueIN, captcha_url_fileIN);
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `insertCategory`(IN souvenir_categoryIN varchar(50))
 BEGIN
-INSERT INTO souvenir_categories(souvenir_category) values(souvenir_categoryIN);
+INSERT INTO SOUVENIR_CATEGORIES(souvenir_category) values(souvenir_categoryIN);
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertMessage`(IN message_nameIN VARCHAR(50), IN message_emailIN VARCHAR(50), IN message_text_mIN TEXT, IN message_captcha_idIN INT(11))
 BEGIN
-	INSERT INTO message(message_name, message_email, message_text_m, message_captcha_id) 
+	INSERT INTO MESSAGE(message_name, message_email, message_text_m, message_captcha_id) 
     VALUES(message_nameIN, message_emailIN, message_text_mIN, message_captcha_idIN);
 END$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `insertsouvenirs`(IN souvenir_nameIN VARCHAR(50), IN souvenir_descriptionIN VARCHAR(255), IN souvenir_showIN TINYINT(1), IN souvenir_pathIN VARCHAR(300),
+CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `insertSouvenirs`(IN souvenir_nameIN VARCHAR(50), IN souvenir_descriptionIN VARCHAR(255), IN souvenir_showIN TINYINT(1), IN souvenir_pathIN VARCHAR(300),
 									IN souvenir_category_idIN INT(11), IN souvenir_priceIN DECIMAL(8,2), IN souvenir_count_of_days_for_orderIN INT(11))
 BEGIN
-	insert into souvenirs(souvenir_name, souvenir_description, souvenir_show, souvenir_path, souvenir_category_id, souvenir_price, souvenir_count_of_days_for_order)
+	insert into SOUVENIRS(souvenir_name, souvenir_description, souvenir_show, souvenir_path, souvenir_category_id, souvenir_price, souvenir_count_of_days_for_order)
     values(souvenir_nameIN, souvenir_descriptionIN, souvenir_showIN, souvenir_pathIN, souvenir_category_idIN, souvenir_priceIN, souvenir_count_of_days_for_orderIN);
 END$$
 DELIMITER ;
@@ -230,28 +237,28 @@ DELIMITER ;
 DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `selectAllSouvenirs`()
 BEGIN
-	SELECT * FROM fullselectsouvenirs;
+	SELECT * FROM FULL_SELECT_SOUVENIRS;
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `selectSouvenir`(IN souvenirIdIN int(11))
 BEGIN
-	SELECT * FROM fullselectsouvenirs WHERE souvenir_id = souvenirIdIN;
+	SELECT * FROM FULL_SELECT_SOUVENIRS WHERE souvenir_id = souvenirIdIN;
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE updateCaptcha (IN captcha_idIN int(11), IN captcha_valueIN varchar(10), IN captcha_url_fileIN varchar(255))
 BEGIN
-	UPDATE captcha SET captcha_value = captcha_valueIN, captcha_url_file = captcha_url_fileIN WHERE captcha_id = captcha_idIN;
+	UPDATE CAPTCHA SET captcha_value = captcha_valueIN, captcha_url_file = captcha_url_fileIN WHERE captcha_id = captcha_idIN;
 END$$
 DELIMITER ;
 
 DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `updateCategory`(IN souvenir_categoryIN varchar(50), IN souvenir_category_idIN int(11))
 BEGIN
-UPDATE souvenir_categories SET souvenir_category = souvenir_categoryIN
+UPDATE SOUVENIR_CATEGORIES SET souvenir_category = souvenir_categoryIN
 WHERE souvenir_category_id = souvenir_category_idIN;
 END$$
 DELIMITER ;
@@ -297,7 +304,7 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` FUNCTION `getMaxIdCaptcha`() RETURNS int(11)
 BEGIN
 	DECLARE maxIdCaptcha int;
-	Select Max(c.captcha_id) into maxIdCaptcha from captcha c;
+	Select Max(c.captcha_id) into maxIdCaptcha from CAPTCHA c;
 RETURN maxIdCaptcha;
 END$$
 DELIMITER ;
@@ -312,7 +319,7 @@ DECLARE isUpdated VARCHAR(5);
   DECLARE last_update_datetimeL datetime;
 
   select created_datetime, last_update_datetime into created_datetimeL, last_update_datetimeL
-  FROM souvenirs_audit sa
+  FROM SOUVENIRS_AUDIT sa
   where sa.souvenir_id = souvenir_idIN;
 
   IF created_datetimeL = last_update_datetimeL
@@ -334,7 +341,7 @@ BEGIN
   DECLARE created_datetimeL datetime;
   
   select created_datetime into created_datetimeL
-  FROM souvenirs_audit sa
+  FROM SOUVENIRS_AUDIT sa
   where sa.created_datetime = sa.last_update_datetime and sa.souvenir_id = souvenir_idIN;
   
   IF created_datetimeL is null

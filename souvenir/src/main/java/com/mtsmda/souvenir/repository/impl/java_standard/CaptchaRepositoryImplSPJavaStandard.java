@@ -37,16 +37,82 @@ public class CaptchaRepositoryImplSPJavaStandard implements CaptchaRepository {
 
 	@Override
 	public boolean insertCaptcha(Captcha captcha) {
+		try {
+			if (captcha == null) {
+				throw new SouvenirRuntimeException("insertCaptcha - captcha object is NULL");
+			}
+			Map<String, Object> mapParam = new LinkedHashMap<>();
+			mapParam.put(CAPTCHA_VALUE_IN_SP_PARAM_NAME, captcha.getCaptchaValue());
+			mapParam.put(CAPTCHA_URL_FILE_IN_SP_PARAM_NAME, captcha.getCaptchaUrlFile());
+			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource,
+					INSERT_CAPTCHA_SP_NAME, mapParam, false);
+			int count = callableStatement.executeUpdate();
+			if (count > 0) {
+				this.dataSource.getConnection().commit();
+				return true;
+			}
+		} catch (SQLException e) {
+			try {
+				this.dataSource.getConnection().rollback();
+			} catch (SQLException e1) {
+				throw new SouvenirRuntimeException("Error rollback operation! " + e1.getMessage());
+			}
+			throw new SouvenirRuntimeException("Error " + e.getMessage());
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updateCaptcha(Captcha captcha) {
+		try {
+			if (captcha == null) {
+				throw new SouvenirRuntimeException("updateCaptcha - captcha object is NULL");
+			}
+			Map<String, Object> mapParam = new LinkedHashMap<>();
+			mapParam.put(CAPTCHA_ID_IN_SP_PARAM_NAME, captcha.getCaptchaId());
+			mapParam.put(CAPTCHA_VALUE_IN_SP_PARAM_NAME, captcha.getCaptchaValue());
+			mapParam.put(CAPTCHA_URL_FILE_IN_SP_PARAM_NAME, captcha.getCaptchaUrlFile());
+			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource,
+					UPDATE_CAPTCHA_SP_NAME, mapParam, false);
+			int count = callableStatement.executeUpdate();
+			if (count > 0) {
+				this.dataSource.getConnection().commit();
+				return true;
+			}
+		} catch (SQLException e) {
+			try {
+				this.dataSource.getConnection().rollback();
+			} catch (SQLException e1) {
+				throw new SouvenirRuntimeException("Error rollback operation! " + e1.getMessage());
+			}
+			throw new SouvenirRuntimeException("Error " + e.getMessage());
+		}
 		return false;
 	}
 
 	@Override
 	public boolean deleteCaptcha(Captcha captcha) {
+		try {
+			if (captcha == null) {
+				throw new SouvenirRuntimeException("deleteCaptcha - captcha object is NULL");
+			}
+			Map<String, Object> mapParam = new LinkedHashMap<>();
+			mapParam.put(CAPTCHA_ID_IN_SP_PARAM_NAME, captcha.getCaptchaId());
+			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource,
+					DELETE_CAPTCHA_SP_NAME, mapParam, false);
+			int count = callableStatement.executeUpdate();
+			if (count > 0) {
+				this.dataSource.getConnection().commit();
+				return true;
+			}
+		} catch (SQLException e) {
+			try {
+				this.dataSource.getConnection().rollback();
+			} catch (SQLException e1) {
+				throw new SouvenirRuntimeException("Error rollback operation! " + e1.getMessage());
+			}
+			throw new SouvenirRuntimeException("Error " + e.getMessage());
+		}
 		return false;
 	}
 
@@ -58,8 +124,8 @@ public class CaptchaRepositoryImplSPJavaStandard implements CaptchaRepository {
 			Map<String, Object> mapParam = new LinkedHashMap<>();
 			mapParam.put(CAPTCHA_ID_IN_SP_PARAM_NAME, idCaptcha);
 
-			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource, GET_CAPTCHA_BY_ID_SP_NAME,
-					mapParam, false);
+			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource,
+					GET_CAPTCHA_BY_ID_SP_NAME, mapParam, false);
 			ResultSet rs = callableStatement.executeQuery();
 			while (rs.next()) {
 				captcha = captchaMapper.mapRow(rs);
@@ -72,7 +138,8 @@ public class CaptchaRepositoryImplSPJavaStandard implements CaptchaRepository {
 
 	@Override
 	public List<Captcha> getAllCaptcha() {
-		return null;
+		List<Captcha> captchas = null;
+		return captchas;
 	}
 
 	@Override
@@ -119,8 +186,8 @@ public class CaptchaRepositoryImplSPJavaStandard implements CaptchaRepository {
 			HashMap<String, Object> mapParam = new HashMap<>();
 			MapHelper.getMap(mapParam, keysList, captcha.getCaptchaId(), captcha.getCaptchaValue());
 
-			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource, CHECK_CAPTCHA, mapParam,
-					false);
+			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource,
+					CHECK_CAPTCHA_SP_NAME, mapParam, false);
 			ResultSet rs = callableStatement.executeQuery();
 			while (rs.next()) {
 				Captcha mapRow = captchaMapper.mapRow(rs);

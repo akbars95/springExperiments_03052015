@@ -15,7 +15,7 @@ public class CaptchaSP {
 	public static final String GET_CAPTCHA_BY_ID_SP_NAME = "getCaptchaById";
 	public static final String GET_ALL_CAPTCHA_SP_NAME = "getAllCaptcha";
 	public static final String GET_RANDOM_CAPTCHA_SP_NAME = "getRandomCaptcha";
-	public static final String CHECK_CAPTCHA = "checkCaptcha";
+	public static final String CHECK_CAPTCHA_SP_NAME = "checkCaptcha";
 
 	/* function name */
 	public static final String GET_MAX_ID_CAPTCHA_FN_NAME = "getMaxIdCaptcha";

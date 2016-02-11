@@ -61,7 +61,7 @@ public class SouvenirCategoryRepositoryImplSPJavaStandard implements SouvenirCat
 					null, false);
 			ResultSet rs = callableStatement.executeQuery();
 			while (rs.next()) {
-				captcha = captchaMapper.mapRow(rs);
+				//TODO/*captcha = captchaMapper.mapRow(rs);*/
 			}
 		} catch (SQLException e) {
 			throw new SouvenirRuntimeException("getCaptchaById - " + e.getMessage());

@@ -76,8 +76,8 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li id="home" class="active"><spring:url value="/home"
-							var="homeUrl" htmlEscape="true" /> <a href="${homeUrl}"><spring:message
+					<li id="home"><spring:url value="/home" var="homeUrl"
+							htmlEscape="true" /> <a href="${homeUrl}"><spring:message
 								code="menu.home.title" /><span class="sr-only">(current)</span></a></li>
 					<li id="catalog"><spring:url value="/catalog" var="catalogUrl"
 							htmlEscape="true" /> <a href="${catalogUrl}"><spring:message

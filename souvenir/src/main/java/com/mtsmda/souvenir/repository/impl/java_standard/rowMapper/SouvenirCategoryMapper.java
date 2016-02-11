@@ -12,8 +12,8 @@ public class SouvenirCategoryMapper{
 	
 	public SouvenirCategory mapRow(ResultSet rs) {
 		SouvenirCategory souvenirCategory = new SouvenirCategory();
-		
-		try {
+		//TODO 
+		/*try {
 			souvenirCategory.setSouvenirCategoryId(rs.getInt(columnLabel));
 		} catch (SQLException e) {
 			captcha.setCaptchaId(null);
@@ -30,8 +30,8 @@ public class SouvenirCategoryMapper{
 		} catch (SQLException e) {
 			captcha.setCaptchaValue(null);
 		}
-		
-		return captcha;
+		*/
+		return null;
 	}
 
 	
