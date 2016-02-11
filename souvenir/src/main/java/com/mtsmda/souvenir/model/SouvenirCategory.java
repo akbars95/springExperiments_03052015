@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by c-DMITMINZ on 29.01.2016.
  */
-@ModelClassInfo(tableName = "souvenir_categories", tableStoredProcedures = { "insertCategory", "updateCategory",
+@ModelClassInfo(tableName = "SOUVENIR_CATEGORIES", tableStoredProcedures = { "insertCategory", "updateCategory",
 		"deleteCategoryById", "getCategoryById", "getCategoryByNameLike", "getAllCategories" })
 public class SouvenirCategory implements Serializable {
 

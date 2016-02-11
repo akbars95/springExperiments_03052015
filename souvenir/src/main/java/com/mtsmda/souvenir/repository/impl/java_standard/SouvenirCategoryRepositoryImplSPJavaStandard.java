@@ -15,8 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.mtsmda.souvenir.exception.SouvenirException;
-import com.mtsmda.souvenir.helper.SouvenirStandardSP;
+import com.mtsmda.souvenir.exception.SouvenirRuntimeException;
+import com.mtsmda.souvenir.helper.SouvenirStandardSPHelper;
 import com.mtsmda.souvenir.model.Captcha;
 import com.mtsmda.souvenir.model.SouvenirCategory;
 import com.mtsmda.souvenir.repository.SouvenirCategoryRepository;
@@ -57,14 +57,14 @@ public class SouvenirCategoryRepositoryImplSPJavaStandard implements SouvenirCat
 	public List<SouvenirCategory> getAllSouvenirCategories() {
 		List<SouvenirCategory> categories = null;
 		try {
-			CallableStatement callableStatement = SouvenirStandardSP.execute(this.dataSource, GET_ALL_SOUVENIR_CATEGORIES_SP_NAME,
+			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource, GET_ALL_SOUVENIR_CATEGORIES_SP_NAME,
 					null, false);
 			ResultSet rs = callableStatement.executeQuery();
 			while (rs.next()) {
 				captcha = captchaMapper.mapRow(rs);
 			}
 		} catch (SQLException e) {
-			throw new SouvenirException("getCaptchaById - " + e.getMessage());
+			throw new SouvenirRuntimeException("getCaptchaById - " + e.getMessage());
 		}
 		return categories;
 	}

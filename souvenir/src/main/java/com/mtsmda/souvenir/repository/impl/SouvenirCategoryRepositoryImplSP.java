@@ -1,7 +1,7 @@
 package com.mtsmda.souvenir.repository.impl;
 
 import com.mtsmda.souvenir.repository.SouvenirCategoryRepository;
-import com.mtsmda.souvenir.exception.SouvenirException;
+import com.mtsmda.souvenir.exception.SouvenirRuntimeException;
 import com.mtsmda.souvenir.helper.ListHelper;
 import com.mtsmda.souvenir.helper.MapHelper;
 import com.mtsmda.souvenir.model.SouvenirCategory;
@@ -52,7 +52,7 @@ public class SouvenirCategoryRepositoryImplSP implements SouvenirCategoryReposit
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			throw new SouvenirException("Exception when insert new SouvenirCategory - " + e.getMessage());
+			throw new SouvenirRuntimeException("Exception when insert new SouvenirCategory - " + e.getMessage());
 		}
 		return true;
 	}
@@ -79,7 +79,7 @@ public class SouvenirCategoryRepositoryImplSP implements SouvenirCategoryReposit
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			throw new SouvenirException("Exception when update SouvenirCategory - " + e.getMessage());
+			throw new SouvenirRuntimeException("Exception when update SouvenirCategory - " + e.getMessage());
 		}
 		return true;
 	}
@@ -103,7 +103,7 @@ public class SouvenirCategoryRepositoryImplSP implements SouvenirCategoryReposit
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			throw new SouvenirException("Exception when delete SouvenirCategory - " + e.getMessage());
+			throw new SouvenirRuntimeException("Exception when delete SouvenirCategory - " + e.getMessage());
 		}
 		return true;
 	}
@@ -128,7 +128,7 @@ public class SouvenirCategoryRepositoryImplSP implements SouvenirCategoryReposit
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			throw new SouvenirException("Exception when get SouvenirCategory - " + e.getMessage());
+			throw new SouvenirRuntimeException("Exception when get SouvenirCategory - " + e.getMessage());
 		}
 		return souvenirCategory;
 	}
@@ -148,7 +148,7 @@ public class SouvenirCategoryRepositoryImplSP implements SouvenirCategoryReposit
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			throw new SouvenirException("Exception when get all SouvenirCategory - " + e.getMessage());
+			throw new SouvenirRuntimeException("Exception when get all SouvenirCategory - " + e.getMessage());
 		}
 		return souvenirCategories;
 	}

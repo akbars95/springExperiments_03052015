@@ -1,9 +1,9 @@
 package com.mtsmda.souvenir.repository.impl.java_standard;
 
-import com.mtsmda.souvenir.exception.SouvenirException;
+import com.mtsmda.souvenir.exception.SouvenirRuntimeException;
 import com.mtsmda.souvenir.helper.ListHelper;
 import com.mtsmda.souvenir.helper.MapHelper;
-import com.mtsmda.souvenir.helper.SouvenirStandardSP;
+import com.mtsmda.souvenir.helper.SouvenirStandardSPHelper;
 import com.mtsmda.souvenir.model.Captcha;
 import com.mtsmda.souvenir.repository.CaptchaRepository;
 import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.CaptchaMapper;
@@ -58,14 +58,14 @@ public class CaptchaRepositoryImplSPJavaStandard implements CaptchaRepository {
 			Map<String, Object> mapParam = new LinkedHashMap<>();
 			mapParam.put(CAPTCHA_ID_IN_SP_PARAM_NAME, idCaptcha);
 
-			CallableStatement callableStatement = SouvenirStandardSP.execute(this.dataSource, GET_CAPTCHA_BY_ID_SP_NAME,
+			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource, GET_CAPTCHA_BY_ID_SP_NAME,
 					mapParam, false);
 			ResultSet rs = callableStatement.executeQuery();
 			while (rs.next()) {
 				captcha = captchaMapper.mapRow(rs);
 			}
 		} catch (SQLException e) {
-			throw new SouvenirException("getCaptchaById - " + e.getMessage());
+			throw new SouvenirRuntimeException("getCaptchaById - " + e.getMessage());
 		}
 		return captcha;
 	}
@@ -83,14 +83,14 @@ public class CaptchaRepositoryImplSPJavaStandard implements CaptchaRepository {
 			Map<String, Object> mapParam = new LinkedHashMap<>();
 			mapParam.put(CAPTCHA_ID_IN_SP_PARAM_NAME, captchaUser.getCaptchaId());
 
-			CallableStatement callableStatement = SouvenirStandardSP.execute(this.dataSource,
+			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource,
 					GET_RANDOM_CAPTCHA_SP_NAME, mapParam, false);
 			ResultSet rs = callableStatement.executeQuery();
 			while (rs.next()) {
 				captcha = captchaMapper.mapRow(rs);
 			}
 		} catch (SQLException e) {
-			throw new SouvenirException("getRandomCaptcha - " + e.getMessage());
+			throw new SouvenirRuntimeException("getRandomCaptcha - " + e.getMessage());
 		}
 		return captcha;
 	}
@@ -99,13 +99,13 @@ public class CaptchaRepositoryImplSPJavaStandard implements CaptchaRepository {
 	public Integer getMaxIdCaptcha() {
 		Integer maxId = null;
 		try {
-			CallableStatement callableStatement = SouvenirStandardSP.execute(this.dataSource,
+			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource,
 					GET_MAX_ID_CAPTCHA_FN_NAME, null, true);
 			callableStatement.registerOutParameter(1, Types.INTEGER);
 			callableStatement.execute();
 			maxId = callableStatement.getInt(1);
 		} catch (SQLException e) {
-			throw new SouvenirException("getMaxIdCaptcha - " + e.getMessage());
+			throw new SouvenirRuntimeException("getMaxIdCaptcha - " + e.getMessage());
 		}
 		return maxId;
 	}
@@ -119,7 +119,7 @@ public class CaptchaRepositoryImplSPJavaStandard implements CaptchaRepository {
 			HashMap<String, Object> mapParam = new HashMap<>();
 			MapHelper.getMap(mapParam, keysList, captcha.getCaptchaId(), captcha.getCaptchaValue());
 
-			CallableStatement callableStatement = SouvenirStandardSP.execute(this.dataSource, checkCaptcha, mapParam,
+			CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource, CHECK_CAPTCHA, mapParam,
 					false);
 			ResultSet rs = callableStatement.executeQuery();
 			while (rs.next()) {
@@ -129,7 +129,7 @@ public class CaptchaRepositoryImplSPJavaStandard implements CaptchaRepository {
 				}
 			}
 		} catch (SQLException e) {
-			throw new SouvenirException("getRandomCaptcha - " + e.getMessage());
+			throw new SouvenirRuntimeException("getRandomCaptcha - " + e.getMessage());
 		}
 		return false;
 	}

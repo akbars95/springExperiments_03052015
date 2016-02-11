@@ -8,7 +8,7 @@ DECLARE isUpdated VARCHAR(5);
   DECLARE last_update_datetimeL datetime;
 
   select created_datetime, last_update_datetime into created_datetimeL, last_update_datetimeL
-  FROM souvenirs_audit sa
+  FROM SOUVENIRS_AUDIT sa
   where sa.souvenir_id = souvenir_idIN;
 
   IF created_datetimeL = last_update_datetimeL

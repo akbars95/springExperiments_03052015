@@ -11,9 +11,9 @@ BEGIN
 	END WHILE;
     
     while captcha_idNew is null do
-		select c.captcha_id into captcha_idNew from captcha c where captcha_id = maxIdCaptcha;
+		select c.captcha_id into captcha_idNew from CAPTCHA c where captcha_id = maxIdCaptcha;
     end while;
     
-    select c.captcha_id, c.captcha_url_file from captcha c where captcha_id = maxIdCaptcha;
+    select c.captcha_id, c.captcha_url_file from CAPTCHA c where captcha_id = maxIdCaptcha;
 END$$
 DELIMITER ;

@@ -1,4 +1,4 @@
-package com.mtsmda.souvenir.controller;
+package com.mtsmda.souvenir.restController;
 
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;

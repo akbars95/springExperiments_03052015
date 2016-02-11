@@ -2,6 +2,9 @@ package com.mtsmda.souvenir.model;
 
 import java.io.Serializable;
 
+import com.mtsmda.souvenir.annotation.ModelClassInfo;
+
+@ModelClassInfo(tableName = "MESSAGE")
 public class Message implements Serializable {
 
 	private Integer messageId;

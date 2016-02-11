@@ -8,7 +8,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-public class SouvenirStandardSP {
+public class SouvenirStandardSPHelper {
 
 	public static CallableStatement execute(DataSource dataSource, String storedProcedureName,
 			Map<String, Object> mapParam, boolean isFunction) throws SQLException {

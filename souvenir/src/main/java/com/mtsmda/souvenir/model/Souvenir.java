@@ -2,9 +2,12 @@ package com.mtsmda.souvenir.model;
 
 import java.io.Serializable;
 
+import com.mtsmda.souvenir.annotation.ModelClassInfo;
+
 /**
  * Created by MTSMDA on 16.11.2015.
  */
+@ModelClassInfo(tableName = "SOUVENIRS")
 public class Souvenir implements Serializable {
 
 	private Integer souvenirId;

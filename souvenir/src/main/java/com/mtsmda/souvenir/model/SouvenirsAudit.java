@@ -3,9 +3,12 @@ package com.mtsmda.souvenir.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.mtsmda.souvenir.annotation.ModelClassInfo;
+
 /**
  * Created by c-DMITMINZ on 29.01.2016.
  */
+@ModelClassInfo(tableName = "SOUVENIRS_AUDIT")
 public class SouvenirsAudit implements Serializable {
 
 	/**

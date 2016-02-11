@@ -1,6 +1,6 @@
 package com.mtsmda.souvenir.helper;
 
-import com.mtsmda.souvenir.exception.SouvenirException;
+import com.mtsmda.souvenir.exception.SouvenirRuntimeException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -15,7 +15,7 @@ import java.util.Locale;
 /**
  * Created by MTSMDA on 30.01.2016.
  */
-public class CommonSQLScript {
+public class CommonSQLScriptHelper {
 
     private StringBuilder stringBuilderSQLText = new StringBuilder();
 
@@ -26,7 +26,7 @@ public class CommonSQLScript {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                throw new SouvenirException("Cannot create new file " + file.getAbsolutePath() + " - " + e.getMessage());
+                throw new SouvenirRuntimeException("Cannot create new file " + file.getAbsolutePath() + " - " + e.getMessage());
             }
         }
 //        System.out.println(file.getAbsoluteFile());
@@ -75,7 +75,7 @@ public class CommonSQLScript {
         if (StringUtils.isNotBlank(fileName)) {
             readFiles(new File(fileName));
         } else {
-            throw new SouvenirException("File name is null or empty!");
+            throw new SouvenirRuntimeException("File name is null or empty!");
         }
     }
 
@@ -88,10 +88,10 @@ public class CommonSQLScript {
                 }
                 this.stringBuilderSQLText.append("\n");
             } catch (Exception e) {
-                throw new SouvenirException("File read exception - " + e.getMessage());
+                throw new SouvenirRuntimeException("File read exception - " + e.getMessage());
             }
         } else {
-            throw new SouvenirException("File null or not exists!");
+            throw new SouvenirRuntimeException("File null or not exists!");
         }
     }
 
@@ -101,10 +101,10 @@ public class CommonSQLScript {
                 String line = null;
                 bufferedWriter.write(this.stringBuilderSQLText.toString());
             } catch (Exception e) {
-                throw new SouvenirException("File read exception - " + e.getMessage());
+                throw new SouvenirRuntimeException("File read exception - " + e.getMessage());
             }
         } else {
-            throw new SouvenirException("File null or not exists!");
+            throw new SouvenirRuntimeException("File null or not exists!");
         }
     }
 
@@ -112,12 +112,12 @@ public class CommonSQLScript {
         if (StringUtils.isNotBlank(fileName)) {
             writeFiles(new File(fileName));
         } else {
-            throw new SouvenirException("File name is null or empty!");
+            throw new SouvenirRuntimeException("File name is null or empty!");
         }
     }
 
     public static void main(String[] args) {
-        new CommonSQLScript().createAndUpdateCommonSQLScript();
+        new CommonSQLScriptHelper().createAndUpdateCommonSQLScript();
     }
 
 }

@@ -6,7 +6,7 @@ BEGIN
   DECLARE created_datetimeL datetime;
   
   select created_datetime into created_datetimeL
-  FROM souvenirs_audit sa
+  FROM SOUVENIRS_AUDIT sa
   where sa.created_datetime = sa.last_update_datetime and sa.souvenir_id = souvenir_idIN;
   
   IF created_datetimeL is null

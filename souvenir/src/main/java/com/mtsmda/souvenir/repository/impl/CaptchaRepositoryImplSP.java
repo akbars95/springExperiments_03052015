@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.SocketUtils;
 
-import com.mtsmda.souvenir.exception.SouvenirException;
+import com.mtsmda.souvenir.exception.SouvenirRuntimeException;
 import com.mtsmda.souvenir.helper.ListHelper;
 import com.mtsmda.souvenir.helper.MapHelper;
 import com.mtsmda.souvenir.model.Captcha;
@@ -100,7 +100,7 @@ public class CaptchaRepositoryImplSP implements CaptchaRepository {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			throw new SouvenirException("Exception when get Random captcha - " + e.getMessage());
+			throw new SouvenirRuntimeException("Exception when get Random captcha - " + e.getMessage());
 		}
 		return captcha;
 	}

@@ -1,4 +1,4 @@
-package com.mtsmda.souvenir.controller;
+package com.mtsmda.souvenir.restController;
 
 import java.util.List;
 

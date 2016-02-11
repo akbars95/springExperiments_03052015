@@ -17,7 +17,7 @@ import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-import com.mtsmda.souvenir.exception.SouvenirException;
+import com.mtsmda.souvenir.exception.SouvenirRuntimeException;
 import com.mtsmda.souvenir.helper.ListHelper;
 import com.mtsmda.souvenir.helper.MapHelper;
 import com.mtsmda.souvenir.model.Message;
@@ -55,7 +55,7 @@ public class MessageRepositoryImplSP implements MessageRepository {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			throw new SouvenirException("Exception when insert new email message - " + e.getMessage());
+			throw new SouvenirRuntimeException("Exception when insert new email message - " + e.getMessage());
 		}
 		return true;
 	}

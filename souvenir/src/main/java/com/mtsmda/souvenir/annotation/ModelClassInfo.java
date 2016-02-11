@@ -1,9 +1,6 @@
 package com.mtsmda.souvenir.annotation;
 
-import org.springframework.stereotype.Component;
-
 import java.lang.annotation.*;
-import java.util.List;
 
 /**
  * Created by c-DMITMINZ on 29.01.2016.

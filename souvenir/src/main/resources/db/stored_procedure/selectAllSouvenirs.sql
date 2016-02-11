@@ -1,6 +1,6 @@
 DELIMITER $$
 CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `selectAllSouvenirs`()
 BEGIN
-	SELECT * FROM fullselectsouvenirs;
+	SELECT * FROM FULL_SELECT_SOUVENIRS;
 END$$
 DELIMITER ;

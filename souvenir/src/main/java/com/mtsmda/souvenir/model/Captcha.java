@@ -2,9 +2,12 @@ package com.mtsmda.souvenir.model;
 
 import java.io.Serializable;
 
+import com.mtsmda.souvenir.annotation.ModelClassInfo;
+
 /**
  * Created by c-DMITMINZ on 04.02.2016.
  */
+@ModelClassInfo(tableName = "CAPTCHA")
 public class Captcha implements Serializable {
 
 	private Integer captchaId;

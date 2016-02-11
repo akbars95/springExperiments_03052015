@@ -1,13 +1,13 @@
 use souvenir;
 
-CREATE TABLE `souvenir_categories` (
+CREATE TABLE `SOUVENIR_CATEGORIES` (
   `souvenir_category_id` int(11) NOT NULL AUTO_INCREMENT,
   `souvenir_category` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`souvenir_category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
-CREATE TABLE `souvenirs` (
+CREATE TABLE `SOUVENIRS` (
   `souvenir_id` int(11) NOT NULL AUTO_INCREMENT,
   `souvenir_name` varchar(50) NOT NULL,
   `souvenir_description` varchar(255) DEFAULT NULL,
@@ -22,20 +22,20 @@ CREATE TABLE `souvenirs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `souvenirs_audit` (
+CREATE TABLE `SOUVENIRS_AUDIT` (
   `souvenir_id` int(11) NOT NULL,
   `created_datetime` datetime DEFAULT NULL,
   `last_update_datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-CREATE TABLE `captcha` (
+CREATE TABLE `CAPTCHA` (
   `captcha_id` int(11) NOT NULL AUTO_INCREMENT,
   `captcha_value` varchar(10) CHARACTER SET utf8 NOT NULL,
   `captcha_url_file` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`captcha_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-CREATE TABLE `message` (
+CREATE TABLE `MESSAGE` (
   `message_id` int(11) NOT NULL AUTO_INCREMENT,
   `message_name` varchar(50) CHARACTER SET utf8 NOT NULL,
   `message_email` varchar(50) CHARACTER SET utf8 NOT NULL,
