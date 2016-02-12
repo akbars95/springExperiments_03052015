@@ -31,6 +31,7 @@
 		<put-list-attribute name="javascripts" cascade="true"
 			inherit="true">
 			<!-- <add-attribute value="/resources/less/less.min.js" /> -->
+			<add-attribute value="/resources/js/angularJS/souvenir.angularJS.js" />
 			<add-attribute value="/resources/js/jsScripts.js" />
 		</put-list-attribute>
 		<put-list-attribute name="stylesheets" cascade="true">
@@ -46,7 +47,6 @@
 		<put-list-attribute name="javascripts" inherit="true"
 			cascade="true">
 			<add-attribute value="/resources/js/google_maps.js" />
-			<add-attribute value="/resources/js/angularJS/souvenir.angularJS.js" />
 		</put-list-attribute>
 	</definition>
 
