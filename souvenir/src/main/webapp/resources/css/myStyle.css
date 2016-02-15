@@ -50,7 +50,7 @@ span.numbers {
 	cursor: pointer;
 }
 
-label.contact_us_form_item::after{
+label.contact_us_form_item::after {
 	content: '*';
 	color: red;
 	font-size: 19px;
@@ -61,6 +61,17 @@ textarea {
 	resize: none;
 }
 
-.form-horizontal .control-label{
+.form-horizontal .control-label {
 	text-align: left;
+}
+
+#footer {
+	background-color: ghostwhite;
+	position: relative;
+}
+
+#footer p {
+	position: absolute;
+	top: 9px;
+	left: 9px;
 }

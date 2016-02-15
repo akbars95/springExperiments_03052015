@@ -10,9 +10,9 @@ import static com.mtsmda.souvenir.controller.constants.AdminPieceConstants.*;
 @RequestMapping(value = { ADMIN_PIECE_PIECE_URL }, method = RequestMethod.GET)
 public class AdminController {
 
-	@RequestMapping(value = SOUVENIR_PIECE_INSERT_URL, method = RequestMethod.GET)
+	@RequestMapping(value = SOUVENIR_PIECE_OP_INSERT_URL, method = RequestMethod.GET)
 	public String insertNewSouvenir() {
-		return SOUVENIR_PIECE_INSERT_INTERNAL;
+		return SOUVENIR_PIECE_INSERT_INTERNAL_URL;
 	}
 
 }

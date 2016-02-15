@@ -13,7 +13,7 @@ import com.mtsmda.souvenir.service.CaptchaService;
 
 @RestController
 public class CaptchaRestController {
-
+	
 	@Autowired
 	@Qualifier("captchaService")
 	private CaptchaService captchaService;

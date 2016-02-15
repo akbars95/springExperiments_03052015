@@ -51,6 +51,11 @@ RestController Class:
 	annotation: @RestController
 	url: @RequestMapping value field take from controller constants(com.mtsmda.souvenir.restController.constants)
 	return value: take from controller constants
+	
+Controller and RestController Constants:
+	common url: name + _PIECE(ADMIN_PIECE_PIECE)
+	internal project url: name + _INTERNAL_FOLDER or _INTERNAL_FILE(SOUVENIR_PIECE_INTERNAL_FOLDER)
+	http url: name + _URL or _INTERNAL_URL(SOUVENIR_PIECE_OP_INSERT_URL or SOUVENIR_PIECE_INSERT_INTERNAL_URL)
 
 Project exception:
 	package: com.mtsmda.souvenir.exception

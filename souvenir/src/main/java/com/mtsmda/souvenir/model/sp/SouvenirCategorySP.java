@@ -20,8 +20,8 @@ public class SouvenirCategorySP {
     /* function name */
 
     /* column name */
-    public static final String SOUVENIR_CATEGORY = "souvenir_category";
     public static final String SOUVENIR_CATEGORY_ID = "souvenir_category_id";
+    public static final String SOUVENIR_CATEGORY = "souvenir_category";
 
     /* stored procedure parameter name */
     public static final String SOUVENIR_CATEGORY_IN_SP_PARAM_NAME = SOUVENIR_CATEGORY + IN;

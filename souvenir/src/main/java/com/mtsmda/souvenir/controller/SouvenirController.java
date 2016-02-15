@@ -12,10 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class SouvenirController {
-
+	
 	@RequestMapping(value = "/souvenirInsert", method = RequestMethod.POST)
-	public String get(HttpServletRequest request, @RequestParam("souvenirPath") MultipartFile file/*,
-			@RequestParam("souvenirPath") MultipartFile fileSouvenirPath, @RequestParam("file") MultipartFile fileFile*/) {
+	public String get(HttpServletRequest request, @RequestParam("souvenirPath") MultipartFile file) {
 		@SuppressWarnings("rawtypes")
 		Map parameterMap = request.getParameterMap();
 		System.out.println(parameterMap.size());

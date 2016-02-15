@@ -24,7 +24,7 @@ $(document).ready(function() {
 	var span_hide = $("#span_hide");
 	var googleMap = $("#googleMap");
 	span_show.hide();
-//	googleMap.hide();
+	googleMap.hide();
 	var isShowMap = false;
 	
 	buttonShowHideMap.click(function() {
