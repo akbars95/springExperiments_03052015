@@ -12,6 +12,8 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.MapperI;
+import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.SouvenirCategoryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -58,13 +60,15 @@ public class SouvenirCategoryRepositoryImplSPJavaStandard implements SouvenirCat
     public List<SouvenirCategory> getAllSouvenirCategories() {
         List<SouvenirCategory> categories = null;
         try {
+            MapperI<SouvenirCategory> souvenirCategoryMapper = new SouvenirCategoryMapper();
             CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource, GET_ALL_SOUVENIR_CATEGORIES_SP_NAME,
                     null, false);
             ResultSet rs = callableStatement.executeQuery();
             if (rs != null) {
                 categories = new ArrayList<>();
                 while (rs.next()) {
-                    captcha = captchaMapper.mapRow(rs);
+                    SouvenirCategory souvenirCategory = souvenirCategoryMapper.mapRow(rs);
+                    categories.add(souvenirCategory);
                 }
             }
         } catch (SQLException e) {
