@@ -8,9 +8,9 @@ var souvenirApp = angular.module('souvenirApp', ['ngRoute']);
 souvenirApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
-            when('/', {
-                templateUrl: 'partials/phone-list.html',
-                controller: 'PhoneListCtrl'
+            when('/index.html', {
+                templateUrl: '/index',
+                controller: 'indexCtrl'
             }).
             when('/phones', {
                 templateUrl: 'partials/phone-list.html',
@@ -147,6 +147,9 @@ souvenirApp
 
     });
 
+souvenirApp.controller('indexCtrl', function ($scope, $http, $timeout) {
+
+});
 
 souvenirApp.controller('catalogCtrl', function ($scope, $http, $timeout) {
 
