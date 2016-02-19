@@ -15,7 +15,7 @@
 		<spring:message code="page.contact_us.title" />
 	</tiles:putAttribute>
 	<tiles:putAttribute name="content">
-		<div ng-app="contactUsApp" ng-controller="contactUsCtrl">
+		<div ng-controller="contactUsCtrl">
 			<!-- ng-init="" -->
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
