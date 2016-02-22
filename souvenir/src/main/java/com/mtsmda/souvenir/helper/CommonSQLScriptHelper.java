@@ -29,8 +29,6 @@ public class CommonSQLScriptHelper {
                 throw new SouvenirRuntimeException("Cannot create new file " + file.getAbsolutePath() + " - " + e.getMessage());
             }
         }
-//        System.out.println(file.getAbsoluteFile());
-
         List<String> strings = new ArrayList<>();
 
         this.stringBuilderSQLText.append("\n\t\t/*drop and create database*/\n");
@@ -38,6 +36,7 @@ public class CommonSQLScriptHelper {
         readFilesFromFolder(strings, folder);
         writeFiles(file);
         System.out.println("Done - " + new Date());
+        System.out.println(file.getAbsoluteFile());
     }
 
 

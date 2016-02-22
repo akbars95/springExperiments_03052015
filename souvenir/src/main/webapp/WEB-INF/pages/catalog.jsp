@@ -15,8 +15,27 @@
 		<spring:message code="page.catalog.title" />
 	</tiles:putAttribute>
 	<tiles:putAttribute name="content">
-		<div class="" ng-app="catalogApp" ng-controller="catalogCtrl">
-			
+		<div class="" ng-controller="catalogCtrl">
+
+			<div class="row">
+				<div class="col-lg-6">
+
+				</div>
+				<div class="col-lg-6">
+					<select>
+						<option></option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center" ng-repeat="souvenir in souvenirs">
+					<h1><spring:url value="/get/souvenir/" var="homeUrl"
+									htmlEscape="true"/><a href="${homeUrl}{{souvenir.souvenirId}}">{{souvenir.souvenirName}}</a></h1>
+					<p>{{souvenir.souvenirDescription}}</p>
+				</div>
+			</div>
+
 		</div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>

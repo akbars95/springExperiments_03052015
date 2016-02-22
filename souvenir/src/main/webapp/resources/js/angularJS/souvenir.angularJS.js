@@ -1,34 +1,57 @@
 /**
  *
  */
-var host = "/souvenir";
 
+/*app*/
 var souvenirApp = angular.module('souvenirApp', ['ngRoute']);
 
-souvenirApp.config(['$routeProvider',
-    function ($routeProvider) {
-        $routeProvider.
-            when('/', {
-                templateUrl: 'partials/phone-list.html',
-                controller: 'PhoneListCtrl'
-            }).
-            when('/phones', {
-                templateUrl: 'partials/phone-list.html',
-                controller: 'PhoneListCtrl'
-            }).
-            when('/phones/:phoneId', {
-                templateUrl: 'partials/phone-detail.html',
-                controller: 'PhoneDetailCtrl'
-            }).
-            otherwise({
-                redirectTo: '/'
-            });
-    }]);
+/*constants*/
+souvenirApp.constant("hostConst", "/souvenir");
+
+/*Ctrl*/
+/*index page*/
+souvenirApp.controller('indexCtrl', function ($scope, $http, $timeout, hostConst) {
+
+});
+
+/*catalog page*/
+souvenirApp.controller('catalogCtrl', function ($scope, $http, $timeout, hostConst) {
+    var get_all_souvenirsURL = "/get_all_souvenirs";
+    $http.get(hostConst + get_all_souvenirsURL).
+        success(function (data, status, headers, config) {
+            $scope.souvenirs = data;
+        }).
+        error(function (data, status, headers, config) {
+            // log error
+        });
+});
+
+/*souvenirById page*/
+souvenirApp.controller('souvenirByIdCtrl', function ($scope, $http, $timeout, hostConst) {
+    var get_all_souvenirsURL = "/get_all_souvenirs";
+    $http.get(hostConst + get_all_souvenirsURL).
+        success(function (data, status, headers, config) {
+            $scope.souvenirs = data;
+        }).
+        error(function (data, status, headers, config) {
+            // log error
+        });
+});
+
+/*advanced_search page*/
+souvenirApp.controller('advancedSearchCtrl', function ($scope, $http, $timeout, hostConst) {
+
+});
+
+/*about_us page*/
+souvenirApp.controller('aboutUsCtrl', function ($scope, $http, $timeout, hostConst) {
+
+});
 
 souvenirApp
     .controller(
     'contactUsCtrl',
-    function ($scope, $http, $timeout) {
+    function ($scope, $http, $timeout, hostConst) {
         /* objects */
         $scope.currentCaptcha = "";
         $scope.formDataSendEmail = {
@@ -40,10 +63,10 @@ souvenirApp
         };
 
         /* paths */
-        $scope.updateCaptchaURL = host + "/update_captcha";
-        $scope.sendEmailURLURL = host + "/sendemail";
-        $scope.sendemailWithFileURL = host + "/sendemailWithFile";
-        $scope.check_captchaURL = host + "/check_captcha";
+        $scope.updateCaptchaURL = hostConst + "/update_captcha";
+        $scope.sendEmailURLURL = hostConst + "/sendemail";
+        $scope.sendemailWithFileURL = hostConst + "/sendemailWithFile";
+        $scope.check_captchaURL = hostConst + "/check_captcha";
 
         /* variables */
         $scope.responseFormSuccess = false;
@@ -62,7 +85,7 @@ souvenirApp
                 .success(
                 function (response) {
                     $scope.currentCaptcha = response;
-                    $scope.currentCaptcha.captchaUrlFile = host
+                    $scope.currentCaptcha.captchaUrlFile = hostConst
                         + $scope.currentCaptcha.captchaUrlFile;
                 });
         };
@@ -146,8 +169,3 @@ souvenirApp
         };
 
     });
-
-
-souvenirApp.controller('catalogCtrl', function ($scope, $http, $timeout) {
-
-});

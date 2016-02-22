@@ -15,7 +15,7 @@
 		<spring:message code="page.about_us.title" />
 	</tiles:putAttribute>
 	<tiles:putAttribute name="content">
-		<div class="">
+		<div class="" ng-controller="aboutUsCtrl">
 			
 		</div>
 	</tiles:putAttribute>

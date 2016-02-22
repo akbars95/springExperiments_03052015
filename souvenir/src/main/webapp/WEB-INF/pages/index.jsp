@@ -25,7 +25,7 @@
 		<spring:message code="page.home.title" />
 	</tiles:putAttribute>
 	<tiles:putAttribute name="content">
-		<div class="">
+		<div class="" ng-controller="indexCtrl">
 
 			<h1>${message}</h1>
 

@@ -67,11 +67,8 @@ textarea {
 
 #footer {
 	background-color: ghostwhite;
-	position: relative;
 }
 
-#footer p {
-	position: absolute;
-	top: 9px;
-	left: 9px;
+.footer {
+	padding: 15px;
 }

@@ -1,7 +1,10 @@
 package com.mtsmda.souvenir.service.impl;
 
 import com.mtsmda.souvenir.model.Souvenir;
+import com.mtsmda.souvenir.repository.SouvenirRepository;
 import com.mtsmda.souvenir.service.SouvenirService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +14,10 @@ import java.util.List;
  */
 @Service("souvenirService")
 public class SouvenirServiceImpl implements SouvenirService {
+
+    @Autowired
+    @Qualifier("souvenirRepositoryImplSPJavaStandard")
+    private SouvenirRepository souvenirRepository;
 
     @Override
     public boolean insertSouvenir(Souvenir souvenir) {
@@ -34,7 +41,7 @@ public class SouvenirServiceImpl implements SouvenirService {
 
     @Override
     public List<Souvenir> getAllSouvenir() {
-        return null;
+        return this.souvenirRepository.getAllSouvenir();
     }
 
     @Override

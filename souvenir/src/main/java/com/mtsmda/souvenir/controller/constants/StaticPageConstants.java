@@ -2,6 +2,9 @@ package com.mtsmda.souvenir.controller.constants;
 
 public class StaticPageConstants {
 
+	public static final String OPEN_BRACE = "{";
+	public static final String CLOSE_BRACE = "}";
+
 	public static final String ROOT = "/";
 
 	public static final String INDEX = "index";

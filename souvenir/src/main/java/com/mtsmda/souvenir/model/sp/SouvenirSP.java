@@ -12,12 +12,13 @@ import static com.mtsmda.souvenir.model.sp.SPConstant.*;
 public class SouvenirSP {
 
 	/* stored procedure name */
+	public static final String GET_ALL_SOUVENIRS_SP_NAME = "getAllSouvenirs";
 	public static final String SELECT_SOUVENIR_SP_NAME = "selectSouvenir";
 
 	/* function name */
 
 	/* column name */
-	public static final String SOUVENIR_ID =  "souvenirId";
+	public static final String SOUVENIR_ID =  "souvenir_id";
 	public static final String SOUVENIR_NAME =  "souvenir_name";
 	public static final String SOUVENIR_DESCRIPTION =  "souvenir_description";
 	public static final String SOUVENIR_SHOW =  "souvenir_show";
