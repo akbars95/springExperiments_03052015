@@ -48,7 +48,7 @@
 </script>
 
 </head>
-<body style="display: inherit !important;">
+<body style="display: inherit !important;" ng-app="souvenirApp">
 
 	<div class="container">
 		<!-- header -->

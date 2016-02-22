@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mtsmda.souvenir.model.Souvenir;
 import com.mtsmda.souvenir.service.SouvenirService;
 
-import static com.mtsmda.souvenir.controller.constants.SouvenirConstants.SOUVENIR_ID_FIELD_NAME;
+//import static com.mtsmda.souvenir.controller.constants.SouvenirConstants.SOUVENIR_ID_FIELD_NAME;
 
 @RestController
 public class CatalogRestController {
@@ -28,11 +28,11 @@ public class CatalogRestController {
         return souvenirs;
     }
 
-    @RequestMapping(value = "/get_souvenir_by_id", method = RequestMethod.GET)
-    public Souvenir getSouvenirById(@PathVariable(SOUVENIR_ID_FIELD_NAME) Integer souvenirId) {
-        Souvenir souvenir = null;
-        souvenir = souvenirService.getSouvenir(souvenirId);
-        return souvenir;
-    }
+//    @RequestMapping(value = "/get_souvenir_by_id", method = RequestMethod.GET)
+//    public Souvenir getSouvenirById(@PathVariable(SOUVENIR_ID_FIELD_NAME) Integer souvenirId) {
+//        Souvenir souvenir = null;
+//        souvenir = souvenirService.getSouvenir(souvenirId);
+//        return souvenir;
+//    }
 
 }

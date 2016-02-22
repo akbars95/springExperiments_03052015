@@ -48,9 +48,7 @@ souvenirApp.controller('aboutUsCtrl', function ($scope, $http, $timeout, hostCon
 
 });
 
-souvenirApp
-    .controller(
-    'contactUsCtrl',
+souvenirApp.controller('contactUsCtrl',
     function ($scope, $http, $timeout, hostConst) {
         /* objects */
         $scope.currentCaptcha = "";
@@ -80,6 +78,7 @@ souvenirApp
                 captchaValue: "",
                 captchaUrlFile: ""
             };
+            $scope.showEC = "refreshCaptcha";
             $http
                 .post($scope.updateCaptchaURL, dataObj)
                 .success(
@@ -87,7 +86,11 @@ souvenirApp
                     $scope.currentCaptcha = response;
                     $scope.currentCaptcha.captchaUrlFile = hostConst
                         + $scope.currentCaptcha.captchaUrlFile;
-                });
+                    $scope.showEC = "";
+                }).error(function (response) {
+                	$scope.currentCaptcha.error = response;
+                	$scope.showEC = "";
+                });;
         };
         $scope.refreshCaptcha();
 
@@ -143,6 +146,13 @@ souvenirApp
                     });
             }
         }
+        
+        $scope.resetForm = function(){
+        	$scope.formDataSendEmail.messageName = "";
+        	$scope.formDataSendEmail.messageEmail = "";
+        	$scope.formDataSendEmail.messageText = "";
+        	$scope.formDataSendEmail.messageCaptcha = "";
+        };
 
         $scope.checkCaptcha = function () {
             if ($scope.formDataSendEmail.messageCaptcha) {
@@ -154,7 +164,6 @@ souvenirApp
                 $http.post($scope.check_captchaURL, dataObj)
                     .success(function (response) {
                         $scope.currentCaptcha = response;
-                        alert(response);
                     });
             }
         }

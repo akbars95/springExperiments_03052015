@@ -72,3 +72,45 @@ textarea {
 .footer {
 	padding: 15px;
 }
+
+input[type="text"].ng-invalid, textarea.ng-invalid, input[type="email"].ng-invalid {
+	background-color: lightpink;
+}
+
+input[type="text"].ng-valid, textarea.ng-valid, input[type="email"].ng-valid {
+	background-color: lightgreen;
+}
+
+span.error {
+	color: red;
+	font-weight: bold;
+}
+
+/*refresh captcha */
+@-webkit-keyframes refresh-captcha {
+  0%   { transform: rotate(0deg); }
+  /* 50%   { transform: rotate(180deg); } */
+  100% { transform: rotate(360deg); }
+}
+@-moz-keyframes refresh-captcha {
+  0%   { transform: rotate(0deg); }
+  /* 50%   { transform: rotate(180deg); } */
+  100% { transform: rotate(360deg); }
+}
+@-o-keyframes refresh-captcha {
+  0%   { transform: rotate(0deg); }
+  /* 50%   { transform: rotate(180deg); } */
+  100% { transform: rotate(360deg); }
+}
+@keyframes refresh-captcha {
+  0%   { transform: rotate(0deg); }
+  /* 50%   { transform: rotate(180deg); } */
+  100% { transform: rotate(360deg); }
+}
+
+.refreshCaptcha {
+  -webkit-animation: refresh-captcha 1s infinite; /* Safari 4+ */
+  -moz-animation:    refresh-captcha 1s infinite; /* Fx 5+ */
+  -o-animation:      refresh-captcha 1s infinite; /* Opera 12+ */
+  animation:         refresh-captcha 1s infinite; /* IE 10+, Fx 29+ */
+}

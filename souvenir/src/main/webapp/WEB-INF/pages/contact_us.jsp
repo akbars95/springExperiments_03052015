@@ -59,7 +59,8 @@
 						<spring:message code="page.contactus.form.response.error" />
 					</div>
 					<form class="form-horizontal" action="/sendemail" method="post"
-						enctype="multipart/form-data" novalidate="novalidate">
+						enctype="multipart/form-data" novalidate="novalidate"
+						name="sendEmailForm">
 						<div class="form-group">
 							<label for="person_name"
 								class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label contact_us_form_item">
@@ -68,8 +69,21 @@
 
 							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 								<input type="text" name="person_name" class="form-control"
-									id="person_name" ng-model="formDataSendEmail.messageName"
+									required id="person_name" ng-minlength="3" ng-maxlength="50"
+									ng-model="formDataSendEmail.messageName"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.name.label"/>">
+								<span><spring:message
+										code="page.contactus.form.count.input.letters" /></span>
+								<span class="error"
+									ng-show="sendEmailForm.person_name.$error.required"> <spring:message
+										code="page.contactus.form.name.error.required" /></span> <span
+									class="error"
+									ng-show="sendEmailForm.person_name.$error.minlength">
+									<spring:message
+										code="page.contactus.form.name.error.minlength" /></span> <span class="error"
+									ng-show="sendEmailForm.person_name.$error.maxlength">
+									<spring:message
+										code="page.contactus.form.name.error.maxlength" /></span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -78,9 +92,24 @@
 									code="page.contactus.form.email.label" /></label>
 
 							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-								<input type="text" class="form-control" id="person_email"
-									name="person_email" ng-model="formDataSendEmail.messageEmail"
+								<input type="email" class="form-control" id="person_email"
+									required name="person_email"
+									ng-minlength="9" ng-maxlength="50"
+									ng-model="formDataSendEmail.messageEmail"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.email.label"/>">
+								<span class="error"
+									ng-show="sendEmailForm.person_email.$error.required"> <spring:message
+										code="page.contactus.form.email.error.required" /></span> <span class="error"
+									ng-show="sendEmailForm.person_email.$error.email"> <spring:message
+										code="page.contactus.form.email.error.rightEmail" /></span>
+										<span
+									class="error"
+									ng-show="sendEmailForm.person_email.$error.minlength">
+									<spring:message
+										code="page.contactus.form.email.error.minlength" /></span> <span class="error"
+									ng-show="sendEmailForm.person_email.$error.maxlength">
+									<spring:message
+										code="page.contactus.form.email.error.maxlength" /></span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -90,8 +119,23 @@
 
 							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 								<textarea class="form-control" rows="5" id="person_message"
-									name="person_message" ng-model="formDataSendEmail.messageText"
+									required name="person_message"
+									ng-minlength="5" ng-maxlength="1000"
+									ng-model="formDataSendEmail.messageText"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.message.label"/>"></textarea>
+								<span class="error"
+									ng-show="sendEmailForm.person_message.$error.required">
+									<spring:message
+										code="page.contactus.form.message.error.required" />
+								</span>
+								<span
+									class="error"
+									ng-show="sendEmailForm.person_message.$error.minlength">
+									<spring:message
+										code="page.contactus.form.message.error.minlength" /></span> <span class="error"
+									ng-show="sendEmailForm.person_message.$error.maxlength">
+									<spring:message
+										code="page.contactus.form.message.error.maxlength" /></span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -100,22 +144,29 @@
 									code="page.contactus.form.сaptcha.label" /></label>
 
 							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-								<input type="text" class="form-control" id="person_сaptcha"
-									name="person_сaptcha"
-									ng-model="formDataSendEmail.messageCaptcha" ng-blur="checkCaptcha()"
+								<input type="text" class="form-control" id="person_captcha"
+									name="person_captcha" required
+									ng-model="formDataSendEmail.messageCaptcha"
+									ng-blur="checkCaptcha()"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.сaptcha.label"/>">
-								<img ng-src="{{currentCaptcha.captchaUrlFile}}" /> <img
-									id="refreshCaptchaBtn" ng-click="refreshCaptcha()"
-									src="<spring:url value="/resources/images/arrow_refresh.png" htmlEscape="true"/>" />
+								<div class="text-right">
+									<span class="error"
+										ng-show="sendEmailForm.person_captcha.$error.required">
+										<spring:message
+											code="page.contactus.form.сaptcha.error.required" />
+									</span> <img ng-src="{{currentCaptcha.captchaUrlFile}}" /> <img
+										ng-class="showEC" id="refreshCaptchaBtn"
+										ng-click="refreshCaptcha()"
+										src="<spring:url value="/resources/images/arrow_refresh.png" htmlEscape="true"/>" />
+								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div
 								class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-lg-9 col-md-9 col-sm-9 col-xs-9">
 								<div class="checkbox">
-									<label> <input type="checkbox" ng-disabled="true"
-										ng-click="fileUpload()">
-									<spring:message code="page.contactus.form.enableFile.label" />
+									<label> <input type="checkbox" ng-click="fileUpload()">
+										<spring:message code="page.contactus.form.enableFile.label" />
 									</label>
 								</div>
 							</div>
@@ -131,14 +182,15 @@
 						</div>
 						<div class="form-group">
 							<div class="col-sm-5 col-xs-5 text-center">
-								<button type="reset" class="btn btn-danger" name="reset">
+								<button type="button" ng-click="resetForm()" class="btn btn-danger" name="reset">
 									<spring:message code="page.contactus.form.reset.btn" />
 								</button>
 							</div>
 							<div
 								class="col-sm-offset-2 col-sm-5 col-xm-offset-2 col-xs-5 text-center">
 								<button type="button" class="btn btn-success"
-									ng-click="sendFormToServer()">
+									ng-click="sendFormToServer()"
+									ng-disabled="sendEmailForm.$invalid">
 									<spring:message code="page.contactus.form.send.btn" />
 								</button>
 							</div>
