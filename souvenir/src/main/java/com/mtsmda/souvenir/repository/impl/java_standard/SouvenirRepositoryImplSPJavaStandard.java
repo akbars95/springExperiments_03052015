@@ -9,6 +9,7 @@ import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.CaptchaMapper
 import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.MapperI;
 import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.SouvenirCategoryMapper;
 //import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.SouvenirMapper;
+import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.SouvenirMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -53,7 +54,7 @@ public class SouvenirRepositoryImplSPJavaStandard implements SouvenirRepository 
     @Override
     public Souvenir getSouvenir(Integer souvenirId) {
         Souvenir souvenir = null;
-        /*try {
+        try {
             MapperI<Souvenir> souvenirMapper = new SouvenirMapper();
 
             Map<String, Object> mapParam = new LinkedHashMap<>();
@@ -69,14 +70,14 @@ public class SouvenirRepositoryImplSPJavaStandard implements SouvenirRepository 
             }
         } catch (SQLException e) {
             throw new SouvenirRuntimeException("getAllSouvenir - " + e.getMessage());
-        }*/
+        }
         return souvenir;
     }
 
     @Override
     public List<Souvenir> getAllSouvenir() {
         List<Souvenir> souvenirs = null;
-        /*try {
+        try {
             MapperI<Souvenir> souvenirMapper = new SouvenirMapper();
             CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource, GET_ALL_SOUVENIRS_SP_NAME,
                     null, false);
@@ -89,7 +90,7 @@ public class SouvenirRepositoryImplSPJavaStandard implements SouvenirRepository 
             }
         } catch (SQLException e) {
             throw new SouvenirRuntimeException("getAllSouvenir - " + e.getMessage());
-        }*/
+        }
         return souvenirs;
     }
 

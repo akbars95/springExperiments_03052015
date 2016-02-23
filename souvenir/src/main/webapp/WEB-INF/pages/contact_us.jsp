@@ -72,8 +72,8 @@
 									required id="person_name" ng-minlength="3" ng-maxlength="50"
 									ng-model="formDataSendEmail.messageName"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.name.label"/>">
-								<span><spring:message
-										code="page.contactus.form.count.input.letters" /></span>
+								<span ng-show="sendEmailForm.person_name.$valid"><spring:message
+										code="page.contactus.form.count.input.letters" /> {{50 - formDataSendEmail.messageName.length}}</span>
 								<span class="error"
 									ng-show="sendEmailForm.person_name.$error.required"> <spring:message
 										code="page.contactus.form.name.error.required" /></span> <span
@@ -97,6 +97,8 @@
 									ng-minlength="9" ng-maxlength="50"
 									ng-model="formDataSendEmail.messageEmail"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.email.label"/>">
+								<span ng-show="sendEmailForm.person_email.$valid"><spring:message
+										code="page.contactus.form.count.input.letters" /> {{50 - formDataSendEmail.messageEmail.length}}</span>
 								<span class="error"
 									ng-show="sendEmailForm.person_email.$error.required"> <spring:message
 										code="page.contactus.form.email.error.required" /></span> <span class="error"
@@ -123,6 +125,8 @@
 									ng-minlength="5" ng-maxlength="1000"
 									ng-model="formDataSendEmail.messageText"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.message.label"/>"></textarea>
+								<span ng-show="sendEmailForm.person_message.$valid"><spring:message
+										code="page.contactus.form.count.input.letters" /> {{1000 - formDataSendEmail.messageText.length}}</span>
 								<span class="error"
 									ng-show="sendEmailForm.person_message.$error.required">
 									<spring:message
@@ -139,7 +143,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="person_сaptcha"
+							<label for="person_captcha"
 								class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label contact_us_form_item"><spring:message
 									code="page.contactus.form.сaptcha.label" /></label>
 

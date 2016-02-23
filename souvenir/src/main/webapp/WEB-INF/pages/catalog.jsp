@@ -22,8 +22,12 @@
 
 				</div>
 				<div class="col-lg-6">
-					<select>
-						<option></option>
+					<select name="countPerPage">
+						<option value="10">10</option>
+						<option value="25">25</option>
+						<option value="50">50</option>
+						<option value="100">100</option>
+						<option value="all">all</option>
 					</select>
 				</div>
 			</div>
