@@ -70,6 +70,7 @@ souvenirApp.controller('contactUsCtrl',
         $scope.responseFormSuccess = false;
         $scope.responseFormError = false;
         $scope.showFileUpload = false;
+        $scope.checkCaptchaResult = true;
 
         /* functions */
         $scope.refreshCaptcha = function () {
@@ -131,14 +132,30 @@ souvenirApp.controller('contactUsCtrl',
                         $scope.responseFormError = true;
                     });
             } else {
-                $scope.formDataSendEmail.messageCaptcha = $scope.currentCaptcha.captchaId;
+            	
+            	var dataToServer = {
+            		"message":
+            		{"messageId":"","messageName":$scope.formDataSendEmail.messageName,
+        			"messageEmail":$scope.formDataSendEmail.messageEmail,
+        			"messageText":$scope.formDataSendEmail.messageText,
+        			"messageCaptchaId":$scope.currentCaptcha.captchaId},
+            		"captcha":
+            		{"captchaId":$scope.currentCaptcha.captchaId,
+            			"captchaValue":$scope.formDataSendEmail.messageCaptcha,
+            			"captchaUrlFile":""}
+            		};
+                
+                /*var data = 'messageName='
+                    + $scope.formDataSendEmail.messageName*/
+                
                 $http.post($scope.sendEmailURLURL,
-                    $scope.formDataSendEmail).success(
+                		dataToServer).success(
                     function (response) {
                         console.log(response);
                         $scope.responseFormSuccess = true;
                         $scope.responseFormError = false;
                         $timeout(callAtTimeout, 3000);
+                        $scope.resetForm();
                     }).error(function (response) {
                         $scope.responseFormSuccess = false;
                         $scope.responseFormError = true;
@@ -163,7 +180,7 @@ souvenirApp.controller('contactUsCtrl',
                 };
                 $http.post($scope.check_captchaURL, dataObj)
                     .success(function (response) {
-                        $scope.currentCaptcha = response;
+                        $scope.checkCaptchaResult = response;
                     });
             }
         }
@@ -176,5 +193,53 @@ souvenirApp.controller('contactUsCtrl',
         $scope.fileUpload = function () {
             $scope.showFileUpload = !$scope.showFileUpload;
         };
-
+        
     });
+
+
+/*custom validators*/
+souvenirApp.directive("captcha", function(){
+    // requires an isloated model
+    return {
+     // restrict to an attribute type.
+     restrict: 'A',
+    // element must have ng-model attribute.
+     require: 'ngModel',
+     link: function(scope, ele, attrs, ctrl){
+
+        // add a parser that will process each time the value is
+        // parsed into the model when the user updates it.
+        ctrl.$parsers.unshift(function(value) {
+          if(value){
+        	  var sc = scope;
+        	  var g = ele;
+        	  var g2 = attrs;
+        	  var ct = ctrl;
+            // test and set the validity after update.
+            ctrl.$setValidity('captcha', attrs.captcha);
+          }
+
+          // if it's valid, return the value to the model,
+          // otherwise return undefined.
+          return attrs.captcha ? attrs.captcha : undefined;
+        });
+
+     }
+    }
+	/*return {
+	    restrict: 'A',
+	    require: '?ngModel',
+	    link: function(scope, elm, attr, ctrl) {
+	      if (!ctrl) return;
+
+	      var captcha = "";
+	      attr.$observe('captcha', function(value) {
+	        var captcha = value;
+	        ctrl.$validate();
+	      });
+	      ctrl.$validators.captcha = function(modelValue, viewValue) {
+	        return captcha;
+	      };
+	    }
+	  };*/
+  });

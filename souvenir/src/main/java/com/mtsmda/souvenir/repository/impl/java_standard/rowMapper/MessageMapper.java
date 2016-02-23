@@ -16,7 +16,7 @@ public class MessageMapper implements RowMapper<Message>, MapperI<Message> {
 		Message message = new Message();
 		message.setMessageId(rs.getInt(MESSAGE_ID));
 		message.setMessageName(rs.getString(MESSAGE_NAME));
-		message.setMessageCaptcha(rs.getInt(MESSAGE_CAPTCHA_ID));
+		message.setMessageCaptchaId(rs.getInt(MESSAGE_CAPTCHA_ID));
 		message.setMessageEmail(rs.getString(MESSAGE_EMAIL));
 		message.setMessageText(rs.getString(MESSAGE_TEXT_M));
 		return message;
@@ -37,9 +37,9 @@ public class MessageMapper implements RowMapper<Message>, MapperI<Message> {
 			message.setMessageName(null);
 		}
 		try {
-			message.setMessageCaptcha(rs.getInt(MESSAGE_CAPTCHA_ID));
+			message.setMessageCaptchaId(rs.getInt(MESSAGE_CAPTCHA_ID));
 		} catch (SQLException e) {
-			message.setMessageCaptcha(null);
+			message.setMessageCaptchaId(null);
 		}
 		try {
 			message.setMessageEmail(rs.getString(MESSAGE_EMAIL));

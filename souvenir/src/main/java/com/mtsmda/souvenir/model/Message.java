@@ -11,17 +11,17 @@ public class Message implements Serializable {
 	private String messageName;
 	private String messageEmail;
 	private String messageText;
-	private Integer messageCaptcha;
+	private Integer messageCaptchaId;
 
 	public Message() {
 
 	}
 
-	public Message(String messageName, String messageEmail, String messageText, Integer messageCaptcha) {
+	public Message(String messageName, String messageEmail, String messageText, Integer messageCaptchaId) {
 		setMessageName(messageName);
 		setMessageEmail(messageEmail);
 		setMessageText(messageText);
-		setMessageCaptcha(messageCaptcha);
+		setMessageCaptchaId(messageCaptchaId);
 	}
 
 	public Integer getMessageId() {
@@ -56,19 +56,19 @@ public class Message implements Serializable {
 		this.messageText = messageText;
 	}
 
-	public Integer getMessageCaptcha() {
-		return messageCaptcha;
+	public Integer getMessageCaptchaId() {
+		return messageCaptchaId;
 	}
 
-	public void setMessageCaptcha(Integer messageCaptcha) {
-		this.messageCaptcha = messageCaptcha;
+	public void setMessageCaptchaId(Integer messageCaptchaId) {
+		this.messageCaptchaId = messageCaptchaId;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((messageCaptcha == null) ? 0 : messageCaptcha.hashCode());
+		result = prime * result + ((messageCaptchaId == null) ? 0 : messageCaptchaId.hashCode());
 		result = prime * result + ((messageEmail == null) ? 0 : messageEmail.hashCode());
 		result = prime * result + ((messageName == null) ? 0 : messageName.hashCode());
 		result = prime * result + ((messageText == null) ? 0 : messageText.hashCode());
@@ -84,10 +84,10 @@ public class Message implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Message other = (Message) obj;
-		if (messageCaptcha == null) {
-			if (other.messageCaptcha != null)
+		if (messageCaptchaId == null) {
+			if (other.messageCaptchaId != null)
 				return false;
-		} else if (!messageCaptcha.equals(other.messageCaptcha))
+		} else if (!messageCaptchaId.equals(other.messageCaptchaId))
 			return false;
 		if (messageEmail == null) {
 			if (other.messageEmail != null)
@@ -110,7 +110,7 @@ public class Message implements Serializable {
 	@Override
 	public String toString() {
 		return "Message [messageId=" + messageId + ", messageName=" + messageName + ", messageEmail=" + messageEmail
-				+ ", messageText=" + messageText + ", messageCaptcha=" + messageCaptcha + "]";
+				+ ", messageText=" + messageText + ", messageCaptcha=" + messageCaptchaId + "]";
 	}
 
 }

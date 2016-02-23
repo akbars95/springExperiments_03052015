@@ -73,16 +73,15 @@
 									ng-model="formDataSendEmail.messageName"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.name.label"/>">
 								<span ng-show="sendEmailForm.person_name.$valid"><spring:message
-										code="page.contactus.form.count.input.letters" /> {{50 - formDataSendEmail.messageName.length}}</span>
-								<span class="error"
+										code="page.contactus.form.count.input.letters" /> {{50 -
+									formDataSendEmail.messageName.length}}</span> <span class="error"
 									ng-show="sendEmailForm.person_name.$error.required"> <spring:message
 										code="page.contactus.form.name.error.required" /></span> <span
 									class="error"
-									ng-show="sendEmailForm.person_name.$error.minlength">
-									<spring:message
-										code="page.contactus.form.name.error.minlength" /></span> <span class="error"
-									ng-show="sendEmailForm.person_name.$error.maxlength">
-									<spring:message
+									ng-show="sendEmailForm.person_name.$error.minlength"> <spring:message
+										code="page.contactus.form.name.error.minlength" /></span> <span
+									class="error"
+									ng-show="sendEmailForm.person_name.$error.maxlength"> <spring:message
 										code="page.contactus.form.name.error.maxlength" /></span>
 							</div>
 						</div>
@@ -93,24 +92,22 @@
 
 							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 								<input type="email" class="form-control" id="person_email"
-									required name="person_email"
-									ng-minlength="9" ng-maxlength="50"
+									required name="person_email" ng-minlength="9" ng-maxlength="50"
 									ng-model="formDataSendEmail.messageEmail"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.email.label"/>">
 								<span ng-show="sendEmailForm.person_email.$valid"><spring:message
-										code="page.contactus.form.count.input.letters" /> {{50 - formDataSendEmail.messageEmail.length}}</span>
-								<span class="error"
+										code="page.contactus.form.count.input.letters" /> {{50 -
+									formDataSendEmail.messageEmail.length}}</span> <span class="error"
 									ng-show="sendEmailForm.person_email.$error.required"> <spring:message
-										code="page.contactus.form.email.error.required" /></span> <span class="error"
-									ng-show="sendEmailForm.person_email.$error.email"> <spring:message
-										code="page.contactus.form.email.error.rightEmail" /></span>
-										<span
+										code="page.contactus.form.email.error.required" /></span> <span
+									class="error" ng-show="sendEmailForm.person_email.$error.email">
+									<spring:message
+										code="page.contactus.form.email.error.rightEmail" />
+								</span> <span class="error"
+									ng-show="sendEmailForm.person_email.$error.minlength"> <spring:message
+										code="page.contactus.form.email.error.minlength" /></span> <span
 									class="error"
-									ng-show="sendEmailForm.person_email.$error.minlength">
-									<spring:message
-										code="page.contactus.form.email.error.minlength" /></span> <span class="error"
-									ng-show="sendEmailForm.person_email.$error.maxlength">
-									<spring:message
+									ng-show="sendEmailForm.person_email.$error.maxlength"> <spring:message
 										code="page.contactus.form.email.error.maxlength" /></span>
 							</div>
 						</div>
@@ -121,25 +118,24 @@
 
 							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 								<textarea class="form-control" rows="5" id="person_message"
-									required name="person_message"
-									ng-minlength="5" ng-maxlength="1000"
-									ng-model="formDataSendEmail.messageText"
+									required name="person_message" ng-minlength="5"
+									ng-maxlength="1000" ng-model="formDataSendEmail.messageText"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.message.label"/>"></textarea>
 								<span ng-show="sendEmailForm.person_message.$valid"><spring:message
-										code="page.contactus.form.count.input.letters" /> {{1000 - formDataSendEmail.messageText.length}}</span>
-								<span class="error"
+										code="page.contactus.form.count.input.letters" /> {{1000 -
+									formDataSendEmail.messageText.length}}</span> <span class="error"
 									ng-show="sendEmailForm.person_message.$error.required">
 									<spring:message
 										code="page.contactus.form.message.error.required" />
-								</span>
-								<span
-									class="error"
+								</span> <span class="error"
 									ng-show="sendEmailForm.person_message.$error.minlength">
 									<spring:message
-										code="page.contactus.form.message.error.minlength" /></span> <span class="error"
+										code="page.contactus.form.message.error.minlength" />
+								</span> <span class="error"
 									ng-show="sendEmailForm.person_message.$error.maxlength">
 									<spring:message
-										code="page.contactus.form.message.error.maxlength" /></span>
+										code="page.contactus.form.message.error.maxlength" />
+								</span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -151,10 +147,14 @@
 								<input type="text" class="form-control" id="person_captcha"
 									name="person_captcha" required
 									ng-model="formDataSendEmail.messageCaptcha"
-									ng-blur="checkCaptcha()"
 									placeholder="<spring:message code="page.contactus.form.common.label"/> <spring:message code="page.contactus.form.сaptcha.label"/>">
+									<!-- ng-blur="checkCaptcha()"  -->
 								<div class="text-right">
-									<span class="error"
+									<%-- <span class="error"
+										ng-show="sendEmailForm.person_captcha.$error.captcha">
+										<spring:message
+											code="page.contactus.form.сaptcha.error.notRight" />captcha="{{checkCaptchaResult}}"
+									</span> --%> <span class="error"
 										ng-show="sendEmailForm.person_captcha.$error.required">
 										<spring:message
 											code="page.contactus.form.сaptcha.error.required" />
@@ -186,7 +186,8 @@
 						</div>
 						<div class="form-group">
 							<div class="col-sm-5 col-xs-5 text-center">
-								<button type="button" ng-click="resetForm()" class="btn btn-danger" name="reset">
+								<button type="button" ng-click="resetForm()"
+									class="btn btn-danger" name="reset">
 									<spring:message code="page.contactus.form.reset.btn" />
 								</button>
 							</div>

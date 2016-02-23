@@ -46,7 +46,7 @@ public class MessageRepositoryImplSP implements MessageRepository {
 					MESSAGE_TEXT_M_IN_SP_PARAM_NAME, MESSAGE_CAPTCHA_ID_IN_SP_PARAM_NAME });
 			HashMap<String, Object> stringObjectHashMap = new HashMap<>();
 			MapHelper.getMap(stringObjectHashMap, keysList, message.getMessageName(), message.getMessageEmail(),
-					message.getMessageText(), message.getMessageCaptcha());
+					message.getMessageText(), message.getMessageCaptchaId());
 			Map map = souvenirStoredProcedure.executeSP(stringObjectHashMap);
 			dataSource.getConnection().commit();
 		} catch (Exception e) {

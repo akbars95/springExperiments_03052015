@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mtsmda.souvenir.model.Captcha;
 import com.mtsmda.souvenir.service.CaptchaService;
 
+import static com.mtsmda.souvenir.restController.constants.CaptchaRestConstants.*;
+
 @RestController
 public class CaptchaRestController {
 	
@@ -18,7 +20,7 @@ public class CaptchaRestController {
 	@Qualifier("captchaService")
 	private CaptchaService captchaService;
 
-	@RequestMapping(value = "/update_captcha", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = UPDATE_CAPTCHA_PIECE_URL, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Captcha getRandomCaptcha(@RequestBody Captcha captchaFromClient) {
 		if (captchaFromClient != null && captchaFromClient.getCaptchaId() == null) {
 			captchaFromClient.setCaptchaId(new Double(Math.random() * captchaService.getMaxIdCaptcha()).intValue());
@@ -32,7 +34,7 @@ public class CaptchaRestController {
 		return randomCaptcha;
 	}
 
-	@RequestMapping(value = "/check_captcha", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = CHECK_CAPTCHA_PIECE_URL, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public boolean getCheckCaptcha(@RequestBody Captcha captchaFromClient) {
 		if (captchaFromClient == null) {
 			return false;
