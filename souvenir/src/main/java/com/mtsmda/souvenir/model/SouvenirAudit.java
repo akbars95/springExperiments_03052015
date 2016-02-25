@@ -9,7 +9,7 @@ import com.mtsmda.souvenir.annotation.ModelClassInfo;
  * Created by c-DMITMINZ on 29.01.2016.
  */
 @ModelClassInfo(tableName = "SOUVENIRS_AUDIT")
-public class SouvenirsAudit implements Serializable {
+public class SouvenirAudit implements Serializable {
 
 	/**
 	 * 
@@ -20,7 +20,7 @@ public class SouvenirsAudit implements Serializable {
 	private Date createdDatetime;
 	private Date lastUpdateDatetime;
 
-	public SouvenirsAudit() {
+	public SouvenirAudit() {
 
 	}
 
@@ -55,7 +55,7 @@ public class SouvenirsAudit implements Serializable {
 		if (o == null || getClass() != o.getClass())
 			return false;
 
-		SouvenirsAudit that = (SouvenirsAudit) o;
+		SouvenirAudit that = (SouvenirAudit) o;
 
 		if (!souvenir.equals(that.souvenir))
 			return false;

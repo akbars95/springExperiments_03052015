@@ -15,37 +15,42 @@ import java.util.List;
 @Service("souvenirService")
 public class SouvenirServiceImpl implements SouvenirService {
 
-    @Autowired
-    @Qualifier("souvenirRepositoryImplSPJavaStandard")
-    private SouvenirRepository souvenirRepository;
+	@Autowired
+	@Qualifier("souvenirRepositoryImplSPJavaStandard")
+	private SouvenirRepository souvenirRepository;
 
-    @Override
-    public boolean insertSouvenir(Souvenir souvenir) {
-        return false;
-    }
+	@Override
+	public boolean insertSouvenir(Souvenir souvenir) {
+		return this.souvenirRepository.insertSouvenir(souvenir);
+	}
 
-    @Override
-    public boolean updateSouvenir(Souvenir souvenir) {
-        return false;
-    }
+	@Override
+	public boolean updateSouvenir(Souvenir souvenir) {
+		return this.souvenirRepository.updateSouvenir(souvenir);
+	}
 
-    @Override
-    public boolean deleteSouvenir(Souvenir souvenir) {
-        return false;
-    }
+	@Override
+	public boolean deleteSouvenir(Souvenir souvenir) {
+		return this.souvenirRepository.deleteSouvenir(souvenir);
+	}
 
-    @Override
-    public Souvenir getSouvenir(Integer souvenirId) {
-        return null;
-    }
+	@Override
+	public Souvenir getSouvenir(Integer souvenirId) {
+		return this.souvenirRepository.getSouvenir(souvenirId);
+	}
 
-    @Override
-    public List<Souvenir> getAllSouvenir() {
-        return this.souvenirRepository.getAllSouvenir();
-    }
+	@Override
+	public List<Souvenir> getAllSouvenir() {
+		return this.souvenirRepository.getAllSouvenir();
+	}
 
-    @Override
-    public boolean hideSouvenir(Souvenir souvenir) {
-        return false;
-    }
+	@Override
+	public boolean hideSouvenir(Souvenir souvenir) {
+		return this.souvenirRepository.hideSouvenir(souvenir);
+	}
+
+	@Override
+	public List<Souvenir> getAllSouvenirWithCategoryAndAudit() {
+		return this.souvenirRepository.getAllSouvenirWithCategoryAndAudit();
+	}
 }

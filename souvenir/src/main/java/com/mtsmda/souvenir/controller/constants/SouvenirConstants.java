@@ -10,7 +10,9 @@ public class SouvenirConstants {
 
     public static final String GET_SOUVENIR_BY_ID_INTERNAL_FILE = "get_souvenir_by_id";
 
-    public static final String GET_SOUVENIR_BY_ID_PIECE_URL = "/get/souvenir/" + OPEN_BRACE + SOUVENIR_ID_FIELD_NAME + CLOSE_BRACE;
+    public static final String GET_SOUVENIR_BY_ID_PIECE_URL = ROOT + "get_souvenir_by_id/souvenir/" + OPEN_BRACE + SOUVENIR_ID_FIELD_NAME + CLOSE_BRACE;
+    
+    public static final String CURRENT_SOUVENIR_MODEL = "currentSouvenir";
 
 	
 }

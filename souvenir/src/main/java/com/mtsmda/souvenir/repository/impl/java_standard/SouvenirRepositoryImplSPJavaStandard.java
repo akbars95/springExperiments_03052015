@@ -3,13 +3,15 @@ package com.mtsmda.souvenir.repository.impl.java_standard;
 import com.mtsmda.souvenir.exception.SouvenirRuntimeException;
 import com.mtsmda.souvenir.helper.SouvenirStandardSPHelper;
 import com.mtsmda.souvenir.model.Souvenir;
+import com.mtsmda.souvenir.model.SouvenirAudit;
 import com.mtsmda.souvenir.model.SouvenirCategory;
 import com.mtsmda.souvenir.repository.SouvenirRepository;
-import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.CaptchaMapper;
 import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.MapperI;
+import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.SouvenirAuditMapper;
 import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.SouvenirCategoryMapper;
 //import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.SouvenirMapper;
 import com.mtsmda.souvenir.repository.impl.java_standard.rowMapper.SouvenirMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -30,7 +32,7 @@ import static com.mtsmda.souvenir.model.sp.SouvenirSP.*;
  * Created by MTSMDA on 21.02.2016.
  */
 @Repository("souvenirRepositoryImplSPJavaStandard")
-public class SouvenirRepositoryImplSPJavaStandard implements SouvenirRepository {
+public class SouvenirRepositoryImplSPJavaStandard implements SouvenirRepository{
 
     @Autowired
     @Qualifier(value = "mySqlDataSource")
@@ -98,4 +100,31 @@ public class SouvenirRepositoryImplSPJavaStandard implements SouvenirRepository 
     public boolean hideSouvenir(Souvenir souvenir) {
         return false;
     }
+
+	@Override
+	public List<Souvenir> getAllSouvenirWithCategoryAndAudit() {
+		List<Souvenir> souvenirs = null;
+        try {
+            MapperI<Souvenir> souvenirMapper = new SouvenirMapper();
+            MapperI<SouvenirCategory> souvenirCategoryMapper = new SouvenirCategoryMapper();
+            MapperI<SouvenirAudit> souvenirAuditMapper = new SouvenirAuditMapper();
+            CallableStatement callableStatement = SouvenirStandardSPHelper.execute(this.dataSource, SELECT_FULL_SOUVENIR_WITH_CATEGORY_AND_AUDIT_SP_NAME,
+                    null, false);
+            ResultSet rs = callableStatement.executeQuery();
+            if (rs != null) {
+                souvenirs = new ArrayList<>();
+                while (rs.next()) {
+                	Souvenir souvenir = souvenirMapper.mapRow(rs);
+                	SouvenirCategory souvenirCategory = souvenirCategoryMapper.mapRow(rs);
+                	souvenir.setSouvenirCategory(souvenirCategory);
+                	SouvenirAudit souvenirAudit = souvenirAuditMapper.mapRow(rs);
+                	souvenir.setSouvenirAudit(souvenirAudit);
+                    souvenirs.add(souvenir);
+                }
+            }
+        } catch (SQLException e) {
+            throw new SouvenirRuntimeException("getAllSouvenir - " + e.getMessage());
+        }
+        return souvenirs;
+	}
 }

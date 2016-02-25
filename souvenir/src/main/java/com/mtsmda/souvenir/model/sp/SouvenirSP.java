@@ -14,6 +14,7 @@ public class SouvenirSP {
 	/* stored procedure name */
 	public static final String GET_ALL_SOUVENIRS_SP_NAME = "getAllSouvenirs";
 	public static final String SELECT_SOUVENIR_SP_NAME = "selectSouvenir";
+	public static final String SELECT_FULL_SOUVENIR_WITH_CATEGORY_AND_AUDIT_SP_NAME = "selectFullSouvenirWithCategoryAndAudit";
 
 	/* function name */
 

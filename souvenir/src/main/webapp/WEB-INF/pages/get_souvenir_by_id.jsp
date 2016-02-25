@@ -19,8 +19,9 @@
 
 			<div class="row">
 				<div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-10 col-xs-offset-2 col-xs-10 text-center">
-					<h1>{{currentSouvenir.souvenirName}}</h1>
-					<p>{{currentSouvenir.souvenirDescription}}</p>
+					<h1>${currentSouvenir.souvenirName}</h1>
+					<p>${currentSouvenir.souvenirDescription}<br>
+					Price = ${currentSouvenir.souvenirPrice }</p>
 				</div>
 			</div>
 

@@ -242,9 +242,9 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `selectSouvenir`(IN souvenirIdIN int(11))
+CREATE DEFINER=`souvenir`@`localhost` PROCEDURE `selectSouvenir`(IN souvenir_idIN int(11))
 BEGIN
-	SELECT * FROM FULL_SELECT_SOUVENIRS WHERE souvenir_id = souvenirIdIN;
+	SELECT * FROM FULL_SELECT_SOUVENIRS WHERE souvenir_id = souvenir_idIN;
 END$$
 DELIMITER ;
 
@@ -360,11 +360,11 @@ BEGIN
 END$$
 DELIMITER ;
 
-delete from souvenirs_audit;
+/*delete from souvenirs_audit;
 
 insert into souvenirs_audit values(1, now(), now());
 insert into souvenirs_audit values(2, now(), now() + 1);
 
 select souvenirIsUpdated(1);
-select souvenirIsUpdatedV2(1);
+select souvenirIsUpdatedV2(1);*/
 

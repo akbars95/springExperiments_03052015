@@ -47,7 +47,8 @@ public class SouvenirStandardSPHelper {
 		if (value instanceof String) {
 			callableStatement.setString(key, value.toString());
 		} else if (value instanceof Integer) {
-			callableStatement.setInt(key, Integer.parseInt(value.toString()));
+			Integer ii = Integer.parseInt(value.toString());
+			callableStatement.setInt(key, ii);
 		} else if (value instanceof Long) {
 			callableStatement.setLong(key, Long.parseLong(value.toString()));
 		} else if (value instanceof Boolean) {

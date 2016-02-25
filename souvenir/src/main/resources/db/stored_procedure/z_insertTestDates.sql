@@ -39,3 +39,16 @@ call insertSouvenirs('Souvenir #2', 'This is souvenir #2 is description', 0, 'so
 call insertSouvenirs('Souvenir #3', 'This is souvenir #3 is description', 1, 'souvenir path', 1, 100.5, 8);
 call insertSouvenirs('Souvenir #4', 'This is souvenir #4 is description', 0, 'souvenir path', 2, 500.10, 9);
 call insertSouvenirs('Souvenir #5', 'This is souvenir #5 is description', 1, 'souvenir path', 5, 1931, 8);
+
+
+call insertSouvenirs('Korona #1', 'This is korona is description', 1, 'souvenir path for korona', 1, 20, 2);
+call insertSouvenirs('Seriga#2', 'This is souvenir #2 is description', 0, 'souvenir path', 5, 360.6, 6);
+call insertSouvenirs('Cepi#3', 'This is souvenir #3 is description', 1, 'souvenir path', 1, 100.5, 12);
+call insertSouvenirs('Souvenir #20', 'This is souvenir #4 is description', 0, 'souvenir path', 2, 500.10, 14);
+call insertSouvenirs('Bezdelushka', 'This is souvenir #5 is description', 1, 'souvenir path', 5, 1931, 5);
+
+insertSouvenirs('Zolotaya Korona #1', 'This is korona is description', 1, 'souvenir path for korona', 1, 20, 2);
+call insertSouvenirs('Serebryannaya Seriga#2', 'This is souvenir #2 is description', 0, 'souvenir path', 5, 360.6, 6);
+call insertSouvenirs('Tolstaya Cepi#3', 'This is souvenir #3 is description', 1, 'souvenir path', 1, 100.5, 12);
+call insertSouvenirs('Bronzovyi Souvenir #19', 'This is souvenir #4 is description', 0, 'souvenir path', 2, 500.10, 14);
+call insertSouvenirs('Bezdelushka iz alyuminiya', 'This is souvenir #5 is description', 1, 'souvenir path', 5, 1931, 5);

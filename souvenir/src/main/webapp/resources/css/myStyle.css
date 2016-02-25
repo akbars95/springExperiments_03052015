@@ -114,3 +114,7 @@ span.error {
   -o-animation:      refresh-captcha 1s infinite; /* Opera 12+ */
   animation:         refresh-captcha 1s infinite; /* IE 10+, Fx 29+ */
 }
+
+.catalogPageBody{
+	padding: 10px 20px;
+}

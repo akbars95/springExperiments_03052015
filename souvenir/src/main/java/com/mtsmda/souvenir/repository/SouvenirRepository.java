@@ -14,6 +14,8 @@ public interface SouvenirRepository {
     public boolean deleteSouvenir(Souvenir souvenir);
     public Souvenir getSouvenir(Integer souvenirId);
     public List<Souvenir> getAllSouvenir();
+    
+    public List<Souvenir> getAllSouvenirWithCategoryAndAudit();
 
     public boolean hideSouvenir(Souvenir souvenir);
 

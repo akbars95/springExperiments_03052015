@@ -19,6 +19,8 @@ public class Souvenir implements Serializable {
 	private Double souvenirPrice;
 	private Integer souvenirCountOfDaysForOrder;
 
+	private SouvenirAudit souvenirAudit;
+
 	public Souvenir() {
 
 	}
@@ -85,6 +87,14 @@ public class Souvenir implements Serializable {
 
 	public void setSouvenirCountOfDaysForOrder(Integer souvenirCountOfDaysForOrder) {
 		this.souvenirCountOfDaysForOrder = souvenirCountOfDaysForOrder;
+	}
+
+	public SouvenirAudit getSouvenirAudit() {
+		return souvenirAudit;
+	}
+
+	public void setSouvenirAudit(SouvenirAudit souvenirAudit) {
+		this.souvenirAudit = souvenirAudit;
 	}
 
 	@Override
