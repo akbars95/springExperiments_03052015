@@ -83,10 +83,6 @@
                     <li id="catalog"><spring:url value="/catalog" var="catalogUrl"
                                                  htmlEscape="true"/> <a href="${catalogUrl}"><spring:message
                             code="menu.catalog.title"/></a></li>
-                    <li id="advanced_search"><spring:url value="/advanced_search"
-                                                         var="advanced_searchUrl" htmlEscape="true"/> <a
-                            href="${advanced_searchUrl}"><spring:message
-                            code="menu.advanced_search.title"/></a></li>
                     <li id="about_us"><spring:url value="/about_us"
                                                   var="about_usUrl" htmlEscape="true"/> <a
                             href="${about_usUrl}"><spring:message

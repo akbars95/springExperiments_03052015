@@ -24,12 +24,6 @@ public class StaticPageController {
 		return CATALOG;
 	}
 
-	@RequestMapping(value = { ADVANCED_SEARCH_URL }, method = RequestMethod.GET)
-	public String advancedSearchPage() {
-		logger.info("get " + ADVANCED_SEARCH + " page");
-		return ADVANCED_SEARCH;
-	}
-
 	@RequestMapping(value = { ABOUT_US_URL }, method = RequestMethod.GET)
 	public String aboutUsPage() {
 		logger.info("get " + ABOUT_US + " page");

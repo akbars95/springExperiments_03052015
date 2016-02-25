@@ -59,6 +59,11 @@ public class SouvenirRepositoryImplSP implements SouvenirRepository {
     }
 
     @Override
+    public List<Souvenir> getAllSouvenirWithCategoryAndAudit() {
+        return null;
+    }
+
+    @Override
     public boolean hideSouvenir(Souvenir souvenir) {
         return false;
     }

@@ -14,9 +14,6 @@ public class StaticPageConstants {
 	public static final String CATALOG = "catalog";
 	public static final String CATALOG_URL = ROOT + CATALOG;
 
-	public static final String ADVANCED_SEARCH = "advanced_search";
-	public static final String ADVANCED_SEARCH_URL = ROOT + ADVANCED_SEARCH;
-
 	public static final String ABOUT_US = "about_us";
 	public static final String ABOUT_US_URL = ROOT + ABOUT_US;
 
