@@ -86,10 +86,16 @@ souvenirApp
 						value : 10000
 					} ];
 
-					$scope.currentCountValue = $scope.countPerPage[1];
+					$scope.currentCountValue = $scope.countPerPage[0];
+					$scope.countOfPage = [];
 
 					$scope.showPagination = function() {
 						if ($scope.souvenirs.length > $scope.currentCountValue.name) {
+							/*var tempCountPages = $scope.souvenirs.length
+									/ $scope.currentCountValue.value;
+							for (i = 0; i < Math.round(tempCountPages); i++) {
+								$scope.countOfPage.push(i);
+							}*/
 							return true;
 						}
 						return false;

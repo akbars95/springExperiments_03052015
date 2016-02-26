@@ -15,4 +15,9 @@ public class AdminController {
 		return SOUVENIR_PIECE_INSERT_INTERNAL_URL;
 	}
 
+	@RequestMapping(value = ADMIN_SOUVENIR_PIECE_URL, method = RequestMethod.GET)
+	public String adminSouvenir() {
+		return ADMIN_SOUVENIR_INTERNAL_URL;
+	}
+
 }

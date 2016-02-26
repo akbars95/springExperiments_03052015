@@ -18,6 +18,7 @@
 		<put-list-attribute name="stylesheets" cascade="true">
 			<add-attribute
 				value="/resources/bootstrap-3.3.6-dist/css/bootstrap.min.css" />
+				<add-attribute value="/resources/css/myStyle.css" />
 		</put-list-attribute>
 	</definition>
 
@@ -40,7 +41,6 @@
 			<add-attribute
 				value="/resources/bootstrap-3.3.6-dist/css/bootstrap.min.css" />
 			<!-- <add-attribute value="/resources/less/less_style.less" /> -->
-			<add-attribute value="/resources/css/myStyle.css" />
 		</put-list-attribute>
 	</definition>
 

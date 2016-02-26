@@ -64,7 +64,8 @@
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 					<spring:message code="page.catalog.view.label" />
-					<select ng-model="currentCountValue" ng-change="changeCountPerPage()"
+					<select ng-model="currentCountValue"
+						ng-change="changeCountPerPage()"
 						ng-options="currentPP.name for currentPP in countPerPage">
 					</select>
 				</div>
@@ -78,23 +79,23 @@
 							htmlEscape="true" />
 						<a href="${homeUrl}{{souvenir.souvenirId}}">{{souvenir.souvenirName}}</a>
 					</h1>
-					<p>{{souvenir.souvenirDescription}}</p>
+					<p></p>
+					<img ng-src="souvenir.souvenirPath">
 					price = {{souvenir.souvenirPrice}} order day :
 					{{souvenir.souvenirCountOfDaysForOrder}}
+					category = {{souvenir.souvenirCategory.souvenirCategory}}
+					created - {{souvenir.souvenirAudit.createdDatetime}}
 				</div>
 			</div>
 			<div class="text-center">
 				<ul class="pagination pagination-lg" ng-show="showPagination()">
-					<li><a href="#" aria-label="Previous"> <span
-							aria-hidden="true">&laquo;</span>
+					<li ng-show="countOfPage.length > 1"><a href="#"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 					</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span
-							aria-hidden="true">&raquo;</span>
+					<!-- <li ng-repeat="currentCountOfPage in countOfPage track by $index"><a href="#">{{$index}}</a>
+					</li> -->
+					<li ng-show="countOfPage.length > 1"><a href="#"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 					</a></li>
 				</ul>
 			</div>

@@ -29,7 +29,7 @@
 
 			<h1>${message}</h1>
 
-			<spring:url value="/adminPiece/souvenir/insert"
+			<spring:url value="/adminPiece/souvenir"
 				var="adminInsertSouvenirUrl" htmlEscape="true" />
 			<a href="${adminInsertSouvenirUrl}">Admin</a>
 

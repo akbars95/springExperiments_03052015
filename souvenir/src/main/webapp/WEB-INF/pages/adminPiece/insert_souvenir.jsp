@@ -15,7 +15,7 @@
 		<spring:message code="page.about_us.title" />
 	</tiles:putAttribute>
 	<tiles:putAttribute name="content">
-		<div class="" ng-app="insertSouvenirApp" ng-controller="insertSouvenirCtrl">
+		<div class="" ng-controller="insertSouvenirCtrl">
 			<div id="addNewSouvenir">
 				<div>
 					<form action="/souvenir/souvenirInsert" method="post"

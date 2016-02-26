@@ -24,7 +24,7 @@
 <!-- end scripts -->
 
 </head>
-<body style="display: inherit !important;">
+<body style="display: inherit !important;" ng-app="souvenirAdminPieceApp">
 
 	<div class="container">
 		<!-- content -->

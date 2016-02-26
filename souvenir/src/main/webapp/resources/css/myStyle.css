@@ -118,3 +118,8 @@ span.error {
 .catalogPageBody{
 	padding: 10px 20px;
 }
+
+.insertNewSouvenir{
+	padding: 15px;
+	cursor: pointer;
+}
